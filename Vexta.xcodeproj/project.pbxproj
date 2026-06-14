@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8441225B2FDEE36A00B4A073 /* Specification.md in Resources */ = {isa = PBXBuildFile; fileRef = 8441225A2FDEE36A00B4A073 /* Specification.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		8441225A2FDEE36A00B4A073 /* Specification.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Specification.md; sourceTree = "<group>"; };
 		846589462FDEE2B700F13BE4 /* Vexta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vexta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +37,7 @@
 		8465893D2FDEE2B700F13BE4 = {
 			isa = PBXGroup;
 			children = (
+				8441225A2FDEE36A00B4A073 /* Specification.md */,
 				846589482FDEE2B700F13BE4 /* Vexta */,
 				846589472FDEE2B700F13BE4 /* Products */,
 			);
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8441225B2FDEE36A00B4A073 /* Specification.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
