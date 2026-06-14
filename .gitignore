@@ -1,0 +1,56 @@
+# =========================
+# Xcode & Swift Project
+# =========================
+
+## User settings
+xcuserdata/
+
+## Build artifacts
+build/
+DerivedData/
+*.ipa
+*.dSYM
+*.dSYM.zip
+
+## Obj-C/Swift specific
+*.hmap
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+## Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+## CocoaPods
+Pods/
+Podfile.lock
+*.xcworkspace
+
+## Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+## Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+## Archives
+*.xcarchive
+
+## Logs
+*.log
+
+## SwiftLint
+.swiftlint.cache
+
+## macOS system files
+.DS_Store
+
+## Temporary / swap
+*.swp
+*.orig
