@@ -89,11 +89,11 @@ store.onSideEffect = { [weak coordinator] effect in
 Feature Store
     │
     ▼
-ProductRepositoryProtocol   (Core/Domain/Repositories/)
+ProductRepository   (Core/Domain/Repositories/)
     │
     ├── ProductRepositoryImpl  (Core/Data/Repositories/)
-    │       ├── RemoteDataSource  → NetworkService → DTO → Mapper → Domain
-    │       └── LocalDataSource   → SwiftData → @Model → Mapper → Domain
+    │       ├── RemoteDataSource  → NetworkService → DTO → Map → Domain
+    │       └── LocalDataSource   → SwiftData → @Model → Map → Domain
     │
     └── MockProductRepository  (for Preview / Unit tests)
 ```
@@ -110,10 +110,10 @@ JSON Response
     ▼
 NetworkDTO (Codable)         ← network layer only
     │
-    ▼  Mapper.toDomain()
+    ▼  NetworkDTO.toDomain()
 Domain Model (struct)        ← Features work only with this
     │
-    ▼  Mapper.toPersistence()
+    ▼  DomainModel.toPersistence()
 @Model Entity (SwiftData)    ← persistence layer only
 ```
 
@@ -142,31 +142,32 @@ ShopKit/
 │   │   ├── Remote/
 │   │   │   ├── NetworkService.swift
 │   │   │   └── DTOs/             # ProductDTO, OrderDTO…
-│   │   ├── Local/
-│   │   │   └── Entities/         # SwiftData @Model: ProductEntity…
-│   │   └── Mappers/              # ProductMapper, OrderMapper…
+│   │   └── Local/
+│   │       └── Entities/         # SwiftData @Model: ProductEntity…
+│   │ 
 │   │
 │   ├── Services/
 │   │   ├── Analytics/
-│   │   │   ├── AnalyticsServiceProtocol.swift
+│   │   │   ├── AnalyticsService.swift
 │   │   │   └── FirebaseAnalyticsService.swift
 │   │   ├── Auth/
-│   │   │   ├── AuthServiceProtocol.swift
+│   │   │   ├── AuthService.swift
 │   │   │   └── FirebaseAuthService.swift
 │   │   ├── RemoteConfig/
-│   │   │   ├── RemoteConfigServiceProtocol.swift
+│   │   │   ├── RemoteConfigService.swift
 │   │   │   └── FirebaseRemoteConfigService.swift
 │   │   ├── Crashlytics/
-│   │   │   └── CrashlyticsService.swift
+│   │   │   ├── CrashlyticsService.swift
+│   │   │   └── FirebaseCrashlyticsService.swift
 │   │   ├── Purchase/
-│   │   │   ├── PurchaseServiceProtocol.swift
+│   │   │   ├── PurchaseService.swift
 │   │   │   ├── MockPurchaseService.swift   # ← RevenueCat mock
 │   │   │   └── RevenueCatPurchaseService.swift
 │   │   └── Notifications/
 │   │       └── NotificationService.swift
+│   │       └── UserNotificationService.swift
 │   │
 │   └── Common/
-│       ├── Extensions/
 │       ├── Logger/               # OSLog subsystems per module
 │       ├── DesignSystem/         # Colors, Typography, Components
 │       └── Errors/               # AppError enum
