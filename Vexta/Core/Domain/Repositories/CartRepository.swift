@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CartRepository {
-    func fetchAll() async throws -> [Cart]
-    func fetch(cartId: Int) async throws -> Cart
+    func fetchAll() async throws(RepositoryError) -> [Cart]
+    func fetch(cartId: Int) async throws(RepositoryError) -> Cart
 }
 

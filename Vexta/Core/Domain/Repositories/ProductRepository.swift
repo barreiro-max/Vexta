@@ -8,6 +8,6 @@
 import Foundation
 
 protocol ProductRepository {
-    func fetchAll() async throws -> [Product]
-    func fetch(productId: Int) async throws -> Product
+    func fetchAll() async throws(RepositoryError) -> [Product]
+    func fetch(productId: Int) async throws(RepositoryError) -> Product
 }

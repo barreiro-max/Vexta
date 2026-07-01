@@ -8,5 +8,5 @@
 import Foundation
 
 protocol UserRepository {
-    func fetch(userId: Int) async throws -> User
+    func fetch(userId: Int) async throws(RepositoryError) -> User
 }
