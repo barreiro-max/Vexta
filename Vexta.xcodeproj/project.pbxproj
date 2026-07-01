@@ -8,26 +8,64 @@
 
 /* Begin PBXBuildFile section */
 		8441225B2FDEE36A00B4A073 /* Specification.md in Resources */ = {isa = PBXBuildFile; fileRef = 8441225A2FDEE36A00B4A073 /* Specification.md */; };
+		84A6F85E2FE9A0BD00AA592D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 84A6F85D2FE9A0BD00AA592D /* Alamofire */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		845D2E2B2FED3975003D6D10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8465893E2FDEE2B700F13BE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 846589452FDEE2B700F13BE4;
+			remoteInfo = Vexta;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8441225A2FDEE36A00B4A073 /* Specification.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Specification.md; sourceTree = "<group>"; };
+		845D2E272FED3975003D6D10 /* VextaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VextaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		846589462FDEE2B700F13BE4 /* Vexta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vexta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		84A6F8FF2FE9B64100AA592D /* Exceptions for "Vexta" folder in "Vexta" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 846589452FDEE2B700F13BE4 /* Vexta */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		845D2E282FED3975003D6D10 /* VextaTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VextaTests;
+			sourceTree = "<group>";
+		};
 		846589482FDEE2B700F13BE4 /* Vexta */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				84A6F8FF2FE9B64100AA592D /* Exceptions for "Vexta" folder in "Vexta" target */,
+			);
 			path = Vexta;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		845D2E242FED3975003D6D10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		846589432FDEE2B700F13BE4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A6F85E2FE9A0BD00AA592D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +77,7 @@
 			children = (
 				8441225A2FDEE36A00B4A073 /* Specification.md */,
 				846589482FDEE2B700F13BE4 /* Vexta */,
+				845D2E282FED3975003D6D10 /* VextaTests */,
 				846589472FDEE2B700F13BE4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				846589462FDEE2B700F13BE4 /* Vexta.app */,
+				845D2E272FED3975003D6D10 /* VextaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +94,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		845D2E262FED3975003D6D10 /* VextaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 845D2E2F2FED3975003D6D10 /* Build configuration list for PBXNativeTarget "VextaTests" */;
+			buildPhases = (
+				845D2E232FED3975003D6D10 /* Sources */,
+				845D2E242FED3975003D6D10 /* Frameworks */,
+				845D2E252FED3975003D6D10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				845D2E2C2FED3975003D6D10 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				845D2E282FED3975003D6D10 /* VextaTests */,
+			);
+			name = VextaTests;
+			packageProductDependencies = (
+			);
+			productName = VextaTests;
+			productReference = 845D2E272FED3975003D6D10 /* VextaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		846589452FDEE2B700F13BE4 /* Vexta */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 846589512FDEE2B800F13BE4 /* Build configuration list for PBXNativeTarget "Vexta" */;
@@ -71,6 +134,7 @@
 			);
 			name = Vexta;
 			packageProductDependencies = (
+				84A6F85D2FE9A0BD00AA592D /* Alamofire */,
 			);
 			productName = Vexta;
 			productReference = 846589462FDEE2B700F13BE4 /* Vexta.app */;
@@ -86,6 +150,10 @@
 				LastSwiftUpdateCheck = 2630;
 				LastUpgradeCheck = 2630;
 				TargetAttributes = {
+					845D2E262FED3975003D6D10 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 846589452FDEE2B700F13BE4;
+					};
 					846589452FDEE2B700F13BE4 = {
 						CreatedOnToolsVersion = 26.3;
 					};
@@ -100,17 +168,28 @@
 			);
 			mainGroup = 8465893D2FDEE2B700F13BE4;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				84A6F85C2FE9A0BD00AA592D /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 846589472FDEE2B700F13BE4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				846589452FDEE2B700F13BE4 /* Vexta */,
+				845D2E262FED3975003D6D10 /* VextaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		845D2E252FED3975003D6D10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		846589442FDEE2B700F13BE4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -122,6 +201,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		845D2E232FED3975003D6D10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		846589422FDEE2B700F13BE4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,9 +217,61 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		845D2E2C2FED3975003D6D10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 846589452FDEE2B700F13BE4 /* Vexta */;
+			targetProxy = 845D2E2B2FED3975003D6D10 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		845D2E2D2FED3975003D6D10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.VextaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vexta.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vexta";
+			};
+			name = Debug;
+		};
+		845D2E2E2FED3975003D6D10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.VextaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vexta.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vexta";
+			};
+			name = Release;
+		};
 		8465894F2FDEE2B800F13BE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
+			baseConfigurationReferenceRelativePath = Config/Config.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -198,6 +336,8 @@
 		};
 		846589502FDEE2B800F13BE4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
+			baseConfigurationReferenceRelativePath = Config/Config.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -255,6 +395,8 @@
 		};
 		846589522FDEE2B800F13BE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
+			baseConfigurationReferenceRelativePath = Config/Config.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -263,6 +405,7 @@
 				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Vexta/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -277,7 +420,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
@@ -287,6 +430,8 @@
 		};
 		846589532FDEE2B800F13BE4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
+			baseConfigurationReferenceRelativePath = Config/Config.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -295,6 +440,7 @@
 				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Vexta/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -309,7 +455,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
@@ -320,6 +466,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		845D2E2F2FED3975003D6D10 /* Build configuration list for PBXNativeTarget "VextaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				845D2E2D2FED3975003D6D10 /* Debug */,
+				845D2E2E2FED3975003D6D10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		846589412FDEE2B700F13BE4 /* Build configuration list for PBXProject "Vexta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -339,6 +494,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84A6F85C2FE9A0BD00AA592D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84A6F85D2FE9A0BD00AA592D /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A6F85C2FE9A0BD00AA592D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8465893E2FDEE2B700F13BE4 /* Project object */;
 }

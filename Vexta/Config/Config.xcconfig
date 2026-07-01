@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  Vexta
+//
+//  Created by MaxAdmin on 22.06.2026.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+FAKESTORE_API_URL = https:/$()/fakestoreapi.com
