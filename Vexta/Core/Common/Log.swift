@@ -5,9 +5,10 @@
 //  Created by MaxAdmin on 14.06.2026.
 //
 
-import OSLog
+import Foundation
+@_exported import OSLog
 
-extension Logger {
+enum Log {
     private static let subsystem = Bundle.main.bundleIdentifier!
 
     static let auth     = Logger(subsystem: subsystem, category: "🔐 Auth")
@@ -18,5 +19,9 @@ extension Logger {
     static let network  = Logger(subsystem: subsystem, category: "🌐 Network")
     static let purchase = Logger(subsystem: subsystem, category: "💰 Purchase")
     static let storage  = Logger(subsystem: subsystem, category: "💾 Storage")
+
+#if DEBUG
+    static let mockNetwork  = Logger(subsystem: subsystem, category: "🛠️ Debug")
+#endif
 }
 
