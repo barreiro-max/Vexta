@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Cart: Identifiable, Hashable {
+struct Cart: Identifiable, Hashable, Equatable {
     let id: Int
     let userId: Int
 
-    let date: Date
+    let createdAt: Date
     let items: [Item]
 
-    struct Item: Hashable {
+    struct Item: Hashable, Equatable {
         let productId: Int
         let quantity: Int
     }

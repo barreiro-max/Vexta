@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ProductCategory: String {
+enum ProductCategory: String, Hashable, Equatable {
     case mensClothing = "men's clothing"
     case womensClothing = "women's clothing"
     case jewelery

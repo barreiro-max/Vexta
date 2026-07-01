@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductRating: Hashable {
+struct ProductRating: Hashable, Equatable {
     let rate: Double
     let count: Int
 }
