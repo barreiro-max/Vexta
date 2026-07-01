@@ -138,13 +138,18 @@ ShopKit/
 │   │   └── UseCases/             # (optional) business rules on top of Repository
 │   │
 │   ├── Data/
-│   │   ├── Repositories/         # Impl: remote + local merge logic
+│   │   ├── Repositories/         # Impl: cache + local + remote merge logic
+│   │   └── Cache/                # Impl: InMemoryCache…, protocol definition
 │   │   ├── Remote/
-│   │   │   ├── NetworkService.swift
+│   │   │   ├── RemoteDataSource.swift
+│   │   │   └── RemoteDataSourceImpl.swift
 │   │   │   └── DTOs/             # ProductDTO, OrderDTO…
-│   │   └── Local/
-│   │       └── Entities/         # SwiftData @Model: ProductEntity…
-│   │ 
+│   │   └── Persistence/
+│   │   │   └── Entities/         # SwiftData @Model: ProductEntity…
+│   │   │   └── Local/            # Impl: LocalDataSourceImpl… protocol definition 
+│   │   └── Network/
+│   │       └── Client/           # Impl: NetworkClient…, protocol definition
+│   │       └── Endpoint/
 │   │
 │   ├── Services/
 │   │   ├── Analytics/
@@ -585,3 +590,19 @@ AppCoordinator
 ```
 
 - **Changes are allowed** 
+
+## 16. Data Layer Policy 
+
+In the repository, the dependencies are: cache, local data source, and remote data source.
+
+For fetch, fetchAll: first, we request information from the cache. If it fails, we request it from the local data source and also save it to the cache. However, if it is not found in the local data source either, we make a request to the remote data source and save it first to the local data source, and then to the cache.
+
+For save, saveAll: first, we save to the cache, then to the local data source.
+ 
+### 16.1 TTL — Time-To-Live 
+
+The algorithm must take into account the data expiration policy. Therefore, if we request data from the cache and it is fresh, we return it. Otherwise, we make a request to the local DB and also check if the data is up-to-date; if it is not, we make a request to the network.
+
+## 17. Model ID Synchronization Policy
+
+A DTO model comes from the server with a built-in server identifier, which is assumed to be unique. This exact identifier will be passed to the Domain & Entity models, meaning the **single source of truth is the DTO ID.**
