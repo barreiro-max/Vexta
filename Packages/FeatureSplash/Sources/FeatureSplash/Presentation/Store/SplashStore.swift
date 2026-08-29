@@ -19,6 +19,7 @@ public final class SplashStore {
     private let networkMonitor: NetworkMonitor
     private let fetchRemoteConfigUseCase: FetchRemoteConfigUseCase
     private let authStateObserver: AuthStateObserver
+    private let checkOnboardingPassedUseCase: CheckOnboardingPassedUseCase
 
     // MARK: - Event
     private let onStoreEvent: (SplashStoreEvent) -> Void
@@ -27,16 +28,23 @@ public final class SplashStore {
         networkMonitor: NetworkMonitor,
         fetchRemoteConfigUseCase: FetchRemoteConfigUseCase,
         authStateObserver: AuthStateObserver,
+        checkOnboardingPassedUseCase: CheckOnboardingPassedUseCase,
         onStoreEvent: @escaping (SplashStoreEvent) -> Void
     ) {
         self.networkMonitor = networkMonitor
         self.fetchRemoteConfigUseCase = fetchRemoteConfigUseCase
         self.authStateObserver = authStateObserver
+        self.checkOnboardingPassedUseCase = checkOnboardingPassedUseCase
         self.onStoreEvent = onStoreEvent
     }
 
     func bootstrap() async {
         guard !state.isLoading else { return }
+
+        if !checkOnboardingPassedUseCase.execute() {
+            onStoreEvent(.neededOnboarding)
+            return
+        }
 
         state = .loading(message: "Checking network connection...")
         try? await Task.sleep(for: .seconds(0.5))

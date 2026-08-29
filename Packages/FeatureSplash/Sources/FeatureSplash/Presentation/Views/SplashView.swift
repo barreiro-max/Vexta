@@ -32,6 +32,7 @@ public struct SplashView: View {
     let isPreviewMaintenance = false
     let isPreviewForceUpdate = false
     let isAuthenticated = true
+    let isPassedOnboarding = true
 
     let networkMonitor = PreviewNetworkMonitor(
         isConnected: isConnected
@@ -43,10 +44,15 @@ public struct SplashView: View {
     let authStateObserver = PreviewAuthStateObserver(
         isAuthenticated: isAuthenticated
     )
+    let checkOnboardingPassedUseCase = PreviewCheckOnboardingPassedUseCase(
+        isPassed: isPassedOnboarding
+    )
+
     let store = SplashStore(
         networkMonitor: networkMonitor,
         fetchRemoteConfigUseCase: fetchRemoteConfigUseCase,
         authStateObserver: authStateObserver,
+        checkOnboardingPassedUseCase: checkOnboardingPassedUseCase,
         onStoreEvent: {_ in}
     )
     SplashView(store: store)

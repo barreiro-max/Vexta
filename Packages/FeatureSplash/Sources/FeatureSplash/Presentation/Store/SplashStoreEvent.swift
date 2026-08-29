@@ -8,6 +8,7 @@
 import Foundation
 
 public enum SplashStoreEvent {
+    case neededOnboarding
     case authenticated(userId: String)
     case unauthenticated
     case alerted(error: SplashError, onRetry: @MainActor () async -> Void)
