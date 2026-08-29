@@ -14,7 +14,7 @@ import Telemetry
 public final class AuthFlowCoordinator {
 
     // MARK: - Nested Types
-    public enum Event {
+    public enum FlowEvent {
         case finished
         case alerted(error: AuthError)
     }
@@ -32,12 +32,12 @@ public final class AuthFlowCoordinator {
     private let viewFactory: AuthViewFactory
 
     // MARK: - Event
-    private let onFlowEvent: (Event) -> Void
+    private let onFlowEvent: (FlowEvent) -> Void
 
     // MARK: - Init
     init(
         viewFactory: AuthViewFactory,
-        onFlowEvent: @escaping (Event) -> Void
+        onFlowEvent: @escaping (FlowEvent) -> Void
     ) {
         self.viewFactory = viewFactory
         self.onFlowEvent = onFlowEvent

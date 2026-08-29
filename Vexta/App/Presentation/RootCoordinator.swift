@@ -152,7 +152,7 @@ extension RootCoordinator {
         }
     }
 
-    private func matchAuthFlowEvent(for flowEvent: AuthFlowCoordinatorEvent) {
+    private func matchAuthFlowEvent(for flowEvent: AuthFlowCoordinator.FlowEvent) {
         switch flowEvent {
 
         case .finished:

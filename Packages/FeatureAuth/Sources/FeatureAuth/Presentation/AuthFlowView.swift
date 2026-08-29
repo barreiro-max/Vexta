@@ -13,7 +13,7 @@ public struct AuthFlowView: View {
 
     public init(
         viewFactory: AuthViewFactory,
-        onFlowEvent: @escaping (AuthFlowCoordinator.Event) -> Void
+        onFlowEvent: @escaping (AuthFlowCoordinator.FlowEvent) -> Void
     ) {
         let coordinator = AuthFlowCoordinator(
             viewFactory: viewFactory,
