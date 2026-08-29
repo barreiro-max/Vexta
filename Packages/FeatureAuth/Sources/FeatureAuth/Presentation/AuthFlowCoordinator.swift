@@ -6,31 +6,50 @@
 //
 
 import SwiftUI
+import Domain
 import Telemetry
 
 @MainActor
 @Observable
-final class AuthFlowCoordinator {
-    var path: [AuthRoute] = []
+public final class AuthFlowCoordinator {
 
+    // MARK: - Nested Types
+    public enum Event {
+        case finished
+        case alerted(error: AuthError)
+    }
+
+    enum Route: Hashable, Codable {
+        case login
+        case register
+        case sendResetPassword
+    }
+
+    // MARK: - Path
+    var path: [Route] = []
+
+    // MARK: - Dependencies
     private let viewFactory: AuthViewFactory
 
-    private let onFlowEvent: (AuthFlowCoordinatorEvent) -> Void
+    // MARK: - Event
+    private let onFlowEvent: (Event) -> Void
 
+    // MARK: - Init
     init(
         viewFactory: AuthViewFactory,
-        onFlowEvent: @escaping (AuthFlowCoordinatorEvent) -> Void
+        onFlowEvent: @escaping (Event) -> Void
     ) {
         self.viewFactory = viewFactory
         self.onFlowEvent = onFlowEvent
     }
 
+    // MARK: - View Destination
     var rootView: some View {
         chlidView(by: .login)
     }
 
     @ViewBuilder
-    func chlidView(by route: AuthRoute) -> some View {
+    func chlidView(by route: Route) -> some View {
         switch route {
         case .login:
             viewFactory.makeLoginView() { [weak self] storeEvent in
@@ -48,8 +67,18 @@ final class AuthFlowCoordinator {
     }
 }
 
+// MARK: - Intent Handler
 extension AuthFlowCoordinator {
-    func send(_ intent: AuthFlowCoordinatorIntent) {
+    enum Intent {
+        case pushed(route: Route)
+        case popped
+        case poppedToRoot
+
+        case finishedFlow
+        case showAlert(with: AuthError)
+    }
+
+    func send(_ intent: Intent) {
         switch intent {
             
         case .pushed(let route):
@@ -71,6 +100,7 @@ extension AuthFlowCoordinator {
     }
 }
 
+// MARK: - Store Event Matching
 extension AuthFlowCoordinator {
 
     private func matchLoginEvent(for storeEvent: LoginStore.Event) {

@@ -13,7 +13,7 @@ public struct AuthFlowView: View {
 
     public init(
         viewFactory: AuthViewFactory,
-        onFlowEvent: @escaping (AuthFlowCoordinatorEvent) -> Void
+        onFlowEvent: @escaping (AuthFlowCoordinator.Event) -> Void
     ) {
         let coordinator = AuthFlowCoordinator(
             viewFactory: viewFactory,
@@ -26,7 +26,7 @@ public struct AuthFlowView: View {
     public var body: some View {
         NavigationStack(path: $coordinator.path) {
             coordinator.rootView
-                .navigationDestination(for: AuthRoute.self) { route in
+                .navigationDestination(for: AuthFlowCoordinator.Route.self) { route in
                     coordinator.chlidView(by: route)
                 }
         }
