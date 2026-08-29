@@ -14,7 +14,7 @@ public struct NWPathNetworkMonitor: NetworkMonitor {
     private let queue = DispatchQueue(label: "NWPathNetworkMonitor")
     
     public init(
-        monitor: NWPathMonitor = .init()
+        monitor: NWPathMonitor
     ) {
         self.monitor = monitor
         monitor.start(queue: queue)
