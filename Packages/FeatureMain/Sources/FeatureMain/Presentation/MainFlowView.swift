@@ -13,7 +13,7 @@ public struct MainFlowView: View {
 
     public init(
         viewFactory: MainViewFactory,
-        onFlowEvent: @escaping (MainFlowCoordinatorEvent) -> Void
+        onFlowEvent: @escaping (MainFlowCoordinator.FlowEvent) -> Void
     ) {
         let coordinator = MainFlowCoordinator(
             viewFactory: viewFactory,
@@ -26,7 +26,7 @@ public struct MainFlowView: View {
     public var body: some View {
         NavigationStack(path: $coordinator.path) {
             coordinator.rootView
-                .navigationDestination(for: MainRoute.self) { route in
+                .navigationDestination(for: MainFlowCoordinator.Route.self) { route in
                     coordinator.chlidView(by: route)
                 }
         }

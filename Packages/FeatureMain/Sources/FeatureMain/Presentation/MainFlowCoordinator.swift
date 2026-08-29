@@ -7,30 +7,47 @@
 
 import SwiftUI
 import Telemetry
+import Domain
 
 @MainActor
 @Observable
-final class MainFlowCoordinator {
-    var path: [MainRoute] = []
+public final class MainFlowCoordinator {
 
+    // MARK: - Nested Types
+    public enum FlowEvent {
+        case finished
+        case alerted(error: MainError)
+    }
+
+    enum Route: Hashable, Codable {
+        case main
+    }
+
+    // MARK: - Path
+    var path: [Route] = []
+
+    // MARK: - Dependencies
     private let viewFactory: MainViewFactory
 
-    private let onFlowEvent: (MainFlowCoordinatorEvent) -> Void
+    // MARK: - FlowEvent
+    private let onFlowEvent: (FlowEvent) -> Void
 
+    // MARK: - Init
     init(
         viewFactory: MainViewFactory,
-        onFlowEvent: @escaping (MainFlowCoordinatorEvent) -> Void
+        onFlowEvent: @escaping (FlowEvent) -> Void
     ) {
         self.viewFactory = viewFactory
         self.onFlowEvent = onFlowEvent
     }
 
+    // MARK: - View Destination
     var rootView: some View {
         chlidView(by: .main)
     }
 
     @ViewBuilder
-    func chlidView(by route: MainRoute) -> some View {
+    func chlidView(by route: Route) -> some View {
         switch route {
         case .main:
             viewFactory.makeMainView { [weak self] storeEvent in
@@ -40,8 +57,15 @@ final class MainFlowCoordinator {
     }
 }
 
+// MARK: - Intent Handler
 extension MainFlowCoordinator {
-    func send(_ intent: MainFlowCoordinatorIntent) {
+
+    enum Intent {
+        case finishedFlow
+        case showAlert(error: MainError)
+    }
+
+    func send(_ intent: Intent) {
         switch intent {
 
         case .finishedFlow:
@@ -55,9 +79,10 @@ extension MainFlowCoordinator {
     }
 }
 
-
+// MARK: - Store Event Matching
 extension MainFlowCoordinator {
-    private func matchMainEvent(for storeEvent: MainStoreEvent) {
+
+    private func matchMainEvent(for storeEvent: MainStore.Event) {
         switch storeEvent {
             
         case .logOutTapped:

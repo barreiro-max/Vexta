@@ -54,7 +54,7 @@ extension TabFlowCoordinator {
 }
 
 extension TabFlowCoordinator {
-    private func matchMainFlowEvent(for flowEvent: MainFlowCoordinatorEvent) {
+    private func matchMainFlowEvent(for flowEvent: MainFlowCoordinator.FlowEvent) {
         switch flowEvent {
         case .finished:
             send(.finishedMain)

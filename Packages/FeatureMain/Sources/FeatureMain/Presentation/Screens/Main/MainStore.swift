@@ -12,28 +12,49 @@ import Domain
 @Observable
 final class MainStore {
 
+    // MARK: - Nested Types
+    enum State {
+        case idle
+        case success
+        case failure
+    }
+
+    enum Intent {
+        case logOut
+    }
+
+    enum Event {
+        case logOutTapped
+    }
+
     // MARK: - State
-    private(set) var state: MainStoreState = .idle
+    private(set) var state: State = .idle
 
     // MARK: - UseCase
     private let logOutUseCase: LogOutUseCase
 
     // MARK: - Event
-    private let onStoreEvent: (MainStoreEvent) -> Void
+    private let onStoreEvent: (Event) -> Void
 
+    // MARK: - Init
     init(
         logOutUseCase: LogOutUseCase,
-        onStoreEvent: @escaping (MainStoreEvent) -> Void
+        onStoreEvent: @escaping (Event) -> Void
     ) {
         self.logOutUseCase = logOutUseCase
         self.onStoreEvent = onStoreEvent
     }
 
-    func checkProfile() {
-        fatalError("not implemented")
+    // MARK: - Intent Handler
+    func send(_ intent: Intent) {
+        switch intent {
+        case .logOut:
+            logOut()
+        }
     }
 
-    func logOutTapped() {
+    // MARK: - Private Actions
+    private func logOut() {
         do throws(AuthError) {
             try logOutUseCase.execute()
             state = .success

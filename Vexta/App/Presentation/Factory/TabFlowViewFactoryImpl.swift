@@ -15,7 +15,7 @@ import FeatureMain
 
 protocol TabFlowViewFactory {
     func makeMainFlowView(
-        onFlowEvent: @escaping (MainFlowCoordinatorEvent) -> Void
+        onFlowEvent: @escaping (MainFlowCoordinator.FlowEvent) -> Void
     ) -> MainFlowView
 
     func makeCartFlowView() -> EmptyView
@@ -35,7 +35,7 @@ struct TabFlowViewFactoryImpl {
 
 extension TabFlowViewFactoryImpl: TabFlowViewFactory {
     func makeMainFlowView(
-        onFlowEvent: @escaping (MainFlowCoordinatorEvent) -> Void
+        onFlowEvent: @escaping (MainFlowCoordinator.FlowEvent) -> Void
     ) -> MainFlowView {
         MainFlowView(
             viewFactory: mainViewFactory,

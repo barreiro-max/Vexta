@@ -18,7 +18,7 @@ struct MainView: View {
     var body: some View {
         Text("Profile")
         Button("Log out") {
-            store.logOutTapped()
+            store.send(.logOut)
         }
     }
 }

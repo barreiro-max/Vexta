@@ -19,7 +19,7 @@ public struct MainViewFactory {
     }
 
     func makeMainView(
-        onStoreEvent: @escaping (MainStoreEvent) -> Void
+        onStoreEvent: @escaping (MainStore.Event) -> Void
     ) -> some View {
         let store = MainStore(
             logOutUseCase: logOutUseCase,
