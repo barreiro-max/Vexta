@@ -23,8 +23,22 @@ import FeaturePurchase
 @MainActor
 @Observable
 final class RootCoordinator {
-    var rootRoute: RootRoute = .splash
-    var rootSheet: RootSheet?
+
+    enum Route: Hashable, Codable, Sendable {
+        case splash
+        case onboarding
+        case auth
+        case mainTab
+    }
+
+    enum Sheet: Hashable, Sendable, Identifiable {
+        case subscription
+
+        var id: String { "\(self)" }
+    }
+
+    var rootRoute: Route = .splash
+    var rootSheet: Sheet?
     var alert: AppAlert?
 
     private let rootViewFactory: any RootViewFactory
@@ -46,7 +60,7 @@ final class RootCoordinator {
     }
 
     @ViewBuilder
-    private func featureFlowView(by route: RootRoute) -> some View {
+    private func featureFlowView(by route: Route) -> some View {
         let _ = Log.ui.debug("Will build by route: \(route)")
 
         switch route {
@@ -69,7 +83,7 @@ final class RootCoordinator {
     }
 
     @ViewBuilder
-    func featureFlowView(by sheet: RootSheet) -> some View {
+    func featureFlowView(by sheet: Sheet) -> some View {
         let _ = Log.ui.debug("Will build by sheet: \(sheet)")
 
         switch sheet {
@@ -79,8 +93,18 @@ final class RootCoordinator {
     }
 }
 
+// MARK: - Intent Handler
 extension RootCoordinator {
-    func send(_ intent: RootCoordinatorIntent) {
+
+    enum Intent {
+        case presentedRoute(_ route: Route)
+        case presentedSheet(_ sheet: Sheet)
+        case dismissedSheet
+        case presentedAlert(_ alert: AppAlert)
+        case dismissedAlert
+    }
+
+    func send(_ intent: RootCoordinator.Intent) {
         switch intent {
         case .presentedRoute(let rootRoute): self.rootRoute = rootRoute
             
