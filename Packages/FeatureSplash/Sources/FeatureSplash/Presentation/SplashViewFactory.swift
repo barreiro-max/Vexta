@@ -14,15 +14,18 @@ public struct SplashViewFactory {
     private let networkMonitor: NetworkMonitor
     private let fetchRemoteConfigUseCase: FetchRemoteConfigUseCase
     private let authStateObserver: AuthStateObserver
+    private let checkOnboardingPassedUseCase: CheckOnboardingPassedUseCase
 
     public init(
         networkMonitor: NetworkMonitor,
         fetchRemoteConfigUseCase: FetchRemoteConfigUseCase,
         authStateObserver: AuthStateObserver,
+        checkOnboardingPassedUseCase: CheckOnboardingPassedUseCase
     ) {
         self.networkMonitor = networkMonitor
         self.fetchRemoteConfigUseCase = fetchRemoteConfigUseCase
         self.authStateObserver = authStateObserver
+        self.checkOnboardingPassedUseCase = checkOnboardingPassedUseCase
     }
 
     public func makeSplashView(
@@ -32,6 +35,7 @@ public struct SplashViewFactory {
             networkMonitor: networkMonitor,
             fetchRemoteConfigUseCase: fetchRemoteConfigUseCase,
             authStateObserver: authStateObserver,
+            checkOnboardingPassedUseCase: checkOnboardingPassedUseCase,
             onStoreEvent: onStoreEvent
         )
         return SplashView(store: store)

@@ -15,6 +15,7 @@ import Telemetry
 
 // MARK: - Feature imports
 import FeatureSplash
+import FeatureOnboarding
 import FeatureAuth
 import FeatureMain
 import FeatureNotification
@@ -25,6 +26,10 @@ final class RootContainer {
 
     // MARK: - shared dependency
     private let remoteConfigRepository = FirebaseRemoteConfigRepository()
+    private let onboardingRepository = OnboardingRepositoryImpl(
+        preferenceDataSource: .standard,
+        preferenceKey: "isPassedOnboarding"
+    )
 
     lazy var authRepository            = {
         let nonceProvider             = CryptoNonceProvider()
@@ -55,6 +60,7 @@ final class RootContainer {
     private lazy var dataContainer        = DataContainer()
 
     private lazy var domainContainer      = DomainContainer(
+        onboardingRepository: onboardingRepository,
         remoteConfigRepository: remoteConfigRepository
     )
 
@@ -91,10 +97,15 @@ extension RootContainer: RootCoordinatorFactory {
     }
 
     private func makeRootViewFactory() -> any RootViewFactory {
+        let onboardingViewFactory = OnboardingViewFactory(
+            completeOnboardingUseCase: domainContainer.completeOnboardingUseCase
+        )
+
         let splashViewFactory = SplashViewFactory(
             networkMonitor: dataContainer.networkMonitor,
             fetchRemoteConfigUseCase: domainContainer.fetchRemoteConfigUseCase,
             authStateObserver: dataContainer.authStateObserver,
+            checkOnboardingPassedUseCase: domainContainer.checkOnboardingPassedUseCase
         )
 
         let authViewFactory = AuthViewFactory(
@@ -106,6 +117,7 @@ extension RootContainer: RootCoordinatorFactory {
         let tabFlowViewFactory = makeTabFlowViewFactory()
 
         return RootViewFactoryImpl(
+            onboardingViewFactory: onboardingViewFactory,
             splashViewFactory: splashViewFactory,
             authViewFactory: authViewFactory,
             tabFlowViewFactory: tabFlowViewFactory,

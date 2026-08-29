@@ -8,11 +8,24 @@
 import Foundation
 
 public final class DomainContainer {
+    private let onboardingRepository: OnboardingRepository
     private let remoteConfigRepository: RemoteConfigRepository
 
-    public init(remoteConfigRepository: RemoteConfigRepository) {
+    public init(
+        onboardingRepository: OnboardingRepository,
+        remoteConfigRepository: RemoteConfigRepository
+    ) {
+        self.onboardingRepository = onboardingRepository
         self.remoteConfigRepository = remoteConfigRepository
     }
+
+    public lazy var checkOnboardingPassedUseCase = CheckOnboardingPassedUseCaseImpl(
+        onboardingRepository: onboardingRepository
+    )
+
+    public lazy var completeOnboardingUseCase = CompleteOnboardingUseCaseImpl(
+        onboardingRepository: onboardingRepository
+    )
 
     public lazy var fetchRemoteConfigUseCase =  FetchRemoteConfigUseCaseImpl(remoteConfigRepository: remoteConfigRepository)
 }

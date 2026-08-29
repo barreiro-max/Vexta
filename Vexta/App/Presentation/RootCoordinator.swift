@@ -15,6 +15,7 @@ import Telemetry
 
 // MARK: - feature imports
 import FeatureSplash
+import FeatureOnboarding
 import FeatureAuth
 import FeatureMain
 import FeatureNotification
@@ -70,6 +71,11 @@ final class RootCoordinator {
                 self?.matchSplashEvent(for: storeEvent)
             }
 
+        case .onboarding:
+            rootViewFactory.makeOnboardingFlowView { [weak self] flowEvent in
+                self?.matchOnboardingFlowEvent(for: flowEvent)
+            }
+
         case .auth:
             rootViewFactory.makeAuthFlowView { [weak self] flowEvent in
                 self?.matchAuthFlowEvent(for: flowEvent)
@@ -120,9 +126,19 @@ extension RootCoordinator {
 }
 
 extension RootCoordinator {
-    
-    private func matchSplashEvent(for storeEvent: SplashStoreEvent) {
+
+    private func matchOnboardingFlowEvent(for flowEvent: OnboardingFlowCoordinator.FlowEvent) {
+        switch flowEvent {
+        case .completed, .skipped:
+            send(.presentedRoute(.auth))
+        }
+    }
+
+    private func matchSplashEvent(for storeEvent: SplashStore.Event) {
         switch storeEvent {
+
+        case .neededOnboarding:
+            send(.presentedRoute(.onboarding))
 
         case .authenticated:
             send(.presentedRoute(.mainTab))

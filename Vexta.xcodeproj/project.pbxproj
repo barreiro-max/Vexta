@@ -7,37 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84192B403043173500D80678 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 846D974B301E519A00FD2141 /* Data */; };
-		84192B413043173500D80678 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 846D974D301E51A000FD2141 /* Domain */; };
 		84192B423043173500D80678 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 846D9751301E51E400FD2141 /* FeatureAuth */; };
 		84192B433043173500D80678 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 846D9753301E51EA00FD2141 /* FeatureMain */; };
-		84192B443043173500D80678 /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 84D6643D301EAE8F0093979F /* Configuration */; };
-		84192B453043173500D80678 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 8423A393301F6C0400408833 /* FeaturePurchase */; };
-		84192B463043173500D80678 /* Telemetry in Frameworks */ = {isa = PBXBuildFile; productRef = 8423A397301F7D4E00408833 /* Telemetry */; };
-		84192B473043173500D80678 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 84B6DB00302099750028DDDC /* FeatureNotification */; };
-		84192B483043173500D80678 /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC327C3020B7360068012F /* Configuration */; };
 		84192B493043173500D80678 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC32853020B7C50068012F /* FeatureNotification */; };
 		84192B4A3043173500D80678 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC32883020B7D40068012F /* FeaturePurchase */; };
 		84192B4B3043173500D80678 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC328F3020B8070068012F /* Presentation */; };
 		84192B4C3043173500D80678 /* Telemetry in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC32973020B9030068012F /* Telemetry */; };
 		84192B4D3043173500D80678 /* Environment in Frameworks */ = {isa = PBXBuildFile; productRef = 8453CAD2303B5F9B006D35D1 /* Environment */; };
-		84192B4E3043173500D80678 /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 8453CAD4303B5FA2006D35D1 /* FeatureSplash */; };
-		84192B4F3043173500D80678 /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 84FEB1A5304311BE00E5C622 /* FeatureSplash */; };
-		84192B503043173500D80678 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84FEB1A8304311DA00E5C622 /* FeatureAuth */; };
-		84192B513043173500D80678 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 84FEB1AB3043121800E5C622 /* FeatureMain */; };
-		84192B523043173500D80678 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 84FEB1AE3043121D00E5C622 /* FeaturePurchase */; };
-		84192B533043173500D80678 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 84FEB1B13043122200E5C622 /* FeatureNotification */; };
-		84602B7B304314F0006F1470 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B7A304314F0006F1470 /* Domain */; };
-		84602B7E30431514006F1470 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B7D30431514006F1470 /* Data */; };
-		84602B813043155A006F1470 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B803043155A006F1470 /* Presentation */; };
-		84602B843043156B006F1470 /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B833043156B006F1470 /* Configuration */; };
-		84602B8730431575006F1470 /* Environment in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B8630431575006F1470 /* Environment */; };
-		84602B8A30431596006F1470 /* Telemetry in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B8930431596006F1470 /* Telemetry */; };
-		84602B8D304315A6006F1470 /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B8C304315A6006F1470 /* FeatureSplash */; };
-		84602B90304315B4006F1470 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B8F304315B4006F1470 /* FeatureAuth */; };
-		84602B93304315C6006F1470 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B92304315C6006F1470 /* FeatureMain */; };
-		84602B96304315D3006F1470 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B95304315D2006F1470 /* FeatureNotification */; };
-		84602B99304315DF006F1470 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B98304315DF006F1470 /* FeaturePurchase */; };
+		844BDF5030437EC000A94F9F /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 84D6643D301EAE8F0093979F /* Configuration */; };
+		844BDF5A30437EC000A94F9F /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B7A304314F0006F1470 /* Domain */; };
+		844BDF5B30437EC000A94F9F /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B7D30431514006F1470 /* Data */; };
+		844BDF6030437EC000A94F9F /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B8C304315A6006F1470 /* FeatureSplash */; };
+		844BDFB83043809F00A94F9F /* FeatureOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 844BDFB73043809F00A94F9F /* FeatureOnboarding */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,37 +68,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84192B533043173500D80678 /* FeatureNotification in Frameworks */,
-				84192B523043173500D80678 /* FeaturePurchase in Frameworks */,
-				84192B513043173500D80678 /* FeatureMain in Frameworks */,
-				84192B503043173500D80678 /* FeatureAuth in Frameworks */,
-				84192B4F3043173500D80678 /* FeatureSplash in Frameworks */,
-				84192B4E3043173500D80678 /* FeatureSplash in Frameworks */,
+				844BDFB83043809F00A94F9F /* FeatureOnboarding in Frameworks */,
+				844BDF6030437EC000A94F9F /* FeatureSplash in Frameworks */,
+				844BDF5B30437EC000A94F9F /* Data in Frameworks */,
+				844BDF5A30437EC000A94F9F /* Domain in Frameworks */,
+				844BDF5030437EC000A94F9F /* Configuration in Frameworks */,
 				84192B4D3043173500D80678 /* Environment in Frameworks */,
 				84192B4C3043173500D80678 /* Telemetry in Frameworks */,
 				84192B4B3043173500D80678 /* Presentation in Frameworks */,
 				84192B4A3043173500D80678 /* FeaturePurchase in Frameworks */,
 				84192B493043173500D80678 /* FeatureNotification in Frameworks */,
-				84192B483043173500D80678 /* Configuration in Frameworks */,
-				84192B473043173500D80678 /* FeatureNotification in Frameworks */,
-				84192B463043173500D80678 /* Telemetry in Frameworks */,
-				84192B453043173500D80678 /* FeaturePurchase in Frameworks */,
-				84192B443043173500D80678 /* Configuration in Frameworks */,
 				84192B433043173500D80678 /* FeatureMain in Frameworks */,
 				84192B423043173500D80678 /* FeatureAuth in Frameworks */,
-				84192B413043173500D80678 /* Domain in Frameworks */,
-				84192B403043173500D80678 /* Data in Frameworks */,
-				84602B96304315D3006F1470 /* FeatureNotification in Frameworks */,
-				84602B99304315DF006F1470 /* FeaturePurchase in Frameworks */,
-				84602B8A30431596006F1470 /* Telemetry in Frameworks */,
-				84602B90304315B4006F1470 /* FeatureAuth in Frameworks */,
-				84602B7E30431514006F1470 /* Data in Frameworks */,
-				84602B843043156B006F1470 /* Configuration in Frameworks */,
-				84602B813043155A006F1470 /* Presentation in Frameworks */,
-				84602B8730431575006F1470 /* Environment in Frameworks */,
-				84602B8D304315A6006F1470 /* FeatureSplash in Frameworks */,
-				84602B93304315C6006F1470 /* FeatureMain in Frameworks */,
-				84602B7B304314F0006F1470 /* Domain in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +165,7 @@
 				84602B92304315C6006F1470 /* FeatureMain */,
 				84602B95304315D2006F1470 /* FeatureNotification */,
 				84602B98304315DF006F1470 /* FeaturePurchase */,
+				844BDFB73043809F00A94F9F /* FeatureOnboarding */,
 			);
 			productName = Vexta;
 			productReference = 846589462FDEE2B700F13BE4 /* Vexta.app */;
@@ -244,6 +207,7 @@
 				84602B91304315C6006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */,
 				84602B94304315D2006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureNotification" */,
 				84602B97304315DF006F1470 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */,
+				84F47EA530437B680068E116 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 846589472FDEE2B700F13BE4 /* Products */;
@@ -694,6 +658,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/FeaturePurchase;
 		};
+		84F47EA530437B680068E116 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/FeatureOnboarding;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -704,6 +672,11 @@
 		8423A397301F7D4E00408833 /* Telemetry */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Telemetry;
+		};
+		844BDFB73043809F00A94F9F /* FeatureOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84F47EA530437B680068E116 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */;
+			productName = FeatureOnboarding;
 		};
 		8453CAD2303B5F9B006D35D1 /* Environment */ = {
 			isa = XCSwiftPackageProductDependency;

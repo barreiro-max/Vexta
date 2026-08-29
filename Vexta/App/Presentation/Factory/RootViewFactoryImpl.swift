@@ -13,6 +13,7 @@ import Presentation
 
 // MARK: - feature imports
 import FeatureSplash
+import FeatureOnboarding
 import FeatureAuth
 import FeatureMain
 
@@ -21,6 +22,10 @@ protocol RootViewFactory {
     func makeSplashView(
         onStoreEvent: @escaping (SplashStore.Event) -> Void
     ) -> SplashView
+
+    func makeOnboardingFlowView(
+        onFlowEvent: @escaping (OnboardingFlowCoordinator.FlowEvent) -> Void
+    ) -> OnboardingFlowView
 
     func makeAuthFlowView(
         onFlowEvent: @escaping (AuthFlowCoordinatorEvent) -> Void
@@ -32,15 +37,18 @@ protocol RootViewFactory {
 }
 
 public struct RootViewFactoryImpl {
+    private let onboardingViewFactory: OnboardingViewFactory
     private let splashViewFactory: SplashViewFactory
     private let authViewFactory: AuthViewFactory
     private let tabFlowViewFactory: TabFlowViewFactory
 
     init(
+        onboardingViewFactory: OnboardingViewFactory,
         splashViewFactory: SplashViewFactory,
         authViewFactory: AuthViewFactory,
         tabFlowViewFactory: TabFlowViewFactory
     ) {
+        self.onboardingViewFactory = onboardingViewFactory
         self.splashViewFactory = splashViewFactory
         self.authViewFactory = authViewFactory
         self.tabFlowViewFactory = tabFlowViewFactory
@@ -52,6 +60,15 @@ extension RootViewFactoryImpl: RootViewFactory {
         onStoreEvent: @escaping (SplashStore.Event) -> Void
     ) -> SplashView {
         splashViewFactory.makeSplashView(onStoreEvent: onStoreEvent)
+    }
+
+    func makeOnboardingFlowView(
+        onFlowEvent: @escaping (OnboardingFlowCoordinator.FlowEvent) -> Void
+    ) -> OnboardingFlowView {
+        OnboardingFlowView(
+            viewFactory: onboardingViewFactory,
+            onFlowEvent: onFlowEvent
+        )
     }
 
     func makeAuthFlowView(
