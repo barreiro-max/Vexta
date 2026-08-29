@@ -24,6 +24,6 @@ public struct AppAlert: Identifiable, Sendable {
 extension AppAlert: CustomStringConvertible {
     public var description: String {
         let buttons = buttonActions.map(\.buttonTitle).joined(separator: ", ")
-        return "AppAlert(error: \(error.localizedDescription), buttons: [\(buttons)])"
+        return "AppAlert(error: \(error), buttons: [\(buttons)])"
     }
 }
