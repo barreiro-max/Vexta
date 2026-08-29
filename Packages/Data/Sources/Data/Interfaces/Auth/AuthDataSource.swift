@@ -1,0 +1,23 @@
+//
+//  AuthDataSource.swift
+//  Vexta
+//
+//  Created by MaxAdmin on 30.07.2026.
+//
+
+import Foundation
+
+public protocol AuthDataSource: Sendable {
+    func signInEmail(email: String, password: String) async throws -> String
+    func signInGoogle() async throws -> String
+    func signInApple() async throws -> String
+    func signInFacebook() async throws -> String
+
+    func signUp(email: String, password: String) async throws -> String
+
+    func sendPasswordReset(email: String) async throws 
+
+    func signOut() throws
+
+    func deleteUser() async throws
+}
