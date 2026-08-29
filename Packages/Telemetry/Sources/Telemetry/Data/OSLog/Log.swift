@@ -21,6 +21,7 @@ public enum Log {
     public static let useCase      = LogCategory.useCase.logger
     public static let store        = LogCategory.store.logger
     public static let ui           = LogCategory.ui.logger
+    public static let onboarding   = LogCategory.onboarding.logger
 
 #if DEBUG
     public static let mockNetwork  = LogCategory.mockNetwork.logger
@@ -39,6 +40,7 @@ fileprivate enum LogCategory: String {
     case useCase        = "👨‍💼 Use Case"
     case store          = "👨‍🍳 Store"
     case ui             = "🎨 UI"
+    case onboarding     = "🎬 Onboarding"
 
 #if DEBUG
     case mockNetwork    = "🛠️🌐 Mock Network"
