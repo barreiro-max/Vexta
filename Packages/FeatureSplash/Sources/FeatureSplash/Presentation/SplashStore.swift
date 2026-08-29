@@ -12,8 +12,27 @@ import Domain
 @Observable
 public final class SplashStore {
 
+    // MARK: - Nested Types
+    enum State {
+        case idle
+        case loading(message: String? = nil)
+        case failure(error: SplashError)
+        case completed
+
+        var isLoading: Bool {
+            if case .loading = self { true } else { false }
+        }
+    }
+
+    public enum Event {
+        case neededOnboarding
+        case authenticated(userId: String)
+        case unauthenticated
+        case alerted(error: SplashError, onRetry: @MainActor () async -> Void)
+    }
+
     // MARK: - State
-    private(set) var state: SplashStoreState = .idle
+    private(set) var state: State = .idle
 
     // MARK: - Dependency
     private let networkMonitor: NetworkMonitor
@@ -22,14 +41,14 @@ public final class SplashStore {
     private let checkOnboardingPassedUseCase: CheckOnboardingPassedUseCase
 
     // MARK: - Event
-    private let onStoreEvent: (SplashStoreEvent) -> Void
+    private let onStoreEvent: (Event) -> Void
 
     public init(
         networkMonitor: NetworkMonitor,
         fetchRemoteConfigUseCase: FetchRemoteConfigUseCase,
         authStateObserver: AuthStateObserver,
         checkOnboardingPassedUseCase: CheckOnboardingPassedUseCase,
-        onStoreEvent: @escaping (SplashStoreEvent) -> Void
+        onStoreEvent: @escaping (Event) -> Void
     ) {
         self.networkMonitor = networkMonitor
         self.fetchRemoteConfigUseCase = fetchRemoteConfigUseCase

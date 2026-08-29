@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SplashRouterView: View {
 
-    private(set) var state: SplashStoreState
+    private(set) var state: SplashStore.State
 
     var body: some View {
         switch state {

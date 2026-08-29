@@ -26,7 +26,7 @@ public struct SplashViewFactory {
     }
 
     public func makeSplashView(
-        onStoreEvent: @escaping (SplashStoreEvent) -> Void
+        onStoreEvent: @escaping (SplashStore.Event) -> Void
     ) -> SplashView {
         let store = SplashStore(
             networkMonitor: networkMonitor,

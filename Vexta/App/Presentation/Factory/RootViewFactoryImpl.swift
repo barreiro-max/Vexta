@@ -19,7 +19,7 @@ import FeatureMain
 @MainActor
 protocol RootViewFactory {
     func makeSplashView(
-        onStoreEvent: @escaping (SplashStoreEvent) -> Void
+        onStoreEvent: @escaping (SplashStore.Event) -> Void
     ) -> SplashView
 
     func makeAuthFlowView(
@@ -49,7 +49,7 @@ public struct RootViewFactoryImpl {
 
 extension RootViewFactoryImpl: RootViewFactory {
     func makeSplashView(
-        onStoreEvent: @escaping (SplashStoreEvent) -> Void
+        onStoreEvent: @escaping (SplashStore.Event) -> Void
     ) -> SplashView {
         splashViewFactory.makeSplashView(onStoreEvent: onStoreEvent)
     }
