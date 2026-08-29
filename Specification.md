@@ -158,6 +158,9 @@ ShopKit/
 │   │   ├── Auth/
 │   │   │   ├── AuthService.swift
 │   │   │   └── FirebaseAuthService.swift
+│   │   │   └── Providers/
+│   │   │
+│   │   │   
 │   │   ├── RemoteConfig/
 │   │   │   ├── RemoteConfigService.swift
 │   │   │   └── FirebaseRemoteConfigService.swift
@@ -239,7 +242,7 @@ Each module contains: `View`, `Store`, `Coordinator`.
 Dependencies are injected into the Coordinator via `DIContainer`.
 
 ### 5.1 AuthModule
-- Firebase Auth: email/password, Google Sign-In, Apple Sign-In
+- Firebase Auth: email/password, Google, Apple and Facebook Sign-In
 - Email verification, password recovery
 - `SessionManager` (@Observable, App-level) publishes `AuthState`
 - On successful login emits SideEffect → AppCoordinator switches to TabBar

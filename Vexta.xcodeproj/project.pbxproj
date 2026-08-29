@@ -7,28 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8441225B2FDEE36A00B4A073 /* Specification.md in Resources */ = {isa = PBXBuildFile; fileRef = 8441225A2FDEE36A00B4A073 /* Specification.md */; };
-		84A6F85E2FE9A0BD00AA592D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 84A6F85D2FE9A0BD00AA592D /* Alamofire */; };
+		84192B403043173500D80678 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 846D974B301E519A00FD2141 /* Data */; };
+		84192B413043173500D80678 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 846D974D301E51A000FD2141 /* Domain */; };
+		84192B423043173500D80678 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 846D9751301E51E400FD2141 /* FeatureAuth */; };
+		84192B433043173500D80678 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 846D9753301E51EA00FD2141 /* FeatureMain */; };
+		84192B443043173500D80678 /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 84D6643D301EAE8F0093979F /* Configuration */; };
+		84192B453043173500D80678 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 8423A393301F6C0400408833 /* FeaturePurchase */; };
+		84192B463043173500D80678 /* Telemetry in Frameworks */ = {isa = PBXBuildFile; productRef = 8423A397301F7D4E00408833 /* Telemetry */; };
+		84192B473043173500D80678 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 84B6DB00302099750028DDDC /* FeatureNotification */; };
+		84192B483043173500D80678 /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC327C3020B7360068012F /* Configuration */; };
+		84192B493043173500D80678 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC32853020B7C50068012F /* FeatureNotification */; };
+		84192B4A3043173500D80678 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC32883020B7D40068012F /* FeaturePurchase */; };
+		84192B4B3043173500D80678 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC328F3020B8070068012F /* Presentation */; };
+		84192B4C3043173500D80678 /* Telemetry in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC32973020B9030068012F /* Telemetry */; };
+		84192B4D3043173500D80678 /* Environment in Frameworks */ = {isa = PBXBuildFile; productRef = 8453CAD2303B5F9B006D35D1 /* Environment */; };
+		84192B4E3043173500D80678 /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 8453CAD4303B5FA2006D35D1 /* FeatureSplash */; };
+		84192B4F3043173500D80678 /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 84FEB1A5304311BE00E5C622 /* FeatureSplash */; };
+		84192B503043173500D80678 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84FEB1A8304311DA00E5C622 /* FeatureAuth */; };
+		84192B513043173500D80678 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 84FEB1AB3043121800E5C622 /* FeatureMain */; };
+		84192B523043173500D80678 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 84FEB1AE3043121D00E5C622 /* FeaturePurchase */; };
+		84192B533043173500D80678 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 84FEB1B13043122200E5C622 /* FeatureNotification */; };
+		84602B7B304314F0006F1470 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B7A304314F0006F1470 /* Domain */; };
+		84602B7E30431514006F1470 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B7D30431514006F1470 /* Data */; };
+		84602B813043155A006F1470 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B803043155A006F1470 /* Presentation */; };
+		84602B843043156B006F1470 /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B833043156B006F1470 /* Configuration */; };
+		84602B8730431575006F1470 /* Environment in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B8630431575006F1470 /* Environment */; };
+		84602B8A30431596006F1470 /* Telemetry in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B8930431596006F1470 /* Telemetry */; };
+		84602B8D304315A6006F1470 /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B8C304315A6006F1470 /* FeatureSplash */; };
+		84602B90304315B4006F1470 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B8F304315B4006F1470 /* FeatureAuth */; };
+		84602B93304315C6006F1470 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B92304315C6006F1470 /* FeatureMain */; };
+		84602B96304315D3006F1470 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B95304315D2006F1470 /* FeatureNotification */; };
+		84602B99304315DF006F1470 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B98304315DF006F1470 /* FeaturePurchase */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		845D2E2B2FED3975003D6D10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8465893E2FDEE2B700F13BE4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 846589452FDEE2B700F13BE4;
-			remoteInfo = Vexta;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8441225A2FDEE36A00B4A073 /* Specification.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Specification.md; sourceTree = "<group>"; };
-		845D2E272FED3975003D6D10 /* VextaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VextaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		846589462FDEE2B700F13BE4 /* Vexta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vexta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		84A6F8FF2FE9B64100AA592D /* Exceptions for "Vexta" folder in "Vexta" target */ = {
+		845096A13043079000F41A55 /* Exceptions for "XcodeConfigs" folder in "Vexta" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Debug.xcconfig,
+				Development.xcconfig,
+			);
+			target = 846589452FDEE2B700F13BE4 /* Vexta */;
+		};
+		845096A2304307A000F41A55 /* Exceptions for "Vexta" folder in "Vexta" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -38,47 +64,81 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		845D2E282FED3975003D6D10 /* VextaTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = VextaTests;
-			sourceTree = "<group>";
-		};
 		846589482FDEE2B700F13BE4 /* Vexta */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				84A6F8FF2FE9B64100AA592D /* Exceptions for "Vexta" folder in "Vexta" target */,
+				845096A2304307A000F41A55 /* Exceptions for "Vexta" folder in "Vexta" target */,
 			);
 			path = Vexta;
+			sourceTree = "<group>";
+		};
+		84BBC74A3027DC10008882F0 /* XcodeConfigs */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				845096A13043079000F41A55 /* Exceptions for "XcodeConfigs" folder in "Vexta" target */,
+			);
+			path = XcodeConfigs;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		845D2E242FED3975003D6D10 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		846589432FDEE2B700F13BE4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A6F85E2FE9A0BD00AA592D /* Alamofire in Frameworks */,
+				84192B533043173500D80678 /* FeatureNotification in Frameworks */,
+				84192B523043173500D80678 /* FeaturePurchase in Frameworks */,
+				84192B513043173500D80678 /* FeatureMain in Frameworks */,
+				84192B503043173500D80678 /* FeatureAuth in Frameworks */,
+				84192B4F3043173500D80678 /* FeatureSplash in Frameworks */,
+				84192B4E3043173500D80678 /* FeatureSplash in Frameworks */,
+				84192B4D3043173500D80678 /* Environment in Frameworks */,
+				84192B4C3043173500D80678 /* Telemetry in Frameworks */,
+				84192B4B3043173500D80678 /* Presentation in Frameworks */,
+				84192B4A3043173500D80678 /* FeaturePurchase in Frameworks */,
+				84192B493043173500D80678 /* FeatureNotification in Frameworks */,
+				84192B483043173500D80678 /* Configuration in Frameworks */,
+				84192B473043173500D80678 /* FeatureNotification in Frameworks */,
+				84192B463043173500D80678 /* Telemetry in Frameworks */,
+				84192B453043173500D80678 /* FeaturePurchase in Frameworks */,
+				84192B443043173500D80678 /* Configuration in Frameworks */,
+				84192B433043173500D80678 /* FeatureMain in Frameworks */,
+				84192B423043173500D80678 /* FeatureAuth in Frameworks */,
+				84192B413043173500D80678 /* Domain in Frameworks */,
+				84192B403043173500D80678 /* Data in Frameworks */,
+				84602B96304315D3006F1470 /* FeatureNotification in Frameworks */,
+				84602B99304315DF006F1470 /* FeaturePurchase in Frameworks */,
+				84602B8A30431596006F1470 /* Telemetry in Frameworks */,
+				84602B90304315B4006F1470 /* FeatureAuth in Frameworks */,
+				84602B7E30431514006F1470 /* Data in Frameworks */,
+				84602B843043156B006F1470 /* Configuration in Frameworks */,
+				84602B813043155A006F1470 /* Presentation in Frameworks */,
+				84602B8730431575006F1470 /* Environment in Frameworks */,
+				84602B8D304315A6006F1470 /* FeatureSplash in Frameworks */,
+				84602B93304315C6006F1470 /* FeatureMain in Frameworks */,
+				84602B7B304314F0006F1470 /* Domain in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8423A396301F7D4E00408833 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8465893D2FDEE2B700F13BE4 = {
 			isa = PBXGroup;
 			children = (
 				8441225A2FDEE36A00B4A073 /* Specification.md */,
+				84BBC74A3027DC10008882F0 /* XcodeConfigs */,
 				846589482FDEE2B700F13BE4 /* Vexta */,
-				845D2E282FED3975003D6D10 /* VextaTests */,
 				846589472FDEE2B700F13BE4 /* Products */,
+				8423A396301F7D4E00408833 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				846589462FDEE2B700F13BE4 /* Vexta.app */,
-				845D2E272FED3975003D6D10 /* VextaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,29 +153,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		845D2E262FED3975003D6D10 /* VextaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 845D2E2F2FED3975003D6D10 /* Build configuration list for PBXNativeTarget "VextaTests" */;
-			buildPhases = (
-				845D2E232FED3975003D6D10 /* Sources */,
-				845D2E242FED3975003D6D10 /* Frameworks */,
-				845D2E252FED3975003D6D10 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				845D2E2C2FED3975003D6D10 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				845D2E282FED3975003D6D10 /* VextaTests */,
-			);
-			name = VextaTests;
-			packageProductDependencies = (
-			);
-			productName = VextaTests;
-			productReference = 845D2E272FED3975003D6D10 /* VextaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		846589452FDEE2B700F13BE4 /* Vexta */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 846589512FDEE2B800F13BE4 /* Build configuration list for PBXNativeTarget "Vexta" */;
@@ -124,6 +160,7 @@
 				846589422FDEE2B700F13BE4 /* Sources */,
 				846589432FDEE2B700F13BE4 /* Frameworks */,
 				846589442FDEE2B700F13BE4 /* Resources */,
+				843898172FF69AE90010175F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -131,10 +168,41 @@
 			);
 			fileSystemSynchronizedGroups = (
 				846589482FDEE2B700F13BE4 /* Vexta */,
+				84BBC74A3027DC10008882F0 /* XcodeConfigs */,
 			);
 			name = Vexta;
 			packageProductDependencies = (
-				84A6F85D2FE9A0BD00AA592D /* Alamofire */,
+				846D974B301E519A00FD2141 /* Data */,
+				846D974D301E51A000FD2141 /* Domain */,
+				846D9751301E51E400FD2141 /* FeatureAuth */,
+				846D9753301E51EA00FD2141 /* FeatureMain */,
+				84D6643D301EAE8F0093979F /* Configuration */,
+				8423A393301F6C0400408833 /* FeaturePurchase */,
+				8423A397301F7D4E00408833 /* Telemetry */,
+				84B6DB00302099750028DDDC /* FeatureNotification */,
+				84CC327C3020B7360068012F /* Configuration */,
+				84CC32853020B7C50068012F /* FeatureNotification */,
+				84CC32883020B7D40068012F /* FeaturePurchase */,
+				84CC328F3020B8070068012F /* Presentation */,
+				84CC32973020B9030068012F /* Telemetry */,
+				8453CAD2303B5F9B006D35D1 /* Environment */,
+				8453CAD4303B5FA2006D35D1 /* FeatureSplash */,
+				84FEB1A5304311BE00E5C622 /* FeatureSplash */,
+				84FEB1A8304311DA00E5C622 /* FeatureAuth */,
+				84FEB1AB3043121800E5C622 /* FeatureMain */,
+				84FEB1AE3043121D00E5C622 /* FeaturePurchase */,
+				84FEB1B13043122200E5C622 /* FeatureNotification */,
+				84602B7A304314F0006F1470 /* Domain */,
+				84602B7D30431514006F1470 /* Data */,
+				84602B803043155A006F1470 /* Presentation */,
+				84602B833043156B006F1470 /* Configuration */,
+				84602B8630431575006F1470 /* Environment */,
+				84602B8930431596006F1470 /* Telemetry */,
+				84602B8C304315A6006F1470 /* FeatureSplash */,
+				84602B8F304315B4006F1470 /* FeatureAuth */,
+				84602B92304315C6006F1470 /* FeatureMain */,
+				84602B95304315D2006F1470 /* FeatureNotification */,
+				84602B98304315DF006F1470 /* FeaturePurchase */,
 			);
 			productName = Vexta;
 			productReference = 846589462FDEE2B700F13BE4 /* Vexta.app */;
@@ -150,10 +218,6 @@
 				LastSwiftUpdateCheck = 2630;
 				LastUpgradeCheck = 2630;
 				TargetAttributes = {
-					845D2E262FED3975003D6D10 = {
-						CreatedOnToolsVersion = 26.3;
-						TestTargetID = 846589452FDEE2B700F13BE4;
-					};
 					846589452FDEE2B700F13BE4 = {
 						CreatedOnToolsVersion = 26.3;
 					};
@@ -169,7 +233,17 @@
 			mainGroup = 8465893D2FDEE2B700F13BE4;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				84A6F85C2FE9A0BD00AA592D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				84602B79304314F0006F1470 /* XCLocalSwiftPackageReference "Packages/Domain" */,
+				84602B7C30431514006F1470 /* XCLocalSwiftPackageReference "Packages/Data" */,
+				84602B7F3043155A006F1470 /* XCLocalSwiftPackageReference "Packages/Presentation" */,
+				84602B823043156B006F1470 /* XCLocalSwiftPackageReference "Packages/Configuration" */,
+				84602B8530431575006F1470 /* XCLocalSwiftPackageReference "Packages/Environment" */,
+				84602B8830431596006F1470 /* XCLocalSwiftPackageReference "Packages/Telemetry" */,
+				84602B8B304315A6006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureSplash" */,
+				84602B8E304315B4006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */,
+				84602B91304315C6006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */,
+				84602B94304315D2006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureNotification" */,
+				84602B97304315DF006F1470 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 846589472FDEE2B700F13BE4 /* Products */;
@@ -177,37 +251,47 @@
 			projectRoot = "";
 			targets = (
 				846589452FDEE2B700F13BE4 /* Vexta */,
-				845D2E262FED3975003D6D10 /* VextaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		845D2E252FED3975003D6D10 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		846589442FDEE2B700F13BE4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8441225B2FDEE36A00B4A073 /* Specification.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXSourcesBuildPhase section */
-		845D2E232FED3975003D6D10 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		843898172FF69AE90010175F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}.debug.dylib",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		846589422FDEE2B700F13BE4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,61 +301,11 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		845D2E2C2FED3975003D6D10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 846589452FDEE2B700F13BE4 /* Vexta */;
-			targetProxy = 845D2E2B2FED3975003D6D10 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		845D2E2D2FED3975003D6D10 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.VextaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vexta.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vexta";
-			};
-			name = Debug;
-		};
-		845D2E2E2FED3975003D6D10 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.VextaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vexta.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vexta";
-			};
-			name = Release;
-		};
 		8465894F2FDEE2B800F13BE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
-			baseConfigurationReferenceRelativePath = Config/Config.xcconfig;
+			baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -336,8 +370,8 @@
 		};
 		846589502FDEE2B800F13BE4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
-			baseConfigurationReferenceRelativePath = Config/Config.xcconfig;
+			baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -395,90 +429,209 @@
 		};
 		846589522FDEE2B800F13BE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
-			baseConfigurationReferenceRelativePath = Config/Config.xcconfig;
+			baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vexta/Vexta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vexta/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Vexta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		846589532FDEE2B800F13BE4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
-			baseConfigurationReferenceRelativePath = Config/Config.xcconfig;
+			baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vexta/Vexta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Vexta/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Vexta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
+		};
+		8488473E300D698C00A3158B /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Development;
+		};
+		8488473F300D698C00A3158B /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
+			baseConfigurationReferenceRelativePath = App/Configuration/XcodeConfigs/Development.xcconfig;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vexta/Vexta.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Vexta/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Vexta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Development;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		845D2E2F2FED3975003D6D10 /* Build configuration list for PBXNativeTarget "VextaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				845D2E2D2FED3975003D6D10 /* Debug */,
-				845D2E2E2FED3975003D6D10 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		846589412FDEE2B700F13BE4 /* Build configuration list for PBXProject "Vexta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8465894F2FDEE2B800F13BE4 /* Debug */,
+				8488473E300D698C00A3158B /* Development */,
 				846589502FDEE2B800F13BE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -488,6 +641,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				846589522FDEE2B800F13BE4 /* Debug */,
+				8488473F300D698C00A3158B /* Development */,
 				846589532FDEE2B800F13BE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -495,22 +649,177 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		84A6F85C2FE9A0BD00AA592D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.12.0;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		84602B79304314F0006F1470 /* XCLocalSwiftPackageReference "Packages/Domain" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Domain;
 		};
-/* End XCRemoteSwiftPackageReference section */
+		84602B7C30431514006F1470 /* XCLocalSwiftPackageReference "Packages/Data" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Data;
+		};
+		84602B7F3043155A006F1470 /* XCLocalSwiftPackageReference "Packages/Presentation" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Presentation;
+		};
+		84602B823043156B006F1470 /* XCLocalSwiftPackageReference "Packages/Configuration" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Configuration;
+		};
+		84602B8530431575006F1470 /* XCLocalSwiftPackageReference "Packages/Environment" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Environment;
+		};
+		84602B8830431596006F1470 /* XCLocalSwiftPackageReference "Packages/Telemetry" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Telemetry;
+		};
+		84602B8B304315A6006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureSplash" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/FeatureSplash;
+		};
+		84602B8E304315B4006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/FeatureAuth;
+		};
+		84602B91304315C6006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/FeatureMain;
+		};
+		84602B94304315D2006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureNotification" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/FeatureNotification;
+		};
+		84602B97304315DF006F1470 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/FeaturePurchase;
+		};
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		84A6F85D2FE9A0BD00AA592D /* Alamofire */ = {
+		8423A393301F6C0400408833 /* FeaturePurchase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 84A6F85C2FE9A0BD00AA592D /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
+			productName = FeaturePurchase;
+		};
+		8423A397301F7D4E00408833 /* Telemetry */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Telemetry;
+		};
+		8453CAD2303B5F9B006D35D1 /* Environment */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Environment;
+		};
+		8453CAD4303B5FA2006D35D1 /* FeatureSplash */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureSplash;
+		};
+		84602B7A304314F0006F1470 /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
+		};
+		84602B7D30431514006F1470 /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		84602B803043155A006F1470 /* Presentation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Presentation;
+		};
+		84602B833043156B006F1470 /* Configuration */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Configuration;
+		};
+		84602B8630431575006F1470 /* Environment */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Environment;
+		};
+		84602B8930431596006F1470 /* Telemetry */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Telemetry;
+		};
+		84602B8C304315A6006F1470 /* FeatureSplash */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureSplash;
+		};
+		84602B8F304315B4006F1470 /* FeatureAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureAuth;
+		};
+		84602B92304315C6006F1470 /* FeatureMain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureMain;
+		};
+		84602B95304315D2006F1470 /* FeatureNotification */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureNotification;
+		};
+		84602B98304315DF006F1470 /* FeaturePurchase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeaturePurchase;
+		};
+		846D974B301E519A00FD2141 /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		846D974D301E51A000FD2141 /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
+		};
+		846D9751301E51E400FD2141 /* FeatureAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureAuth;
+		};
+		846D9753301E51EA00FD2141 /* FeatureMain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureMain;
+		};
+		84B6DB00302099750028DDDC /* FeatureNotification */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureNotification;
+		};
+		84CC327C3020B7360068012F /* Configuration */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Configuration;
+		};
+		84CC32853020B7C50068012F /* FeatureNotification */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureNotification;
+		};
+		84CC32883020B7D40068012F /* FeaturePurchase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeaturePurchase;
+		};
+		84CC328F3020B8070068012F /* Presentation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Presentation;
+		};
+		84CC32973020B9030068012F /* Telemetry */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Telemetry;
+		};
+		84D6643D301EAE8F0093979F /* Configuration */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Configuration;
+		};
+		84FEB1A5304311BE00E5C622 /* FeatureSplash */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureSplash;
+		};
+		84FEB1A8304311DA00E5C622 /* FeatureAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureAuth;
+		};
+		84FEB1AB3043121800E5C622 /* FeatureMain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureMain;
+		};
+		84FEB1AE3043121D00E5C622 /* FeaturePurchase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeaturePurchase;
+		};
+		84FEB1B13043122200E5C622 /* FeatureNotification */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureNotification;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

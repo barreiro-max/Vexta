@@ -54,3 +54,6 @@ fastlane/test_output/
 ## Temporary / swap
 *.swp
 *.orig
+
+## Config
+Development.xcconfig

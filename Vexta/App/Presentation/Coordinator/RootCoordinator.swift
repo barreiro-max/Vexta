@@ -1,0 +1,138 @@
+//
+//  RootCoordinator.swift
+//  Vexta
+//
+//  Created by MaxAdmin on 21.07.2026.
+//
+
+import SwiftUI
+
+// MARK: - shared imports
+import Domain
+import Data
+import Presentation
+import Telemetry
+
+// MARK: - feature imports
+import FeatureSplash
+import FeatureAuth
+import FeatureMain
+import FeatureNotification
+import FeaturePurchase
+
+@MainActor
+@Observable
+final class RootCoordinator {
+    var rootRoute: RootRoute = .splash
+    var rootSheet: RootSheet?
+    var alert: AppAlert?
+
+    private let rootViewFactory: any RootViewFactory
+    private let alertFactory: any RootAlertFactory
+    private let rootSheetFactory: any RootSheetFactory
+
+    init(
+        rootViewFactory: any RootViewFactory,
+        alertFactory: any RootAlertFactory,
+        rootSheetFactory: any RootSheetFactory
+    ) {
+        self.rootViewFactory = rootViewFactory
+        self.alertFactory = alertFactory
+        self.rootSheetFactory = rootSheetFactory
+    }
+
+    var rootView: some View {
+        featureFlowView(by: rootRoute)
+    }
+
+    @ViewBuilder
+    private func featureFlowView(by route: RootRoute) -> some View {
+        let _ = Log.ui.debug("Will build by route: \(route)")
+
+        switch route {
+
+        case .splash:
+            rootViewFactory.makeSplashView { [weak self] storeEvent in
+                self?.matchSplashEvent(for: storeEvent)
+            }
+
+        case .auth:
+            rootViewFactory.makeAuthFlowView { [weak self] flowEvent in
+                self?.matchAuthFlowEvent(for: flowEvent)
+            }
+
+        case .mainTab:
+            rootViewFactory.makeTabFlowView { [weak self] flowEvent in
+                self?.matchTabFlowEvent(for: flowEvent)
+            }
+        }
+    }
+
+    @ViewBuilder
+    func featureFlowView(by sheet: RootSheet) -> some View {
+        let _ = Log.ui.debug("Will build by sheet: \(sheet)")
+
+        switch sheet {
+        case .subscription:
+            rootSheetFactory.makeSubcriptionSheet() // TODO: — RevenueCatUI paywall view
+        }
+    }
+}
+
+extension RootCoordinator {
+    func send(_ intent: RootCoordinatorIntent) {
+        switch intent {
+        case .presentedRoute(let rootRoute): self.rootRoute = rootRoute
+            
+        case .presentedSheet(let rootSheet): self.rootSheet = rootSheet
+        case .dismissedSheet:                self.rootSheet = nil
+            
+        case .presentedAlert(let alert):     self.alert = alert
+        case .dismissedAlert:                self.alert = nil
+        }
+        
+        Log.ui.debug("Send intent: \(intent)")
+    }
+}
+
+extension RootCoordinator {
+    
+    private func matchSplashEvent(for storeEvent: SplashStoreEvent) {
+        switch storeEvent {
+
+        case .authenticated:
+            send(.presentedRoute(.mainTab))
+
+        case .unauthenticated:
+            send(.presentedRoute(.auth))
+
+        case .alerted(let error, let onRetry):
+            let alert = alertFactory.makeSplashAlert(with: error, onRetry: onRetry)
+            send(.presentedAlert(alert))
+        }
+    }
+
+    private func matchAuthFlowEvent(for flowEvent: AuthFlowCoordinatorEvent) {
+        switch flowEvent {
+
+        case .finished:
+            send(.presentedRoute(.mainTab))
+
+        case .alerted(let error):
+            let authAlert = alertFactory.makeAuthAlert(with: error)
+            send(.presentedAlert(authAlert))
+        }
+    }
+
+    private func matchTabFlowEvent(for flowEvent: TabFlowCoordinatorEvent) {
+        switch flowEvent {
+
+        case .finishedMain:
+            send(.presentedRoute(.auth))
+
+        case .alertedMain(let error):
+            let alert = alertFactory.makeMainAlert(with: error)
+            send(.presentedAlert(alert))
+        }
+    }
+}
