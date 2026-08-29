@@ -1,0 +1,23 @@
+//
+//  Debug.xcconfig
+//  Vexta
+//
+//  Created by MaxAdmin on 22.06.2026.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+FAKESTORE_API_URL = https:/$()/fakestoreapi.com
+
+FACEBOOK_APP_ID = <YOUR_FACEBOOK_APP_ID>
+FACEBOOK_CLIENT_TOKEN = <YOUR_FACEBOOK_CLIENT_TOKEN>
+FACEBOOK_AUTO_LOG_APP_EVENTS_ENABLED = <YOUR_FACEBOOK_AUTO_LOG_APP_EVENTS_ENABLED>
+FACEBOOK_DISPLAY_NAME = <YOUR_FACEBOOK_DISPLAY_NAME>
+FACEBOOK_ADVERTISER_ID_COLLECTION_ENABLED = <YOUR_FACEBOOK_ADVERTISER_ID_COLLECTION_ENABLED>
+
+GID_CLIENT_ID = <YOUR_GID_CLIENT_ID>
+
+REVENUE_CAT_API_KEY = <YOUR_REVENUE_CAT_API_KEY>
+
+APP_ENVIRONMENT = <YOUR_APP_ENVIRONMENT>
