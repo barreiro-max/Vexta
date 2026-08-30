@@ -17,7 +17,7 @@ struct TabFlowView: View {
 
     init(
         viewFactory: TabFlowViewFactory,
-        onFlowEvent: @escaping (TabFlowCoordinatorEvent) -> Void,
+        onFlowEvent: @escaping (TabFlowCoordinator.FlowEvent) -> Void,
     ) {
         let coordinator = TabFlowCoordinator(
             tabFlowViewFactory: viewFactory,

@@ -164,7 +164,7 @@ extension RootCoordinator {
         }
     }
 
-    private func matchTabFlowEvent(for flowEvent: TabFlowCoordinatorEvent) {
+    private func matchTabFlowEvent(for flowEvent: TabFlowCoordinator.FlowEvent) {
         switch flowEvent {
 
         case .finishedMain:

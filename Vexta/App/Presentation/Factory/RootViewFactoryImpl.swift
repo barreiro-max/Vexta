@@ -32,7 +32,7 @@ protocol RootViewFactory {
     ) -> AuthFlowView
 
     func makeTabFlowView(
-        onFlowEvent: @escaping (TabFlowCoordinatorEvent) -> Void
+        onFlowEvent: @escaping (TabFlowCoordinator.FlowEvent) -> Void
     ) -> TabFlowView
 }
 
@@ -81,7 +81,7 @@ extension RootViewFactoryImpl: RootViewFactory {
     }
 
     func makeTabFlowView(
-        onFlowEvent: @escaping (TabFlowCoordinatorEvent) -> Void
+        onFlowEvent: @escaping (TabFlowCoordinator.FlowEvent) -> Void
     ) -> TabFlowView {
         TabFlowView(
             viewFactory: tabFlowViewFactory,

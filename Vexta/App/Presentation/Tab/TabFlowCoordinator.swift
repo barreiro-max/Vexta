@@ -7,24 +7,42 @@
 
 import SwiftUI
 
-// MARK: - shared
+// MARK: - Shared imports
 import Telemetry
 
-// MARK: - feature
+// MARK: - Feature imports
 import FeatureMain
 
 @MainActor
 @Observable
 final class TabFlowCoordinator {
-    var selectedTab: MainFlowTab = .main
 
+    // MARK: - Nested Types
+    enum FlowEvent {
+        case finishedMain
+        case alertedMain(with: MainError)
+    }
+
+    enum Tab: Int, Equatable, Hashable {
+        case main
+        case search
+        case cart
+        case profile
+    }
+
+    // MARK: - Tab
+    var selectedTab: Tab = .main
+
+    // MARK: - Dependencies
     private let tabFlowViewFactory: TabFlowViewFactory
 
-    private let onFlowEvent: (TabFlowCoordinatorEvent) -> Void
+    // MARK: - FlowEvent
+    private let onFlowEvent: (FlowEvent) -> Void
 
+    // MARK: - Init
     init(
         tabFlowViewFactory: TabFlowViewFactory,
-        onFlowEvent: @escaping (TabFlowCoordinatorEvent) -> Void
+        onFlowEvent: @escaping (FlowEvent) -> Void
     ) {
         self.tabFlowViewFactory = tabFlowViewFactory
         self.onFlowEvent = onFlowEvent
@@ -38,8 +56,15 @@ final class TabFlowCoordinator {
     }
 }
 
+// MARK: - Intent Handler
 extension TabFlowCoordinator {
-    func send(_ intent: TabFlowCoordinatorIntent) {
+
+    enum Intent {
+        case finishedMain
+        case showMainAlert(with: MainError)
+    }
+
+    func send(_ intent: Intent) {
         switch intent {
 
         case .finishedMain:
@@ -53,6 +78,7 @@ extension TabFlowCoordinator {
     }
 }
 
+// MARK: - Flow Event Matching
 extension TabFlowCoordinator {
     private func matchMainFlowEvent(for flowEvent: MainFlowCoordinator.FlowEvent) {
         switch flowEvent {
