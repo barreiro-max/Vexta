@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84192B423043173500D80678 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 846D9751301E51E400FD2141 /* FeatureAuth */; };
-		84192B433043173500D80678 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 846D9753301E51EA00FD2141 /* FeatureMain */; };
-		84192B493043173500D80678 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC32853020B7C50068012F /* FeatureNotification */; };
-		84192B4A3043173500D80678 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC32883020B7D40068012F /* FeaturePurchase */; };
-		84192B4B3043173500D80678 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC328F3020B8070068012F /* Presentation */; };
-		84192B4C3043173500D80678 /* Telemetry in Frameworks */ = {isa = PBXBuildFile; productRef = 84CC32973020B9030068012F /* Telemetry */; };
-		84192B4D3043173500D80678 /* Environment in Frameworks */ = {isa = PBXBuildFile; productRef = 8453CAD2303B5F9B006D35D1 /* Environment */; };
-		844BDF5030437EC000A94F9F /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 84D6643D301EAE8F0093979F /* Configuration */; };
-		844BDF5A30437EC000A94F9F /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B7A304314F0006F1470 /* Domain */; };
-		844BDF5B30437EC000A94F9F /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B7D30431514006F1470 /* Data */; };
-		844BDF6030437EC000A94F9F /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 84602B8C304315A6006F1470 /* FeatureSplash */; };
-		844BDFB83043809F00A94F9F /* FeatureOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 844BDFB73043809F00A94F9F /* FeatureOnboarding */; };
+		84716886304427D900613663 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 84716885304427D900613663 /* Domain */; };
+		847168893044281100613663 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 847168883044281100613663 /* Data */; };
+		8471688C3044282300613663 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 8471688B3044282300613663 /* Presentation */; };
+		8471688F3044285400613663 /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 8471688E3044285400613663 /* Configuration */; };
+		847168923044286200613663 /* Environment in Frameworks */ = {isa = PBXBuildFile; productRef = 847168913044286200613663 /* Environment */; };
+		847168953044286900613663 /* Telemetry in Frameworks */ = {isa = PBXBuildFile; productRef = 847168943044286900613663 /* Telemetry */; };
+		847168983044289E00613663 /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 847168973044289E00613663 /* FeatureSplash */; };
+		8471689B304428DE00613663 /* FeatureOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 8471689A304428DE00613663 /* FeatureOnboarding */; };
+		8471689E3044290300613663 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8471689D3044290300613663 /* FeatureAuth */; };
+		847168A13044291500613663 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 847168A03044291500613663 /* FeatureMain */; };
+		847168A43044292D00613663 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 847168A33044292D00613663 /* FeatureNotification */; };
+		847168A73044294000613663 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 847168A63044294000613663 /* FeaturePurchase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,18 +68,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844BDFB83043809F00A94F9F /* FeatureOnboarding in Frameworks */,
-				844BDF6030437EC000A94F9F /* FeatureSplash in Frameworks */,
-				844BDF5B30437EC000A94F9F /* Data in Frameworks */,
-				844BDF5A30437EC000A94F9F /* Domain in Frameworks */,
-				844BDF5030437EC000A94F9F /* Configuration in Frameworks */,
-				84192B4D3043173500D80678 /* Environment in Frameworks */,
-				84192B4C3043173500D80678 /* Telemetry in Frameworks */,
-				84192B4B3043173500D80678 /* Presentation in Frameworks */,
-				84192B4A3043173500D80678 /* FeaturePurchase in Frameworks */,
-				84192B493043173500D80678 /* FeatureNotification in Frameworks */,
-				84192B433043173500D80678 /* FeatureMain in Frameworks */,
-				84192B423043173500D80678 /* FeatureAuth in Frameworks */,
+				8471689B304428DE00613663 /* FeatureOnboarding in Frameworks */,
+				847168953044286900613663 /* Telemetry in Frameworks */,
+				847168893044281100613663 /* Data in Frameworks */,
+				8471688F3044285400613663 /* Configuration in Frameworks */,
+				8471688C3044282300613663 /* Presentation in Frameworks */,
+				847168923044286200613663 /* Environment in Frameworks */,
+				847168A73044294000613663 /* FeaturePurchase in Frameworks */,
+				847168983044289E00613663 /* FeatureSplash in Frameworks */,
+				8471689E3044290300613663 /* FeatureAuth in Frameworks */,
+				847168A13044291500613663 /* FeatureMain in Frameworks */,
+				847168A43044292D00613663 /* FeatureNotification in Frameworks */,
+				84716886304427D900613663 /* Domain in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,26 +134,6 @@
 			);
 			name = Vexta;
 			packageProductDependencies = (
-				846D974B301E519A00FD2141 /* Data */,
-				846D974D301E51A000FD2141 /* Domain */,
-				846D9751301E51E400FD2141 /* FeatureAuth */,
-				846D9753301E51EA00FD2141 /* FeatureMain */,
-				84D6643D301EAE8F0093979F /* Configuration */,
-				8423A393301F6C0400408833 /* FeaturePurchase */,
-				8423A397301F7D4E00408833 /* Telemetry */,
-				84B6DB00302099750028DDDC /* FeatureNotification */,
-				84CC327C3020B7360068012F /* Configuration */,
-				84CC32853020B7C50068012F /* FeatureNotification */,
-				84CC32883020B7D40068012F /* FeaturePurchase */,
-				84CC328F3020B8070068012F /* Presentation */,
-				84CC32973020B9030068012F /* Telemetry */,
-				8453CAD2303B5F9B006D35D1 /* Environment */,
-				8453CAD4303B5FA2006D35D1 /* FeatureSplash */,
-				84FEB1A5304311BE00E5C622 /* FeatureSplash */,
-				84FEB1A8304311DA00E5C622 /* FeatureAuth */,
-				84FEB1AB3043121800E5C622 /* FeatureMain */,
-				84FEB1AE3043121D00E5C622 /* FeaturePurchase */,
-				84FEB1B13043122200E5C622 /* FeatureNotification */,
 				84602B7A304314F0006F1470 /* Domain */,
 				84602B7D30431514006F1470 /* Data */,
 				84602B803043155A006F1470 /* Presentation */,
@@ -165,7 +145,18 @@
 				84602B92304315C6006F1470 /* FeatureMain */,
 				84602B95304315D2006F1470 /* FeatureNotification */,
 				84602B98304315DF006F1470 /* FeaturePurchase */,
-				844BDFB73043809F00A94F9F /* FeatureOnboarding */,
+				84716885304427D900613663 /* Domain */,
+				847168883044281100613663 /* Data */,
+				8471688B3044282300613663 /* Presentation */,
+				8471688E3044285400613663 /* Configuration */,
+				847168913044286200613663 /* Environment */,
+				847168943044286900613663 /* Telemetry */,
+				847168973044289E00613663 /* FeatureSplash */,
+				8471689A304428DE00613663 /* FeatureOnboarding */,
+				8471689D3044290300613663 /* FeatureAuth */,
+				847168A03044291500613663 /* FeatureMain */,
+				847168A33044292D00613663 /* FeatureNotification */,
+				847168A63044294000613663 /* FeaturePurchase */,
 			);
 			productName = Vexta;
 			productReference = 846589462FDEE2B700F13BE4 /* Vexta.app */;
@@ -196,18 +187,18 @@
 			mainGroup = 8465893D2FDEE2B700F13BE4;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				84602B79304314F0006F1470 /* XCLocalSwiftPackageReference "Packages/Domain" */,
-				84602B7C30431514006F1470 /* XCLocalSwiftPackageReference "Packages/Data" */,
-				84602B7F3043155A006F1470 /* XCLocalSwiftPackageReference "Packages/Presentation" */,
-				84602B823043156B006F1470 /* XCLocalSwiftPackageReference "Packages/Configuration" */,
-				84602B8530431575006F1470 /* XCLocalSwiftPackageReference "Packages/Environment" */,
-				84602B8830431596006F1470 /* XCLocalSwiftPackageReference "Packages/Telemetry" */,
-				84602B8B304315A6006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureSplash" */,
-				84602B8E304315B4006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */,
-				84602B91304315C6006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */,
-				84602B94304315D2006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureNotification" */,
-				84602B97304315DF006F1470 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */,
-				84F47EA530437B680068E116 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */,
+				84716884304427D900613663 /* XCLocalSwiftPackageReference "Packages/Domain" */,
+				847168873044281100613663 /* XCLocalSwiftPackageReference "Packages/Data" */,
+				8471688A3044282300613663 /* XCLocalSwiftPackageReference "Packages/Presentation" */,
+				8471688D3044285400613663 /* XCLocalSwiftPackageReference "Packages/Configuration" */,
+				847168903044286200613663 /* XCLocalSwiftPackageReference "Packages/Environment" */,
+				847168933044286900613663 /* XCLocalSwiftPackageReference "Packages/Telemetry" */,
+				847168963044289E00613663 /* XCLocalSwiftPackageReference "Packages/FeatureSplash" */,
+				84716899304428DE00613663 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */,
+				8471689C3044290300613663 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */,
+				8471689F3044291500613663 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */,
+				847168A23044292D00613663 /* XCLocalSwiftPackageReference "Packages/FeatureNotification" */,
+				847168A53044294000613663 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 846589472FDEE2B700F13BE4 /* Products */;
@@ -614,78 +605,57 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		84602B79304314F0006F1470 /* XCLocalSwiftPackageReference "Packages/Domain" */ = {
+		84716884304427D900613663 /* XCLocalSwiftPackageReference "Packages/Domain" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/Domain;
 		};
-		84602B7C30431514006F1470 /* XCLocalSwiftPackageReference "Packages/Data" */ = {
+		847168873044281100613663 /* XCLocalSwiftPackageReference "Packages/Data" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/Data;
 		};
-		84602B7F3043155A006F1470 /* XCLocalSwiftPackageReference "Packages/Presentation" */ = {
+		8471688A3044282300613663 /* XCLocalSwiftPackageReference "Packages/Presentation" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/Presentation;
 		};
-		84602B823043156B006F1470 /* XCLocalSwiftPackageReference "Packages/Configuration" */ = {
+		8471688D3044285400613663 /* XCLocalSwiftPackageReference "Packages/Configuration" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/Configuration;
 		};
-		84602B8530431575006F1470 /* XCLocalSwiftPackageReference "Packages/Environment" */ = {
+		847168903044286200613663 /* XCLocalSwiftPackageReference "Packages/Environment" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/Environment;
 		};
-		84602B8830431596006F1470 /* XCLocalSwiftPackageReference "Packages/Telemetry" */ = {
+		847168933044286900613663 /* XCLocalSwiftPackageReference "Packages/Telemetry" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/Telemetry;
 		};
-		84602B8B304315A6006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureSplash" */ = {
+		847168963044289E00613663 /* XCLocalSwiftPackageReference "Packages/FeatureSplash" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/FeatureSplash;
 		};
-		84602B8E304315B4006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */ = {
+		84716899304428DE00613663 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/FeatureOnboarding;
+		};
+		8471689C3044290300613663 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/FeatureAuth;
 		};
-		84602B91304315C6006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */ = {
+		8471689F3044291500613663 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/FeatureMain;
 		};
-		84602B94304315D2006F1470 /* XCLocalSwiftPackageReference "Packages/FeatureNotification" */ = {
+		847168A23044292D00613663 /* XCLocalSwiftPackageReference "Packages/FeatureNotification" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/FeatureNotification;
 		};
-		84602B97304315DF006F1470 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */ = {
+		847168A53044294000613663 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/FeaturePurchase;
-		};
-		84F47EA530437B680068E116 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/FeatureOnboarding;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8423A393301F6C0400408833 /* FeaturePurchase */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeaturePurchase;
-		};
-		8423A397301F7D4E00408833 /* Telemetry */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Telemetry;
-		};
-		844BDFB73043809F00A94F9F /* FeatureOnboarding */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 84F47EA530437B680068E116 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */;
-			productName = FeatureOnboarding;
-		};
-		8453CAD2303B5F9B006D35D1 /* Environment */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Environment;
-		};
-		8453CAD4303B5FA2006D35D1 /* FeatureSplash */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureSplash;
-		};
 		84602B7A304314F0006F1470 /* Domain */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Domain;
@@ -730,69 +700,53 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = FeaturePurchase;
 		};
-		846D974B301E519A00FD2141 /* Data */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Data;
-		};
-		846D974D301E51A000FD2141 /* Domain */ = {
+		84716885304427D900613663 /* Domain */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Domain;
 		};
-		846D9751301E51E400FD2141 /* FeatureAuth */ = {
+		847168883044281100613663 /* Data */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = FeatureAuth;
+			productName = Data;
 		};
-		846D9753301E51EA00FD2141 /* FeatureMain */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureMain;
-		};
-		84B6DB00302099750028DDDC /* FeatureNotification */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureNotification;
-		};
-		84CC327C3020B7360068012F /* Configuration */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Configuration;
-		};
-		84CC32853020B7C50068012F /* FeatureNotification */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureNotification;
-		};
-		84CC32883020B7D40068012F /* FeaturePurchase */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeaturePurchase;
-		};
-		84CC328F3020B8070068012F /* Presentation */ = {
+		8471688B3044282300613663 /* Presentation */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Presentation;
 		};
-		84CC32973020B9030068012F /* Telemetry */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Telemetry;
-		};
-		84D6643D301EAE8F0093979F /* Configuration */ = {
+		8471688E3044285400613663 /* Configuration */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Configuration;
 		};
-		84FEB1A5304311BE00E5C622 /* FeatureSplash */ = {
+		847168913044286200613663 /* Environment */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Environment;
+		};
+		847168943044286900613663 /* Telemetry */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Telemetry;
+		};
+		847168973044289E00613663 /* FeatureSplash */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureSplash;
 		};
-		84FEB1A8304311DA00E5C622 /* FeatureAuth */ = {
+		8471689A304428DE00613663 /* FeatureOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureOnboarding;
+		};
+		8471689D3044290300613663 /* FeatureAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureAuth;
 		};
-		84FEB1AB3043121800E5C622 /* FeatureMain */ = {
+		847168A03044291500613663 /* FeatureMain */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureMain;
 		};
-		84FEB1AE3043121D00E5C622 /* FeaturePurchase */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeaturePurchase;
-		};
-		84FEB1B13043122200E5C622 /* FeatureNotification */ = {
+		847168A33044292D00613663 /* FeatureNotification */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureNotification;
+		};
+		847168A63044294000613663 /* FeaturePurchase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeaturePurchase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
