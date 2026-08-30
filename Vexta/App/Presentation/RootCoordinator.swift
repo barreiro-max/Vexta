@@ -25,6 +25,7 @@ import FeaturePurchase
 @Observable
 final class RootCoordinator {
 
+    // MARK: - Nested Types
     enum Route: Hashable, Codable, Sendable {
         case splash
         case onboarding
@@ -38,14 +39,17 @@ final class RootCoordinator {
         var id: String { "\(self)" }
     }
 
+    // MARK: - Navigation & Alert
     var rootRoute: Route = .splash
     var rootSheet: Sheet?
     var alert: AppAlert?
 
+    // MARK: - Dependencies
     private let rootViewFactory: any RootViewFactory
     private let alertFactory: any RootAlertFactory
     private let rootSheetFactory: any RootSheetFactory
 
+    // MARK: - Init
     init(
         rootViewFactory: any RootViewFactory,
         alertFactory: any RootAlertFactory,
@@ -56,6 +60,7 @@ final class RootCoordinator {
         self.rootSheetFactory = rootSheetFactory
     }
 
+    // MARK: - View Destination
     var rootView: some View {
         featureFlowView(by: rootRoute)
     }
@@ -125,6 +130,7 @@ extension RootCoordinator {
     }
 }
 
+// MARK: - Flow Event Matching
 extension RootCoordinator {
 
     private func matchOnboardingFlowEvent(for flowEvent: OnboardingFlowCoordinator.FlowEvent) {
