@@ -16,7 +16,7 @@ public final class MainFlowCoordinator {
     // MARK: - Nested Types
     public enum FlowEvent {
         case finished
-        case alerted(error: MainError)
+        case alerted(error: AccountError)
     }
 
     enum Route: Hashable, Codable {
@@ -62,7 +62,7 @@ extension MainFlowCoordinator {
 
     enum Intent {
         case finishedFlow
-        case showAlert(error: MainError)
+        case showAlert(error: AccountError)
     }
 
     func send(_ intent: Intent) {
@@ -85,8 +85,11 @@ extension MainFlowCoordinator {
     private func matchMainEvent(for storeEvent: MainStore.Event) {
         switch storeEvent {
             
-        case .logOutTapped:
+        case .logOutSucceeded:
             send(.finishedFlow)
+
+        case .logOutFailed(let error):
+            send(.showAlert(error: error))
         }
     }
 }

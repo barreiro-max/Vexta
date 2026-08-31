@@ -9,5 +9,5 @@ import Foundation
 import Domain
 
 struct PreviewLogOutUseCase: LogOutUseCase {
-    func execute() throws(AuthError) {}
+    func execute() throws(AccountError) {}
 }

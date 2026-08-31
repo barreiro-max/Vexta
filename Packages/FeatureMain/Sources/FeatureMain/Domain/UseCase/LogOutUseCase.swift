@@ -9,28 +9,35 @@ import Foundation
 import Domain
 
 public protocol LogOutUseCase: Sendable {
-    func execute() throws(AuthError)
+    func execute() async throws(AccountError)
 }
 
 public struct LogOutUseCaseImpl {
 
-    private let authRepository: AuthRepository
+    private let accountRepository: AccountRepository
     private let analyticsTracker: AnalyticsTracker
 
     public init(
-        authRepository: AuthRepository,
+        accountRepository: AccountRepository,
         analyticsTracker: AnalyticsTracker
     ) {
-        self.authRepository = authRepository
+        self.accountRepository = accountRepository
         self.analyticsTracker = analyticsTracker
     }
 }
 
 extension LogOutUseCaseImpl: LogOutUseCase {
 
-    public func execute() throws(AuthError) {
-        do throws(AuthError) {
-            try authRepository.signOut()
+    public func execute() async throws(AccountError) {
+        do throws(AccountError) {
+            let isAnonymous = try await accountRepository.isAnonymous
+
+            if isAnonymous {
+                try await accountRepository.deleteUser()
+            } else {
+                try accountRepository.signOut()
+            }
+
             analyticsTracker.track(event: .userLoggedOut)
         } catch {
             throw error

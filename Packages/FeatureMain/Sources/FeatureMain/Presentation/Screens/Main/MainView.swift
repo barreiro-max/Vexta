@@ -25,6 +25,7 @@ struct MainView: View {
 
 #Preview {
     let logOutUseCase = PreviewLogOutUseCase()
+
     let store = MainStore(logOutUseCase: logOutUseCase) { _ in }
     MainView(store: store)
 }

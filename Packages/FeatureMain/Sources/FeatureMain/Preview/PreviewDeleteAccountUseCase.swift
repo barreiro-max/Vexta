@@ -9,5 +9,5 @@ import Foundation
 import Domain
 
 struct PreviewDeleteAccountUseCase: DeleteAccountUseCase {
-    func execute() async throws(AuthError) {}
+    func execute() async throws(AccountError) {}
 }

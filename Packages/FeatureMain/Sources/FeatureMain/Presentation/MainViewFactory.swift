@@ -11,11 +11,17 @@ import SwiftUI
 public struct MainViewFactory {
 
     private let logOutUseCase: LogOutUseCase
+    private let userAnonymousUseCase: UserAnonymousUseCase
+    private let deleteAccountUseCase: DeleteAccountUseCase
 
     public init(
-        logOutUseCase: LogOutUseCase
+        logOutUseCase: LogOutUseCase,
+        userAnonymousUseCase: UserAnonymousUseCase,
+        deleteAccountUseCase: DeleteAccountUseCase,
     ) {
         self.logOutUseCase = logOutUseCase
+        self.userAnonymousUseCase = userAnonymousUseCase
+        self.deleteAccountUseCase = deleteAccountUseCase
     }
 
     func makeMainView(

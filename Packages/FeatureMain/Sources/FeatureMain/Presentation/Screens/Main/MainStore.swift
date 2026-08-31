@@ -16,7 +16,7 @@ final class MainStore {
     enum State {
         case idle
         case success
-        case failure
+        case failure(error: AccountError)
     }
 
     enum Intent {
@@ -24,7 +24,8 @@ final class MainStore {
     }
 
     enum Event {
-        case logOutTapped
+        case logOutSucceeded
+        case logOutFailed(error: AccountError)
     }
 
     // MARK: - State
@@ -35,6 +36,9 @@ final class MainStore {
 
     // MARK: - Event
     private let onStoreEvent: (Event) -> Void
+
+    @ObservationIgnored
+    private var logOutTask: Task<Void, Never>?
 
     // MARK: - Init
     init(
@@ -49,18 +53,23 @@ final class MainStore {
     func send(_ intent: Intent) {
         switch intent {
         case .logOut:
-            logOut()
+            logOutTask?.cancel()
+            logOutTask = Task { await logOut() }
         }
     }
 
     // MARK: - Private Actions
-    private func logOut() {
-        do throws(AuthError) {
-            try logOutUseCase.execute()
+    private func logOut() async {
+        do throws(AccountError) {
+            try await logOutUseCase.execute()
+            if Task.isCancelled { return }
+
             state = .success
-            onStoreEvent(.logOutTapped)
+            onStoreEvent(.logOutSucceeded)
         } catch {
-            state = .failure
+            if Task.isCancelled { return }
+            state = .failure(error: error)
+            onStoreEvent(.logOutFailed(error: error))
         }
     }
 }

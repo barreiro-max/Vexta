@@ -11,19 +11,27 @@ import Data
 import Telemetry
 
 public final class MainContainer {
-    private let authRepository: AuthRepository
+    private let accountRepository: AccountRepository
     private let analyticsTracker: AnalyticsTracker
 
     public init(
-        authRepository: AuthRepository,
+        accountRepository: AccountRepository,
         analyticsTracker: AnalyticsTracker
     ) {
-        self.authRepository = authRepository
+        self.accountRepository = accountRepository
         self.analyticsTracker = analyticsTracker
     }
 
     public lazy var logOutUseCase       = LogOutUseCaseImpl(
-        authRepository: authRepository,
+        accountRepository: accountRepository,
         analyticsTracker: analyticsTracker
+    )
+
+    public lazy var deleteAccountUseCase = DeleteAccountUseCaseImpl(
+        accountRepository: accountRepository
+    )
+
+    public lazy var userAnonymousUseCase = UserAnonymousUseCaseImpl(
+        accountRepository: accountRepository
     )
 }

@@ -36,6 +36,13 @@ public struct MainFlowView: View {
 
 #Preview {
     let logOutUseCase = PreviewLogOutUseCase()
-    let viewFactory = MainViewFactory(logOutUseCase: logOutUseCase)
+    let userAnonymousUseCase = PreviewUserAnonymousUseCase()
+    let deleteAccountUseCase = PreviewDeleteAccountUseCase()
+    
+    let viewFactory = MainViewFactory(
+        logOutUseCase: logOutUseCase,
+        userAnonymousUseCase: userAnonymousUseCase,
+        deleteAccountUseCase: deleteAccountUseCase,
+    )
     MainFlowView(viewFactory: viewFactory) { _ in }
 }
