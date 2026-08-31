@@ -15,9 +15,8 @@ public final class SplashStore {
     // MARK: - Nested Types
     enum State {
         case idle
-        case loading(message: String? = nil)
+        case loading
         case failure(error: SplashError)
-        case completed
 
         var isLoading: Bool {
             if case .loading = self { true } else { false }
@@ -43,6 +42,7 @@ public final class SplashStore {
     // MARK: - Event
     private let onStoreEvent: (Event) -> Void
 
+    // MARK: - Init
     public init(
         networkMonitor: NetworkMonitor,
         fetchRemoteConfigUseCase: FetchRemoteConfigUseCase,
@@ -57,23 +57,15 @@ public final class SplashStore {
         self.onStoreEvent = onStoreEvent
     }
 
+    // MARK: - Actions
     func bootstrap() async {
         guard !state.isLoading else { return }
 
-        if !checkOnboardingPassedUseCase.execute() {
-            onStoreEvent(.neededOnboarding)
-            return
-        }
-
-        state = .loading(message: "Checking network connection...")
-        try? await Task.sleep(for: .seconds(0.5))
         guard networkMonitor.isConnected else {
             handleError(.noInternetConnection)
             return
         }
 
-        state = .loading(message: "Fetching configuration...")
-        try? await Task.sleep(for: .seconds(0.5))
         if let message = await fetchRemoteConfigUseCase.fetchMaintenanceMessage() {
             handleError(.maintenanceMode(message: message))
             return
@@ -84,12 +76,12 @@ public final class SplashStore {
             return
         }
 
-        state = .loading(message: "Authorization...")
-        try? await Task.sleep(for: .seconds(0.5))
+        if !checkOnboardingPassedUseCase.execute() {
+            onStoreEvent(.neededOnboarding)
+            return
+        }
+
         let authState = authStateObserver.fetchAuthState()
-
-        state = .completed
-
         switch authState {
         case .authenticated(let userId):
             onStoreEvent(.authenticated(userId: userId))

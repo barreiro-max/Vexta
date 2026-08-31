@@ -17,13 +17,9 @@ public struct SplashView: View {
     }
 
     public var body: some View {
-        splashRouterView
+        VStack{}
             .task(store.bootstrap)
             .refreshable(action: store.bootstrap)
-    }
-    
-    private var splashRouterView: some View {
-        SplashRouterView(state: store.state)
     }
 }
 
