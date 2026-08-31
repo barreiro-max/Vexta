@@ -22,7 +22,7 @@ protocol RootAlertFactory {
         onRetry: @escaping @MainActor () async -> Void
     ) -> AppAlert
     func makeAuthAlert(with error: AuthError) -> AppAlert
-    func makeMainAlert(with error: MainError) -> AppAlert
+    func makeAccountAlert(with error: AccountError) -> AppAlert
 }
 
 struct RootAlertFactoryImpl {}
@@ -42,7 +42,7 @@ extension RootAlertFactoryImpl: RootAlertFactory {
         AppAlert(error: error)
     }
 
-    func makeMainAlert(with error: MainError) -> AppAlert {
+    func makeAccountAlert(with error: AccountError) -> AppAlert {
         AppAlert(error: error)
     }
 }

@@ -117,9 +117,16 @@ extension RootCoordinator {
 
     func send(_ intent: RootCoordinator.Intent) {
         switch intent {
-        case .presentedRoute(let rootRoute): self.rootRoute = rootRoute
-            
-        case .presentedSheet(let rootSheet): self.rootSheet = rootSheet
+        case .presentedRoute(let rootRoute):
+            if self.rootRoute != rootRoute {
+                self.rootRoute = rootRoute
+            }
+
+        case .presentedSheet(let rootSheet):
+            if self.rootSheet != rootSheet {
+                self.rootSheet = rootSheet
+            }
+
         case .dismissedSheet:                self.rootSheet = nil
             
         case .presentedAlert(let alert):     self.alert = alert
@@ -177,7 +184,7 @@ extension RootCoordinator {
             send(.presentedRoute(.auth))
 
         case .alertedMain(let error):
-            let alert = alertFactory.makeMainAlert(with: error)
+            let alert = alertFactory.makeAccountAlert(with: error)
             send(.presentedAlert(alert))
         }
     }

@@ -31,27 +31,38 @@ final class RootContainer {
         preferenceKey: "isPassedOnboarding"
     )
 
+    private lazy var nonceProvider = CryptoNonceProvider()
+    private lazy var topViewControllerProvider = UIKitTopViewControllerProvider()
+
+    private lazy var googleAuthProvider = GoogleAuthProviderImpl(
+        topViewControllerProvider: topViewControllerProvider
+    )
+
+    private lazy var appleAuthProvider = AppleAuthProviderImpl(
+        nonceProvider: nonceProvider,
+        topViewControllerProvider: topViewControllerProvider
+    )
+
+    private lazy var facebookAuthProvider      = FacebookAuthProviderImpl(
+        topViewControllerProvider: topViewControllerProvider
+    )
+
     lazy var authRepository            = {
-        let nonceProvider             = CryptoNonceProvider()
-        let topViewControllerProvider = UIKitTopViewControllerProvider()
-
-        let googleAuthProvider        = GoogleAuthProviderImpl(
-            topViewControllerProvider: topViewControllerProvider
-        )
-        let appleAuthProvider         = AppleAuthProviderImpl(
-            nonceProvider: nonceProvider,
-            topViewControllerProvider: topViewControllerProvider
-        )
-        let facebookAuthProvider      = FacebookAuthProviderImpl(
-            topViewControllerProvider: topViewControllerProvider
-        )
-
         let authDataSource            = FirebaseAuthDataSource(
             googleAuthProvider: googleAuthProvider,
             appleAuthProvider: appleAuthProvider,
             facebookAuthProvider: facebookAuthProvider
         )
         return AuthRepositoryImpl(authDataSource: authDataSource)
+    }()
+
+    lazy var accountRepository         = {
+        let accountDataSource = FirebaseAccountDataSource(
+            googleAuthProvider: googleAuthProvider,
+            appleAuthProvider: appleAuthProvider,
+            facebookAuthProvider: facebookAuthProvider
+        )
+        return AccountRepositoryImpl(accountDataSource: accountDataSource)
     }()
 
     lazy var analyticsTracker          = FirebaseAnalyticsTracker()
@@ -70,7 +81,7 @@ final class RootContainer {
         analyticsTracker: analyticsTracker
     )
     private lazy var mainContainer         = MainContainer(
-        authRepository: authRepository,
+        accountRepository: accountRepository,
         analyticsTracker: analyticsTracker
     )
     private lazy var notificationContainer = NotificationContainer()
@@ -109,7 +120,10 @@ extension RootContainer: RootCoordinatorFactory {
         )
 
         let authViewFactory = AuthViewFactory(
+            cooldownTimerUseCase: domainContainer.cooldownTimerUseCase,
             loginUseCase: authContainer.loginUseCase,
+            completeEmailVerificationUseCase: authContainer.completeEmailVerificationUseCase,
+            sendEmailVerificationUseCase: authContainer.sendEmailVerificationUseCase,
             registerUseCase: authContainer.registerUseCase,
             sendPasswordResetUseCase: authContainer.sendPasswordResetUseCase
         )
@@ -127,6 +141,8 @@ extension RootContainer: RootCoordinatorFactory {
     private func makeTabFlowViewFactory() -> any TabFlowViewFactory {
         let mainViewFactory = MainViewFactory(
             logOutUseCase: mainContainer.logOutUseCase,
+            userAnonymousUseCase: mainContainer.userAnonymousUseCase,
+            deleteAccountUseCase: mainContainer.deleteAccountUseCase,
         )
 
         return TabFlowViewFactoryImpl(

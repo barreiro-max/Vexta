@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - Shared imports
+import Domain
 import Telemetry
 
 // MARK: - Feature imports
@@ -20,7 +21,7 @@ final class TabFlowCoordinator {
     // MARK: - Nested Types
     enum FlowEvent {
         case finishedMain
-        case alertedMain(with: MainError)
+        case alertedMain(with: AccountError)
     }
 
     enum Tab: Int, Equatable, Hashable {
@@ -61,7 +62,7 @@ extension TabFlowCoordinator {
 
     enum Intent {
         case finishedMain
-        case showMainAlert(with: MainError)
+        case showMainAlert(with: AccountError)
     }
 
     func send(_ intent: Intent) {
