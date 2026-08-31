@@ -41,6 +41,10 @@ extension FirebaseAnalyticsTracker {
             logEvent(eventName: "UserLoggedOut")
         case .userRegistered:
             logEvent(eventName: "UserRegistered")
+        case .emailVerificationSent:
+            logEvent(eventName: "UserVerificationEmailSent")
+        case .emailVerificationCompleted:
+            logEvent(eventName: "UserVerificationEmailCompleted")
         }
     }
 
