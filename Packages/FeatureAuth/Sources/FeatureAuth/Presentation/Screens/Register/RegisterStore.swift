@@ -67,8 +67,9 @@ final class RegisterStore {
                 email: email,
                 password: password
             )
+            if Task.isCancelled { return }
+            
             state = .completed(userUID: id)
-
             onStoreEvent(.registerSucceeded)
         } catch {
             if Task.isCancelled { return }

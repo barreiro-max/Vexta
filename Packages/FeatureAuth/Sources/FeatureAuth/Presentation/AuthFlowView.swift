@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Domain
 
 public struct AuthFlowView: View {
 
@@ -35,11 +36,17 @@ public struct AuthFlowView: View {
 }
 
 #Preview {
+    let cooldownTimerUseCase = PreviewCooldownTimerUseCase()
     let loginUseCase = PreviewLoginUseCase()
+    let completeEmailVerificationUseCase = PreviewCompleteEmailVerificationUseCase()
+    let sendEmailVerificationUseCase = PreviewSendEmailVerificationUseCase()
     let registerUseCase = PreviewRegisterUseCase()
     let sendPasswordResetUseCase = PreviewSendPasswordResetUseCase()
     let viewFactory = AuthViewFactory(
+        cooldownTimerUseCase: cooldownTimerUseCase,
         loginUseCase: loginUseCase,
+        completeEmailVerificationUseCase: completeEmailVerificationUseCase,
+        sendEmailVerificationUseCase: sendEmailVerificationUseCase,
         registerUseCase: registerUseCase,
         sendPasswordResetUseCase: sendPasswordResetUseCase
     )

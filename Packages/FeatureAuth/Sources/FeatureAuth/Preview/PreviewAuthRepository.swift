@@ -19,9 +19,21 @@ struct PreviewAuthRepository: AuthRepository {
         return "Test signUp UUID"
     }
 
+    func link(with provider: LinkableAuthProviderOption) async throws(AuthError) -> String {
+        return "Test link UUID"
+    }
+
     func sendPasswordReset(email: String) async throws(AuthError) {}
+    func sendEmailVerification(email: String) async throws(AuthError) {}
+
+    var isEmailVerified: Bool { true }
+    var isAnonymous: Bool { true }
 
     func signOut() throws(AuthError) {}
+
+    func unlink(from provider: LinkableAuthProviderOption) async throws(AuthError) -> String {
+        return "Test unlink UUID"
+    }
 
     func deleteUser() async throws(AuthError) {}
 }

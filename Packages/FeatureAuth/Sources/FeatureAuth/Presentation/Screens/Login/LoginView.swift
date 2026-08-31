@@ -18,7 +18,13 @@ struct LoginView: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            loginButton(with: .email(email: "test_email@gmail.com", password: "password"))
+            loginButton(with: .anonymous)
+
+            loginButton(with: .email(
+                email: "createuser@gmail.com",
+                password: "123124dsnc")
+            )
+
             loginButton(with: .google)
             loginButton(with: .apple)
             loginButton(with: .facebook)

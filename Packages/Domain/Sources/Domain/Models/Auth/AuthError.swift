@@ -8,6 +8,7 @@
 import Foundation
 
 public enum AuthError: Error {
+    case emailNotVerified
     case userDisabled
     case userNotFound
     case networkError
@@ -39,6 +40,7 @@ extension AuthError: LocalizedError {
         case .userCancelled:          String(localized: "Sign-in was cancelled.")
         case .invalidCredential:      String(localized: "Invalid authentication credentials.")
         case .uiError:                String(localized: "Unable to display sign-in interface.")
+        case .emailNotVerified:       String(localized: "Email address not verified.")
         case .unknown:                String(localized: "An unexpected error occurred.")
         }
     }
@@ -57,6 +59,7 @@ extension AuthError: LocalizedError {
         case .userCancelled:          "The user explicitly cancelled the authentication flow."
         case .invalidCredential:      "The supplied authentication credentials are malformed or expired."
         case .uiError:                "Could not present the sign-in controller or top view controller."
+        case .emailNotVerified:       "The user has not completed the email verification process."
         case .unknown:                "An unclassified authentication error occurred."
         }
     }
@@ -77,6 +80,8 @@ extension AuthError: LocalizedError {
             String(localized: "Log out and log back in before attempting this action again.")
         case .networkError, .tooManyRequests:
             String(localized: "Check your internet connection and try again in a few minutes.")
+        case .emailNotVerified:
+            String(localized: "Please check your inbox and confirm your email address before signing in.")
         case .userCancelled, .uiError, .invalidCredential:
             String(localized: "Please try signing in again.")
         case .unknown:

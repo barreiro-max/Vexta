@@ -18,10 +18,9 @@ struct RegisterView: View {
     var body: some View {
         Text("Register")
         Button("Register with test credentials") {
-            store.send(.register(email: "createUser@gmail.com",password: "123124dsnc")
+            store.send(.register(email: "createuser@gmail.com",password: "123124dsnc")
             )
         }
-
     }
 }
 

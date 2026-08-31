@@ -13,4 +13,6 @@ public enum AnalyticsEvent: Sendable {
     case userLoggedOut
 
     case userRegistered
+    case emailVerificationSent
+    case emailVerificationCompleted
 }

@@ -18,7 +18,7 @@ struct SendPasswordResetView: View {
     var body: some View {
         Text("Send reset password")
         Button("test sending") {
-            store.send(.sendPasswordReset(email: "createUser@gmail.com"))
+            store.send(.sendPasswordReset(email: "createuser@gmail.com"))
         }
     }
 }

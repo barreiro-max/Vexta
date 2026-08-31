@@ -28,4 +28,6 @@ public final class DomainContainer {
     )
 
     public lazy var fetchRemoteConfigUseCase =  FetchRemoteConfigUseCaseImpl(remoteConfigRepository: remoteConfigRepository)
+
+    public lazy var cooldownTimerUseCase = CooldownTimerUseCaseImpl()
 }

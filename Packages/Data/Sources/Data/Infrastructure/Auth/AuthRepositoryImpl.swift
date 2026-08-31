@@ -25,6 +25,9 @@ extension AuthRepositoryImpl: AuthRepository {
         do {
             let userUID = switch provider {
 
+            case .anonymous:
+                try await authDataSource.signInAnonymous()
+
             case .email(let email, let password):
                 try await authDataSource.signInEmail(
                     email: email,
@@ -78,10 +81,10 @@ extension AuthRepositoryImpl: AuthRepository {
         }
     }
 
-    public func signOut() throws(AuthError) {
+    public func sendEmailVerification(email: String) async throws(AuthError) {
         do {
-            try authDataSource.signOut()
-            Log.auth.notice("Successfully signed out from Firebase")
+            try await authDataSource.sendEmailVerification(email: email)
+            Log.auth.notice("Successfully sent email verification from Firebase")
         } catch {
             let authError = AuthError(from: error)
 
@@ -89,13 +92,17 @@ extension AuthRepositoryImpl: AuthRepository {
         }
     }
 
-    public func deleteUser() async throws(AuthError) {
-        do {
-            try await authDataSource.deleteUser()
-        } catch {
-            let authError = AuthError(from: error)
-
-            throw authError
+    public var isEmailVerified: Bool {
+        get async throws(AuthError) {
+            do {
+                let isEmailVerified = try await authDataSource.isEmailVerified
+                Log.auth.notice("User email verified: \(isEmailVerified)")
+                return isEmailVerified
+            } catch {
+                let authError = AuthError(from: error)
+                
+                throw authError
+            }
         }
     }
 }

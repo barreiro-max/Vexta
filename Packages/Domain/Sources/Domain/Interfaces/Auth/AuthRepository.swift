@@ -19,7 +19,6 @@ public protocol AuthRepository: Sendable {
 
     func sendPasswordReset(email: String) async throws(AuthError)
 
-    func signOut() throws(AuthError)
-
-    func deleteUser() async throws(AuthError)
+    func sendEmailVerification(email: String) async throws(AuthError)
+    var isEmailVerified: Bool { get async throws(AuthError) }
 }

@@ -27,6 +27,16 @@ public final class AuthContainer {
         analyticsTracker: analyticsTracker
     )
 
+    public lazy var completeEmailVerificationUseCase = CompleteEmailVerificationUseCaseImpl(
+        authRepository: authRepository,
+        analyticsTracker: analyticsTracker
+    )
+
+    public lazy var sendEmailVerificationUseCase = SendEmailVerificationUseCaseImpl(
+        authRepository: authRepository,
+        analyticsTracker: analyticsTracker
+    )
+
     public lazy var registerUseCase    = RegisterUseCaseImpl(
         authRepository: authRepository,
         analyticsTracker: analyticsTracker

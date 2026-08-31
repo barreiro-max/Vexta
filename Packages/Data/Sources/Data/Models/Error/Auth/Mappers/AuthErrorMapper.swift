@@ -13,6 +13,10 @@ extension AuthError {
 
     public init(from error: any Error) {
         switch error {
+
+        case let auhtError as AuthError:
+            self = auhtError
+
         case let googleSignInError as GoogleSignInError:
             self.init(from: googleSignInError)
 

@@ -27,10 +27,12 @@ final class LoginStore {
     }
 
     enum Event {
+        case loginAnonymouslySucceeded
         case loginSucceeded
         case loginFailed(error: AuthError)
         case registerSelected
         case sendResetPasswordSelected
+        case neededEmailVerification
     }
 
     // MARK: - State
@@ -38,6 +40,7 @@ final class LoginStore {
 
     // MARK: - Dependencies
     private let loginUseCase: LoginUseCase
+    private let completeEmailVerificationUseCase: CompleteEmailVerificationUseCase
     private let onStoreEvent: (Event) -> Void
 
     @ObservationIgnored
@@ -46,9 +49,11 @@ final class LoginStore {
     // MARK: - Init
     init(
         loginUseCase: LoginUseCase,
+        completeEmailVerificationUseCase: CompleteEmailVerificationUseCase,
         onStoreEvent: @escaping (Event) -> Void
     ) {
         self.loginUseCase = loginUseCase
+        self.completeEmailVerificationUseCase = completeEmailVerificationUseCase
         self.onStoreEvent = onStoreEvent
     }
 
@@ -71,9 +76,25 @@ final class LoginStore {
         state = .loading
 
         do throws(AuthError) {
-            let id = try await loginUseCase.execute(with: provider)
-            state = .completed(userUID: id)
-            onStoreEvent(.loginSucceeded)
+            let uid = try await loginUseCase.execute(with: provider)
+            if Task.isCancelled { return }
+
+            if case .anonymous = provider {
+                onStoreEvent(.loginAnonymouslySucceeded)
+                return
+            }
+
+            let isVerified = try await completeEmailVerificationUseCase.execute()
+            if Task.isCancelled { return }
+
+            if isVerified {
+                state = .completed(userUID: uid)
+                onStoreEvent(.loginSucceeded)
+            } else {
+                state = .idle
+                onStoreEvent(.neededEmailVerification)
+            }
+
         } catch {
             if Task.isCancelled { return }
             state = .failure(error: error)

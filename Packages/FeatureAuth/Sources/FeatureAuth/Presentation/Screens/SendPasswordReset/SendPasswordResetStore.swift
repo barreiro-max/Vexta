@@ -64,8 +64,9 @@ final class SendPasswordResetStore {
 
         do throws(AuthError) {
             try await sendPasswordResetUseCase.execute(email: email)
-            state = .completed
+            if Task.isCancelled { return }
 
+            state = .completed
             onStoreEvent(.sendPasswordResetSucceeded)
         } catch {
             if Task.isCancelled { return }

@@ -6,20 +6,30 @@
 //
 
 import SwiftUI
+import Domain
 
 @MainActor
 public struct AuthViewFactory {
 
+    private let cooldownTimerUseCase: CooldownTimerUseCase
     private let loginUseCase: LoginUseCase
+    private let completeEmailVerificationUseCase: CompleteEmailVerificationUseCase
+    private let sendEmailVerificationUseCase: SendEmailVerificationUseCase
     private let registerUseCase: RegisterUseCase
     private let sendPasswordResetUseCase: SendPasswordResetUseCase
 
     public init(
+        cooldownTimerUseCase: CooldownTimerUseCase,
         loginUseCase: LoginUseCase,
+        completeEmailVerificationUseCase: CompleteEmailVerificationUseCase,
+        sendEmailVerificationUseCase: SendEmailVerificationUseCase,
         registerUseCase: RegisterUseCase,
         sendPasswordResetUseCase: SendPasswordResetUseCase
     ) {
+        self.cooldownTimerUseCase = cooldownTimerUseCase
         self.loginUseCase = loginUseCase
+        self.completeEmailVerificationUseCase = completeEmailVerificationUseCase
+        self.sendEmailVerificationUseCase = sendEmailVerificationUseCase
         self.registerUseCase = registerUseCase
         self.sendPasswordResetUseCase = sendPasswordResetUseCase
     }
@@ -29,6 +39,7 @@ public struct AuthViewFactory {
     ) -> some View {
         let store = LoginStore(
             loginUseCase: loginUseCase,
+            completeEmailVerificationUseCase: completeEmailVerificationUseCase,
             onStoreEvent: onStoreEvent
         )
         return LoginView(store: store)
@@ -52,5 +63,17 @@ public struct AuthViewFactory {
             onStoreEvent: onStoreEvent
         )
         return SendPasswordResetView(store: store)
+    }
+
+    func makeSendEmailVerificationView(
+        onStoreEvent: @escaping (SendEmailVerificationStore.Event) -> Void
+    ) -> some View {
+        let store = SendEmailVerificationStore(
+            cooldownTimerUseCase: cooldownTimerUseCase,
+            sendEmailVerificationUseCase: sendEmailVerificationUseCase,
+            completeEmailVerificationUseCase: completeEmailVerificationUseCase,
+            onStoreEvent: onStoreEvent
+        )
+        return SendEmailVerificationView(store: store)
     }
 }

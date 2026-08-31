@@ -23,6 +23,7 @@ public final class AuthFlowCoordinator {
         case login
         case register
         case sendResetPassword
+        case sendEmailVerification
     }
 
     // MARK: - Path
@@ -51,6 +52,7 @@ public final class AuthFlowCoordinator {
     @ViewBuilder
     func chlidView(by route: Route) -> some View {
         switch route {
+
         case .login:
             viewFactory.makeLoginView() { [weak self] storeEvent in
                 self?.matchLoginEvent(for: storeEvent)
@@ -62,6 +64,11 @@ public final class AuthFlowCoordinator {
         case .sendResetPassword:
             viewFactory.makeSendResetPasswordView() { [weak self] storeEvent in
                 self?.matchSendPasswordResetEvent(for: storeEvent)
+            }
+
+        case .sendEmailVerification:
+            viewFactory.makeSendEmailVerificationView() { [weak self] storeEvent in
+                self?.matchSendEmailVerificationEvent(for: storeEvent)
             }
         }
     }
@@ -106,8 +113,14 @@ extension AuthFlowCoordinator {
     private func matchLoginEvent(for storeEvent: LoginStore.Event) {
         switch storeEvent {
 
+        case .loginAnonymouslySucceeded:
+            send(.finishedFlow)
+
         case .loginSucceeded:
             send(.finishedFlow)
+
+        case .neededEmailVerification:
+            send(.pushed(route: .sendEmailVerification))
 
         case .loginFailed(let error):
             send(.showAlert(with: error))
@@ -118,14 +131,14 @@ extension AuthFlowCoordinator {
         case .sendResetPasswordSelected:
             send(.pushed(route: .sendResetPassword))
         }
-
     }
 
     private func matchRegisterEvent(for storeEvent: RegisterStore.Event) {
         switch storeEvent {
             
         case .registerSucceeded:
-            send(.finishedFlow)
+            send(.pushed(route: .sendEmailVerification))
+
         case .registerFailed(let error):
             send(.showAlert(with: error))
         }
@@ -136,7 +149,19 @@ extension AuthFlowCoordinator {
 
         case .sendPasswordResetSucceeded:
             send(.popped)
+
         case .sendPasswordResetFailed(let error):
+            send(.showAlert(with: error))
+        }
+    }
+
+    private func matchSendEmailVerificationEvent(for storeEvent: SendEmailVerificationStore.Event) {
+        switch storeEvent {
+
+        case .emailVerified:
+            send(.finishedFlow)
+
+        case .failed(let error):
             send(.showAlert(with: error))
         }
     }

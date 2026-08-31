@@ -8,6 +8,7 @@
 import Foundation
 
 public enum AuthProviderOption: Sendable {
+    case anonymous
     case email(email: String, password: String)
     case google
     case apple
@@ -15,6 +16,8 @@ public enum AuthProviderOption: Sendable {
 
     public var title: String {
         switch self {
+        case .anonymous:
+            "Anonymous"
         case .apple:
             "Apple"
         case .email:

@@ -7,6 +7,8 @@
 
 import Foundation
 import FirebaseAuth
+import Domain
+import Telemetry
 
 public struct FirebaseAuthDataSource {
 
@@ -30,6 +32,12 @@ public struct FirebaseAuthDataSource {
 }
 
 extension FirebaseAuthDataSource: AuthDataSource {
+
+    public func signInAnonymous() async throws -> String {
+        let authDataResult = try await auth.signInAnonymously()
+        return authDataResult.user.uid
+    }
+
     public func signInEmail(email: String, password: String) async throws -> String {
         let authDataResult = try await auth.signIn(
             withEmail: email,
@@ -83,25 +91,31 @@ extension FirebaseAuthDataSource: AuthDataSource {
         try await auth.sendPasswordReset(withEmail: email)
     }
 
-    public func signOut() throws {
-        do {
-            googleAuthProvider.signOut()
-            facebookAuthProvider.signOut()
-            try auth.signOut()
-        } catch {
-            throw error
+    public func sendEmailVerification(email: String) async throws {
+        try await firebaseUser.sendEmailVerification()
+    }
+
+    public var isEmailVerified: Bool {
+        get async throws {
+            do {
+                // WARN: — don't use `reload()` with firebase auth emulator
+                try await firebaseUser.reload()
+
+                let isEmailVerified = try firebaseUser.isEmailVerified
+                Log.auth.debug("Email verified: \(isEmailVerified)")
+                return try isEmailVerified
+            } catch {
+                throw error
+            }
         }
     }
 
-    public func deleteUser() async throws {
-        guard let user = auth.currentUser else {
-            throw AuthErrorCode.userNotFound
-        }
-
-        do {
-            try await user.delete()
-        } catch {
-            throw error
+    private var firebaseUser: FirebaseAuth.User {
+        get throws(AuthError) {
+            guard let user = auth.currentUser else {
+                throw AuthError.userNotFound
+            }
+            return user
         }
     }
 }
