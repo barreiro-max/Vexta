@@ -1,754 +1,699 @@
 // !$*UTF8*$!
 {
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 77;
-	objects = {
+    archiveVersion = 1;
+    classes = {
+    };
+    objectVersion = 77;
+    objects = {
 
 /* Begin PBXBuildFile section */
-		84716886304427D900613663 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 84716885304427D900613663 /* Domain */; };
-		847168893044281100613663 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 847168883044281100613663 /* Data */; };
-		8471688C3044282300613663 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 8471688B3044282300613663 /* Presentation */; };
-		8471688F3044285400613663 /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 8471688E3044285400613663 /* Configuration */; };
-		847168923044286200613663 /* Environment in Frameworks */ = {isa = PBXBuildFile; productRef = 847168913044286200613663 /* Environment */; };
-		847168953044286900613663 /* Telemetry in Frameworks */ = {isa = PBXBuildFile; productRef = 847168943044286900613663 /* Telemetry */; };
-		847168983044289E00613663 /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 847168973044289E00613663 /* FeatureSplash */; };
-		8471689B304428DE00613663 /* FeatureOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 8471689A304428DE00613663 /* FeatureOnboarding */; };
-		8471689E3044290300613663 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8471689D3044290300613663 /* FeatureAuth */; };
-		847168A13044291500613663 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 847168A03044291500613663 /* FeatureMain */; };
-		847168A43044292D00613663 /* FeatureNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 847168A33044292D00613663 /* FeatureNotification */; };
-		847168A73044294000613663 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 847168A63044294000613663 /* FeaturePurchase */; };
+        848397F3304B218A00D8C377 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 84716885304427D900613663 /* Domain */; };
+        848397F4304B218A00D8C377 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 847168883044281100613663 /* Data */; };
+        848397F5304B218A00D8C377 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 8471688B3044282300613663 /* Presentation */; };
+        848397F6304B218A00D8C377 /* Configuration in Frameworks */ = {isa = PBXBuildFile; productRef = 8471688E3044285400613663 /* Configuration */; };
+        848397F7304B218A00D8C377 /* Environment in Frameworks */ = {isa = PBXBuildFile; productRef = 847168913044286200613663 /* Environment */; };
+        848397F8304B218A00D8C377 /* Telemetry in Frameworks */ = {isa = PBXBuildFile; productRef = 847168943044286900613663 /* Telemetry */; };
+        848397FC304B218A00D8C377 /* Notification in Frameworks */ = {isa = PBXBuildFile; productRef = 84F478F5304B09CF006BE616 /* Notification */; };
+        848397F9304B218A00D8C377 /* FeatureSplash in Frameworks */ = {isa = PBXBuildFile; productRef = 847168973044289E00613663 /* FeatureSplash */; };
+        8471689B304428DE00613663 /* FeatureOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 8471689A304428DE00613663 /* FeatureOnboarding */; };
+        848397FA304B218A00D8C377 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8471689D3044290300613663 /* FeatureAuth */; };
+        848397FB304B218A00D8C377 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 847168A03044291500613663 /* FeatureMain */; };
+        847168A73044294000613663 /* FeaturePurchase in Frameworks */ = {isa = PBXBuildFile; productRef = 847168A63044294000613663 /* FeaturePurchase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8441225A2FDEE36A00B4A073 /* Specification.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Specification.md; sourceTree = "<group>"; };
-		846589462FDEE2B700F13BE4 /* Vexta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vexta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+        8441225A2FDEE36A00B4A073 /* Specification.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Specification.md; sourceTree = "<group>"; };
+        846589462FDEE2B700F13BE4 /* Vexta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vexta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		845096A13043079000F41A55 /* Exceptions for "XcodeConfigs" folder in "Vexta" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Debug.xcconfig,
-				Development.xcconfig,
-			);
-			target = 846589452FDEE2B700F13BE4 /* Vexta */;
-		};
-		845096A2304307A000F41A55 /* Exceptions for "Vexta" folder in "Vexta" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 846589452FDEE2B700F13BE4 /* Vexta */;
-		};
+        845096A13043079000F41A55 /* Exceptions for "XcodeConfigs" folder in "Vexta" target */ = {
+            isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+            membershipExceptions = (
+                Debug.xcconfig,
+                Development.xcconfig,
+            );
+            target = 846589452FDEE2B700F13BE4 /* Vexta */;
+        };
+        845096A2304307A000F41A55 /* Exceptions for "Vexta" folder in "Vexta" target */ = {
+            isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+            membershipExceptions = (
+                Info.plist,
+            );
+            target = 846589452FDEE2B700F13BE4 /* Vexta */;
+        };
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		846589482FDEE2B700F13BE4 /* Vexta */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				845096A2304307A000F41A55 /* Exceptions for "Vexta" folder in "Vexta" target */,
-			);
-			path = Vexta;
-			sourceTree = "<group>";
-		};
-		84BBC74A3027DC10008882F0 /* XcodeConfigs */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				845096A13043079000F41A55 /* Exceptions for "XcodeConfigs" folder in "Vexta" target */,
-			);
-			path = XcodeConfigs;
-			sourceTree = "<group>";
-		};
+        846589482FDEE2B700F13BE4 /* Vexta */ = {
+            isa = PBXFileSystemSynchronizedRootGroup;
+            exceptions = (
+                845096A2304307A000F41A55 /* Exceptions for "Vexta" folder in "Vexta" target */,
+            );
+            path = Vexta;
+            sourceTree = "<group>";
+        };
+        84BBC74A3027DC10008882F0 /* XcodeConfigs */ = {
+            isa = PBXFileSystemSynchronizedRootGroup;
+            exceptions = (
+                845096A13043079000F41A55 /* Exceptions for "XcodeConfigs" folder in "Vexta" target */,
+            );
+            path = XcodeConfigs;
+            sourceTree = "<group>";
+        };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		846589432FDEE2B700F13BE4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8471689B304428DE00613663 /* FeatureOnboarding in Frameworks */,
-				847168953044286900613663 /* Telemetry in Frameworks */,
-				847168893044281100613663 /* Data in Frameworks */,
-				8471688F3044285400613663 /* Configuration in Frameworks */,
-				8471688C3044282300613663 /* Presentation in Frameworks */,
-				847168923044286200613663 /* Environment in Frameworks */,
-				847168A73044294000613663 /* FeaturePurchase in Frameworks */,
-				847168983044289E00613663 /* FeatureSplash in Frameworks */,
-				8471689E3044290300613663 /* FeatureAuth in Frameworks */,
-				847168A13044291500613663 /* FeatureMain in Frameworks */,
-				847168A43044292D00613663 /* FeatureNotification in Frameworks */,
-				84716886304427D900613663 /* Domain in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+        846589432FDEE2B700F13BE4 /* Frameworks */ = {
+            isa = PBXFrameworksBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                848397F3304B218A00D8C377 /* Domain in Frameworks */,
+                848397F4304B218A00D8C377 /* Data in Frameworks */,
+                848397F5304B218A00D8C377 /* Presentation in Frameworks */,
+                848397F6304B218A00D8C377 /* Configuration in Frameworks */,
+                848397F7304B218A00D8C377 /* Environment in Frameworks */,
+                848397F8304B218A00D8C377 /* Telemetry in Frameworks */,
+                848397FC304B218A00D8C377 /* Notification in Frameworks */,
+                848397F9304B218A00D8C377 /* FeatureSplash in Frameworks */,
+                8471689B304428DE00613663 /* FeatureOnboarding in Frameworks */,
+                848397FA304B218A00D8C377 /* FeatureAuth in Frameworks */,
+                848397FB304B218A00D8C377 /* FeatureMain in Frameworks */,
+                847168A73044294000613663 /* FeaturePurchase in Frameworks */,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8423A396301F7D4E00408833 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8465893D2FDEE2B700F13BE4 = {
-			isa = PBXGroup;
-			children = (
-				8441225A2FDEE36A00B4A073 /* Specification.md */,
-				84BBC74A3027DC10008882F0 /* XcodeConfigs */,
-				846589482FDEE2B700F13BE4 /* Vexta */,
-				846589472FDEE2B700F13BE4 /* Products */,
-				8423A396301F7D4E00408833 /* Frameworks */,
-			);
-			sourceTree = "<group>";
-		};
-		846589472FDEE2B700F13BE4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				846589462FDEE2B700F13BE4 /* Vexta.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
+        8423A396301F7D4E00408833 /* Frameworks */ = {
+            isa = PBXGroup;
+            children = (
+            );
+            name = Frameworks;
+            sourceTree = "<group>";
+        };
+        8465893D2FDEE2B700F13BE4 = {
+            isa = PBXGroup;
+            children = (
+                8441225A2FDEE36A00B4A073 /* Specification.md */,
+                84BBC74A3027DC10008882F0 /* XcodeConfigs */,
+                846589482FDEE2B700F13BE4 /* Vexta */,
+                846589472FDEE2B700F13BE4 /* Products */,
+                8423A396301F7D4E00408833 /* Frameworks */,
+            );
+            sourceTree = "<group>";
+        };
+        846589472FDEE2B700F13BE4 /* Products */ = {
+            isa = PBXGroup;
+            children = (
+                846589462FDEE2B700F13BE4 /* Vexta.app */,
+            );
+            name = Products;
+            sourceTree = "<group>";
+        };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		846589452FDEE2B700F13BE4 /* Vexta */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 846589512FDEE2B800F13BE4 /* Build configuration list for PBXNativeTarget "Vexta" */;
-			buildPhases = (
-				846589422FDEE2B700F13BE4 /* Sources */,
-				846589432FDEE2B700F13BE4 /* Frameworks */,
-				846589442FDEE2B700F13BE4 /* Resources */,
-				843898172FF69AE90010175F /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				846589482FDEE2B700F13BE4 /* Vexta */,
-				84BBC74A3027DC10008882F0 /* XcodeConfigs */,
-			);
-			name = Vexta;
-			packageProductDependencies = (
-				84602B7A304314F0006F1470 /* Domain */,
-				84602B7D30431514006F1470 /* Data */,
-				84602B803043155A006F1470 /* Presentation */,
-				84602B833043156B006F1470 /* Configuration */,
-				84602B8630431575006F1470 /* Environment */,
-				84602B8930431596006F1470 /* Telemetry */,
-				84602B8C304315A6006F1470 /* FeatureSplash */,
-				84602B8F304315B4006F1470 /* FeatureAuth */,
-				84602B92304315C6006F1470 /* FeatureMain */,
-				84602B95304315D2006F1470 /* FeatureNotification */,
-				84602B98304315DF006F1470 /* FeaturePurchase */,
-				84716885304427D900613663 /* Domain */,
-				847168883044281100613663 /* Data */,
-				8471688B3044282300613663 /* Presentation */,
-				8471688E3044285400613663 /* Configuration */,
-				847168913044286200613663 /* Environment */,
-				847168943044286900613663 /* Telemetry */,
-				847168973044289E00613663 /* FeatureSplash */,
-				8471689A304428DE00613663 /* FeatureOnboarding */,
-				8471689D3044290300613663 /* FeatureAuth */,
-				847168A03044291500613663 /* FeatureMain */,
-				847168A33044292D00613663 /* FeatureNotification */,
-				847168A63044294000613663 /* FeaturePurchase */,
-			);
-			productName = Vexta;
-			productReference = 846589462FDEE2B700F13BE4 /* Vexta.app */;
-			productType = "com.apple.product-type.application";
-		};
+        846589452FDEE2B700F13BE4 /* Vexta */ = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = 846589512FDEE2B800F13BE4 /* Build configuration list for PBXNativeTarget "Vexta" */;
+            buildPhases = (
+                846589422FDEE2B700F13BE4 /* Sources */,
+                846589432FDEE2B700F13BE4 /* Frameworks */,
+                846589442FDEE2B700F13BE4 /* Resources */,
+                843898172FF69AE90010175F /* ShellScript */,
+            );
+            buildRules = (
+            );
+            dependencies = (
+            );
+            fileSystemSynchronizedGroups = (
+                846589482FDEE2B700F13BE4 /* Vexta */,
+                84BBC74A3027DC10008882F0 /* XcodeConfigs */,
+            );
+            name = Vexta;
+            packageProductDependencies = (
+                84716885304427D900613663 /* Domain */,
+                847168883044281100613663 /* Data */,
+                8471688B3044282300613663 /* Presentation */,
+                8471688E3044285400613663 /* Configuration */,
+                847168913044286200613663 /* Environment */,
+                847168943044286900613663 /* Telemetry */,
+                84F478F5304B09CF006BE616 /* Notification */,
+                847168973044289E00613663 /* FeatureSplash */,
+                8471689A304428DE00613663 /* FeatureOnboarding */,
+                8471689D3044290300613663 /* FeatureAuth */,
+                847168A03044291500613663 /* FeatureMain */,
+                847168A63044294000613663 /* FeaturePurchase */,
+            );
+            productName = Vexta;
+            productReference = 846589462FDEE2B700F13BE4 /* Vexta.app */;
+            productType = "com.apple.product-type.application";
+        };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8465893E2FDEE2B700F13BE4 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2630;
-				LastUpgradeCheck = 2630;
-				TargetAttributes = {
-					846589452FDEE2B700F13BE4 = {
-						CreatedOnToolsVersion = 26.3;
-					};
-				};
-			};
-			buildConfigurationList = 846589412FDEE2B700F13BE4 /* Build configuration list for PBXProject "Vexta" */;
-			developmentRegion = en;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 8465893D2FDEE2B700F13BE4;
-			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				84716884304427D900613663 /* XCLocalSwiftPackageReference "Packages/Domain" */,
-				847168873044281100613663 /* XCLocalSwiftPackageReference "Packages/Data" */,
-				8471688A3044282300613663 /* XCLocalSwiftPackageReference "Packages/Presentation" */,
-				8471688D3044285400613663 /* XCLocalSwiftPackageReference "Packages/Configuration" */,
-				847168903044286200613663 /* XCLocalSwiftPackageReference "Packages/Environment" */,
-				847168933044286900613663 /* XCLocalSwiftPackageReference "Packages/Telemetry" */,
-				847168963044289E00613663 /* XCLocalSwiftPackageReference "Packages/FeatureSplash" */,
-				84716899304428DE00613663 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */,
-				8471689C3044290300613663 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */,
-				8471689F3044291500613663 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */,
-				847168A23044292D00613663 /* XCLocalSwiftPackageReference "Packages/FeatureNotification" */,
-				847168A53044294000613663 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */,
-			);
-			preferredProjectObjectVersion = 77;
-			productRefGroup = 846589472FDEE2B700F13BE4 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				846589452FDEE2B700F13BE4 /* Vexta */,
-			);
-		};
+        8465893E2FDEE2B700F13BE4 /* Project object */ = {
+            isa = PBXProject;
+            attributes = {
+                BuildIndependentTargetsInParallel = 1;
+                LastSwiftUpdateCheck = 2630;
+                LastUpgradeCheck = 2630;
+                TargetAttributes = {
+                    846589452FDEE2B700F13BE4 = {
+                        CreatedOnToolsVersion = 26.3;
+                    };
+                };
+            };
+            buildConfigurationList = 846589412FDEE2B700F13BE4 /* Build configuration list for PBXProject "Vexta" */;
+            developmentRegion = en;
+            hasScannedForEncodings = 0;
+            knownRegions = (
+                en,
+                Base,
+            );
+            mainGroup = 8465893D2FDEE2B700F13BE4;
+            minimizedProjectReferenceProxies = 1;
+            packageReferences = (
+                84716884304427D900613663 /* XCLocalSwiftPackageReference "Packages/Domain" */,
+                847168873044281100613663 /* XCLocalSwiftPackageReference "Packages/Data" */,
+                8471688A3044282300613663 /* XCLocalSwiftPackageReference "Packages/Presentation" */,
+                8471688D3044285400613663 /* XCLocalSwiftPackageReference "Packages/Configuration" */,
+                847168903044286200613663 /* XCLocalSwiftPackageReference "Packages/Environment" */,
+                847168933044286900613663 /* XCLocalSwiftPackageReference "Packages/Telemetry" */,
+                84F478F4304B09CF006BE616 /* XCLocalSwiftPackageReference "Packages/Notification" */,
+                847168963044289E00613663 /* XCLocalSwiftPackageReference "Packages/FeatureSplash" */,
+                84716899304428DE00613663 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */,
+                8471689C3044290300613663 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */,
+                8471689F3044291500613663 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */,
+                847168A53044294000613663 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */,
+            );
+            preferredProjectObjectVersion = 77;
+            productRefGroup = 846589472FDEE2B700F13BE4 /* Products */;
+            projectDirPath = "";
+            projectRoot = "";
+            targets = (
+                846589452FDEE2B700F13BE4 /* Vexta */,
+            );
+        };
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		846589442FDEE2B700F13BE4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+        846589442FDEE2B700F13BE4 /* Resources */ = {
+            isa = PBXResourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		843898172FF69AE90010175F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
-				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
-				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}.debug.dylib",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
-		};
+        843898172FF69AE90010175F /* ShellScript */ = {
+            isa = PBXShellScriptBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+            );
+            inputFileListPaths = (
+            );
+            inputPaths = (
+                "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+                "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+                "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+                "$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+                "$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+                "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}.debug.dylib",
+            );
+            outputFileListPaths = (
+            );
+            outputPaths = (
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+            shellPath = /bin/sh;
+            shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+        };
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		846589422FDEE2B700F13BE4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+        846589422FDEE2B700F13BE4 /* Sources */ = {
+            isa = PBXSourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		8465894F2FDEE2B800F13BE4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
-			baseConfigurationReferenceRelativePath = Development.xcconfig;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		846589502FDEE2B800F13BE4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
-			baseConfigurationReferenceRelativePath = Development.xcconfig;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		846589522FDEE2B800F13BE4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
-			baseConfigurationReferenceRelativePath = Development.xcconfig;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Vexta/Vexta.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Vexta/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Vexta;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		846589532FDEE2B800F13BE4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
-			baseConfigurationReferenceRelativePath = Development.xcconfig;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Vexta/Vexta.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Vexta/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Vexta;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		8488473E300D698C00A3158B /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
-			baseConfigurationReferenceRelativePath = Development.xcconfig;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Development;
-		};
-		8488473F300D698C00A3158B /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
-			baseConfigurationReferenceRelativePath = App/Configuration/XcodeConfigs/Development.xcconfig;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Vexta/Vexta.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = Q3ZBJKTDC2;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Vexta/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Vexta;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Development;
-		};
+        8465894F2FDEE2B800F13BE4 /* Debug */ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
+            baseConfigurationReferenceRelativePath = Development.xcconfig;
+            buildSettings = {
+                ALWAYS_SEARCH_USER_PATHS = NO;
+                ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+                CLANG_ANALYZER_NONNULL = YES;
+                CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+                CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+                CLANG_ENABLE_MODULES = YES;
+                CLANG_ENABLE_OBJC_ARC = YES;
+                CLANG_ENABLE_OBJC_WEAK = YES;
+                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+                CLANG_WARN_BOOL_CONVERSION = YES;
+                CLANG_WARN_COMMA = YES;
+                CLANG_WARN_CONSTANT_CONVERSION = YES;
+                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+                CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+                CLANG_WARN_EMPTY_BODY = YES;
+                CLANG_WARN_ENUM_CONVERSION = YES;
+                CLANG_WARN_INFINITE_RECURSION = YES;
+                CLANG_WARN_INT_CONVERSION = YES;
+                CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+                CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+                CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+                CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+                CLANG_WARN_STRICT_PROTOTYPES = YES;
+                CLANG_WARN_SUSPICIOUS_MOVE = YES;
+                CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+                CLANG_WARN_UNREACHABLE_CODE = YES;
+                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+                COPY_PHASE_STRIP = NO;
+                DEBUG_INFORMATION_FORMAT = dwarf;
+                DEVELOPMENT_TEAM = Q3ZBJKTDC2;
+                ENABLE_STRICT_OBJC_MSGSEND = YES;
+                ENABLE_TESTABILITY = YES;
+                ENABLE_USER_SCRIPT_SANDBOXING = YES;
+                GCC_C_LANGUAGE_STANDARD = gnu17;
+                GCC_DYNAMIC_NO_PIC = NO;
+                GCC_NO_COMMON_BLOCKS = YES;
+                GCC_OPTIMIZATION_LEVEL = 0;
+                GCC_PREPROCESSOR_DEFINITIONS = (
+                    "DEBUG=1",
+                    "$(inherited)",
+                );
+                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+                GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+                GCC_WARN_UNDECLARED_SELECTOR = YES;
+                GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+                GCC_WARN_UNUSED_FUNCTION = YES;
+                GCC_WARN_UNUSED_VARIABLE = YES;
+                IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+                LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+                MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+                MTL_FAST_MATH = YES;
+                ONLY_ACTIVE_ARCH = YES;
+                SDKROOT = iphoneos;
+                SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+                SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+            };
+            name = Debug;
+        };
+        846589502FDEE2B800F13BE4 /* Release */ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
+            baseConfigurationReferenceRelativePath = Development.xcconfig;
+            buildSettings = {
+                ALWAYS_SEARCH_USER_PATHS = NO;
+                ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+                CLANG_ANALYZER_NONNULL = YES;
+                CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+                CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+                CLANG_ENABLE_MODULES = YES;
+                CLANG_ENABLE_OBJC_ARC = YES;
+                CLANG_ENABLE_OBJC_WEAK = YES;
+                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+                CLANG_WARN_BOOL_CONVERSION = YES;
+                CLANG_WARN_COMMA = YES;
+                CLANG_WARN_CONSTANT_CONVERSION = YES;
+                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+                CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+                CLANG_WARN_EMPTY_BODY = YES;
+                CLANG_WARN_ENUM_CONVERSION = YES;
+                CLANG_WARN_INFINITE_RECURSION = YES;
+                CLANG_WARN_INT_CONVERSION = YES;
+                CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+                CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+                CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+                CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+                CLANG_WARN_STRICT_PROTOTYPES = YES;
+                CLANG_WARN_SUSPICIOUS_MOVE = YES;
+                CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+                CLANG_WARN_UNREACHABLE_CODE = YES;
+                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+                COPY_PHASE_STRIP = NO;
+                DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+                DEVELOPMENT_TEAM = Q3ZBJKTDC2;
+                ENABLE_NS_ASSERTIONS = NO;
+                ENABLE_STRICT_OBJC_MSGSEND = YES;
+                ENABLE_USER_SCRIPT_SANDBOXING = YES;
+                GCC_C_LANGUAGE_STANDARD = gnu17;
+                GCC_NO_COMMON_BLOCKS = YES;
+                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+                GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+                GCC_WARN_UNDECLARED_SELECTOR = YES;
+                GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+                GCC_WARN_UNUSED_FUNCTION = YES;
+                GCC_WARN_UNUSED_VARIABLE = YES;
+                IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+                LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+                MTL_ENABLE_DEBUG_INFO = NO;
+                MTL_FAST_MATH = YES;
+                SDKROOT = iphoneos;
+                SWIFT_COMPILATION_MODE = wholemodule;
+                VALIDATE_PRODUCT = YES;
+            };
+            name = Release;
+        };
+        846589522FDEE2B800F13BE4 /* Debug */ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
+            baseConfigurationReferenceRelativePath = Development.xcconfig;
+            buildSettings = {
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+                CODE_SIGN_ENTITLEMENTS = Vexta/Vexta.entitlements;
+                CODE_SIGN_STYLE = Automatic;
+                CURRENT_PROJECT_VERSION = 1;
+                DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+                DEVELOPMENT_TEAM = Q3ZBJKTDC2;
+                ENABLE_PREVIEWS = YES;
+                ENABLE_USER_SCRIPT_SANDBOXING = YES;
+                GENERATE_INFOPLIST_FILE = YES;
+                INFOPLIST_FILE = Vexta/Info.plist;
+                INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+                INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+                INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+                INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+                INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+                INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+                LD_RUNPATH_SEARCH_PATHS = (
+                    "$(inherited)",
+                    "@executable_path/Frameworks",
+                );
+                MARKETING_VERSION = 1.0;
+                OTHER_LDFLAGS = "-ObjC";
+                PRODUCT_BUNDLE_IDENTIFIER = com.example.Vexta;
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                STRING_CATALOG_GENERATE_SYMBOLS = YES;
+                SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+                SUPPORTS_MACCATALYST = NO;
+                SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+                SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+                SWIFT_APPROACHABLE_CONCURRENCY = YES;
+                SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+                SWIFT_EMIT_LOC_STRINGS = YES;
+                SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+                SWIFT_VERSION = 5.0;
+                TARGETED_DEVICE_FAMILY = 1;
+            };
+            name = Debug;
+        };
+        846589532FDEE2B800F13BE4 /* Release */ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
+            baseConfigurationReferenceRelativePath = Development.xcconfig;
+            buildSettings = {
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+                CODE_SIGN_ENTITLEMENTS = Vexta/Vexta.entitlements;
+                CODE_SIGN_STYLE = Automatic;
+                CURRENT_PROJECT_VERSION = 1;
+                DEVELOPMENT_TEAM = Q3ZBJKTDC2;
+                ENABLE_PREVIEWS = YES;
+                ENABLE_USER_SCRIPT_SANDBOXING = YES;
+                GENERATE_INFOPLIST_FILE = YES;
+                INFOPLIST_FILE = Vexta/Info.plist;
+                INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+                INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+                INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+                INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+                INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+                INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+                LD_RUNPATH_SEARCH_PATHS = (
+                    "$(inherited)",
+                    "@executable_path/Frameworks",
+                );
+                MARKETING_VERSION = 1.0;
+                OTHER_LDFLAGS = "-ObjC";
+                PRODUCT_BUNDLE_IDENTIFIER = com.example.Vexta;
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                STRING_CATALOG_GENERATE_SYMBOLS = YES;
+                SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+                SUPPORTS_MACCATALYST = NO;
+                SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+                SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+                SWIFT_APPROACHABLE_CONCURRENCY = YES;
+                SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+                SWIFT_EMIT_LOC_STRINGS = YES;
+                SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+                SWIFT_VERSION = 5.0;
+                TARGETED_DEVICE_FAMILY = 1;
+            };
+            name = Release;
+        };
+        8488473E300D698C00A3158B /* Development */ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReferenceAnchor = 84BBC74A3027DC10008882F0 /* XcodeConfigs */;
+            baseConfigurationReferenceRelativePath = Development.xcconfig;
+            buildSettings = {
+                ALWAYS_SEARCH_USER_PATHS = NO;
+                ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+                CLANG_ANALYZER_NONNULL = YES;
+                CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+                CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+                CLANG_ENABLE_MODULES = YES;
+                CLANG_ENABLE_OBJC_ARC = YES;
+                CLANG_ENABLE_OBJC_WEAK = YES;
+                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+                CLANG_WARN_BOOL_CONVERSION = YES;
+                CLANG_WARN_COMMA = YES;
+                CLANG_WARN_CONSTANT_CONVERSION = YES;
+                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+                CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+                CLANG_WARN_EMPTY_BODY = YES;
+                CLANG_WARN_ENUM_CONVERSION = YES;
+                CLANG_WARN_INFINITE_RECURSION = YES;
+                CLANG_WARN_INT_CONVERSION = YES;
+                CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+                CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+                CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+                CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+                CLANG_WARN_STRICT_PROTOTYPES = YES;
+                CLANG_WARN_SUSPICIOUS_MOVE = YES;
+                CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+                CLANG_WARN_UNREACHABLE_CODE = YES;
+                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+                COPY_PHASE_STRIP = NO;
+                DEBUG_INFORMATION_FORMAT = dwarf;
+                DEVELOPMENT_TEAM = Q3ZBJKTDC2;
+                ENABLE_STRICT_OBJC_MSGSEND = YES;
+                ENABLE_TESTABILITY = YES;
+                ENABLE_USER_SCRIPT_SANDBOXING = YES;
+                GCC_C_LANGUAGE_STANDARD = gnu17;
+                GCC_DYNAMIC_NO_PIC = NO;
+                GCC_NO_COMMON_BLOCKS = YES;
+                GCC_OPTIMIZATION_LEVEL = 0;
+                GCC_PREPROCESSOR_DEFINITIONS = (
+                    "DEBUG=1",
+                    "$(inherited)",
+                );
+                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+                GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+                GCC_WARN_UNDECLARED_SELECTOR = YES;
+                GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+                GCC_WARN_UNUSED_FUNCTION = YES;
+                GCC_WARN_UNUSED_VARIABLE = YES;
+                IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+                LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+                MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+                MTL_FAST_MATH = YES;
+                ONLY_ACTIVE_ARCH = YES;
+                SDKROOT = iphoneos;
+                SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+                SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+            };
+            name = Development;
+        };
+        8488473F300D698C00A3158B /* Development */ = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReferenceAnchor = 846589482FDEE2B700F13BE4 /* Vexta */;
+            baseConfigurationReferenceRelativePath = App/Configuration/XcodeConfigs/Development.xcconfig;
+            buildSettings = {
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+                CODE_SIGN_ENTITLEMENTS = Vexta/Vexta.entitlements;
+                CODE_SIGN_STYLE = Automatic;
+                CURRENT_PROJECT_VERSION = 1;
+                DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+                DEVELOPMENT_TEAM = Q3ZBJKTDC2;
+                ENABLE_PREVIEWS = YES;
+                ENABLE_USER_SCRIPT_SANDBOXING = YES;
+                GENERATE_INFOPLIST_FILE = YES;
+                INFOPLIST_FILE = Vexta/Info.plist;
+                INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+                INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+                INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+                INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+                INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+                INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+                LD_RUNPATH_SEARCH_PATHS = (
+                    "$(inherited)",
+                    "@executable_path/Frameworks",
+                );
+                MARKETING_VERSION = 1.0;
+                OTHER_LDFLAGS = "-ObjC";
+                PRODUCT_BUNDLE_IDENTIFIER = com.example.Vexta;
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                STRING_CATALOG_GENERATE_SYMBOLS = YES;
+                SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+                SUPPORTS_MACCATALYST = NO;
+                SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+                SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+                SWIFT_APPROACHABLE_CONCURRENCY = YES;
+                SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+                SWIFT_EMIT_LOC_STRINGS = YES;
+                SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+                SWIFT_VERSION = 5.0;
+                TARGETED_DEVICE_FAMILY = 1;
+            };
+            name = Development;
+        };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		846589412FDEE2B700F13BE4 /* Build configuration list for PBXProject "Vexta" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8465894F2FDEE2B800F13BE4 /* Debug */,
-				8488473E300D698C00A3158B /* Development */,
-				846589502FDEE2B800F13BE4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		846589512FDEE2B800F13BE4 /* Build configuration list for PBXNativeTarget "Vexta" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				846589522FDEE2B800F13BE4 /* Debug */,
-				8488473F300D698C00A3158B /* Development */,
-				846589532FDEE2B800F13BE4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
+        846589412FDEE2B700F13BE4 /* Build configuration list for PBXProject "Vexta" */ = {
+            isa = XCConfigurationList;
+            buildConfigurations = (
+                8465894F2FDEE2B800F13BE4 /* Debug */,
+                8488473E300D698C00A3158B /* Development */,
+                846589502FDEE2B800F13BE4 /* Release */,
+            );
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Release;
+        };
+        846589512FDEE2B800F13BE4 /* Build configuration list for PBXNativeTarget "Vexta" */ = {
+            isa = XCConfigurationList;
+            buildConfigurations = (
+                846589522FDEE2B800F13BE4 /* Debug */,
+                8488473F300D698C00A3158B /* Development */,
+                846589532FDEE2B800F13BE4 /* Release */,
+            );
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Release;
+        };
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		84716884304427D900613663 /* XCLocalSwiftPackageReference "Packages/Domain" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/Domain;
-		};
-		847168873044281100613663 /* XCLocalSwiftPackageReference "Packages/Data" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/Data;
-		};
-		8471688A3044282300613663 /* XCLocalSwiftPackageReference "Packages/Presentation" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/Presentation;
-		};
-		8471688D3044285400613663 /* XCLocalSwiftPackageReference "Packages/Configuration" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/Configuration;
-		};
-		847168903044286200613663 /* XCLocalSwiftPackageReference "Packages/Environment" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/Environment;
-		};
-		847168933044286900613663 /* XCLocalSwiftPackageReference "Packages/Telemetry" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/Telemetry;
-		};
-		847168963044289E00613663 /* XCLocalSwiftPackageReference "Packages/FeatureSplash" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/FeatureSplash;
-		};
-		84716899304428DE00613663 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/FeatureOnboarding;
-		};
-		8471689C3044290300613663 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/FeatureAuth;
-		};
-		8471689F3044291500613663 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/FeatureMain;
-		};
-		847168A23044292D00613663 /* XCLocalSwiftPackageReference "Packages/FeatureNotification" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/FeatureNotification;
-		};
-		847168A53044294000613663 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/FeaturePurchase;
-		};
+        84716884304427D900613663 /* XCLocalSwiftPackageReference "Packages/Domain" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/Domain;
+        };
+        847168873044281100613663 /* XCLocalSwiftPackageReference "Packages/Data" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/Data;
+        };
+        8471688A3044282300613663 /* XCLocalSwiftPackageReference "Packages/Presentation" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/Presentation;
+        };
+        8471688D3044285400613663 /* XCLocalSwiftPackageReference "Packages/Configuration" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/Configuration;
+        };
+        847168903044286200613663 /* XCLocalSwiftPackageReference "Packages/Environment" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/Environment;
+        };
+        847168933044286900613663 /* XCLocalSwiftPackageReference "Packages/Telemetry" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/Telemetry;
+        };
+        84F478F4304B09CF006BE616 /* XCLocalSwiftPackageReference "Packages/Notification" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/Notification;
+        };
+        847168963044289E00613663 /* XCLocalSwiftPackageReference "Packages/FeatureSplash" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/FeatureSplash;
+        };
+        84716899304428DE00613663 /* XCLocalSwiftPackageReference "Packages/FeatureOnboarding" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/FeatureOnboarding;
+        };
+        8471689C3044290300613663 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/FeatureAuth;
+        };
+        8471689F3044291500613663 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/FeatureMain;
+        };
+        847168A53044294000613663 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Packages/FeaturePurchase;
+        };
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		84602B7A304314F0006F1470 /* Domain */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Domain;
-		};
-		84602B7D30431514006F1470 /* Data */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Data;
-		};
-		84602B803043155A006F1470 /* Presentation */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Presentation;
-		};
-		84602B833043156B006F1470 /* Configuration */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Configuration;
-		};
-		84602B8630431575006F1470 /* Environment */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Environment;
-		};
-		84602B8930431596006F1470 /* Telemetry */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Telemetry;
-		};
-		84602B8C304315A6006F1470 /* FeatureSplash */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureSplash;
-		};
-		84602B8F304315B4006F1470 /* FeatureAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureAuth;
-		};
-		84602B92304315C6006F1470 /* FeatureMain */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureMain;
-		};
-		84602B95304315D2006F1470 /* FeatureNotification */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureNotification;
-		};
-		84602B98304315DF006F1470 /* FeaturePurchase */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeaturePurchase;
-		};
-		84716885304427D900613663 /* Domain */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Domain;
-		};
-		847168883044281100613663 /* Data */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Data;
-		};
-		8471688B3044282300613663 /* Presentation */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Presentation;
-		};
-		8471688E3044285400613663 /* Configuration */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Configuration;
-		};
-		847168913044286200613663 /* Environment */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Environment;
-		};
-		847168943044286900613663 /* Telemetry */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Telemetry;
-		};
-		847168973044289E00613663 /* FeatureSplash */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureSplash;
-		};
-		8471689A304428DE00613663 /* FeatureOnboarding */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureOnboarding;
-		};
-		8471689D3044290300613663 /* FeatureAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureAuth;
-		};
-		847168A03044291500613663 /* FeatureMain */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureMain;
-		};
-		847168A33044292D00613663 /* FeatureNotification */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeatureNotification;
-		};
-		847168A63044294000613663 /* FeaturePurchase */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FeaturePurchase;
-		};
+        84716885304427D900613663 /* Domain */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = Domain;
+        };
+        847168883044281100613663 /* Data */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = Data;
+        };
+        8471688B3044282300613663 /* Presentation */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = Presentation;
+        };
+        8471688E3044285400613663 /* Configuration */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = Configuration;
+        };
+        847168913044286200613663 /* Environment */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = Environment;
+        };
+        847168943044286900613663 /* Telemetry */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = Telemetry;
+        };
+        84F478F5304B09CF006BE616 /* Notification */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = Notification;
+        };
+        847168973044289E00613663 /* FeatureSplash */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = FeatureSplash;
+        };
+        8471689A304428DE00613663 /* FeatureOnboarding */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = FeatureOnboarding;
+        };
+        8471689D3044290300613663 /* FeatureAuth */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = FeatureAuth;
+        };
+        847168A03044291500613663 /* FeatureMain */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = FeatureMain;
+        };
+        847168A63044294000613663 /* FeaturePurchase */ = {
+            isa = XCSwiftPackageProductDependency;
+            productName = FeaturePurchase;
+        };
 /* End XCSwiftPackageProductDependency section */
-	};
-	rootObject = 8465893E2FDEE2B700F13BE4 /* Project object */;
+    };
+    rootObject = 8465893E2FDEE2B700F13BE4 /* Project object */;
 }
