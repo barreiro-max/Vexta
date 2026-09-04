@@ -7,8 +7,8 @@
 
 import Foundation
 
-public protocol AuthStateObserver {
+public protocol AuthStateObserver: Sendable {
     func fetchAuthState() -> AuthState
     var isAuthenticated: Bool { get }
-    @MainActor var streamUserIds: AsyncStream<String?> { get }
+    var streamUserIds: AsyncStream<String?> { get }
 }
