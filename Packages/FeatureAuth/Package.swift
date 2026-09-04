@@ -15,6 +15,7 @@ let package = Package(
         .package(path: "../Data"),
         .package(path: "../Presentation"),
         .package(path: "../Telemetry"),
+        .package(path: "../Notification"),
     ],
     targets: [
         .target(
@@ -25,6 +26,7 @@ let package = Package(
                 .product(name: "Data", package: "Data"),
                 .product(name: "Presentation", package: "Presentation"),
                 .product(name: "Telemetry", package: "Telemetry"),
+                .product(name: "Notification", package: "Notification"),
             ]
         ),
         .testTarget(

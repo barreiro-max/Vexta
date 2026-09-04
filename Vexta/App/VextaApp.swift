@@ -8,6 +8,7 @@
 import SwiftUI
 import Telemetry
 import Environment
+import Notification
 
 @main
 struct VextaApp: App {
@@ -36,5 +37,6 @@ struct VextaApp: App {
 
     private func configureAppDelegate() {
         delegate.configContainer = rootContainer.configContainer
+        delegate.notificationContainer = rootContainer.notificationContainer
     }
 }

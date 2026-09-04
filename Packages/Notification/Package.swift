@@ -1,7 +1,7 @@
 // swift-tools-version: 6.2
 import PackageDescription
 
-fileprivate let packageName = "FeatureNotification"
+fileprivate let packageName = "Notification"
 
 let package = Package(
     name: packageName,
@@ -11,6 +11,7 @@ let package = Package(
     ],
     dependencies: [
         // Local Packages
+        .package(path: "../Domain"),
         .package(path: "../Telemetry"),
     ],
     targets: [
@@ -18,6 +19,7 @@ let package = Package(
             name: packageName,
             dependencies: [
                 // Local Dependencies
+                .product(name: "Domain", package: "Domain"),
                 .product(name: "Telemetry", package: "Telemetry"),
             ]
         ),

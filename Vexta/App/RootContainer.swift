@@ -5,6 +5,8 @@
 //  Created by MaxAdmin on 14.06.2026.
 //
 
+import Foundation
+
 // MARK: - Shared imports
 import Configuration
 import Environment
@@ -12,17 +14,18 @@ import Domain
 import Data
 import Presentation
 import Telemetry
+import Notification
 
 // MARK: - Feature imports
 import FeatureSplash
 import FeatureOnboarding
 import FeatureAuth
 import FeatureMain
-import FeatureNotification
 import FeaturePurchase
 
 final class RootContainer {
     private(set) lazy var configContainer = ConfigContainer()
+    private(set) lazy var notificationContainer = NotificationContainer()
 
     // MARK: - shared dependency
     private let remoteConfigRepository = FirebaseRemoteConfigRepository()
@@ -84,7 +87,6 @@ final class RootContainer {
         accountRepository: accountRepository,
         analyticsTracker: analyticsTracker
     )
-    private lazy var notificationContainer = NotificationContainer()
     private lazy var purchaseContainer     = PurchaseContainer()
 }
 

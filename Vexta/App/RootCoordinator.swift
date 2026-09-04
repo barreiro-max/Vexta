@@ -12,13 +12,13 @@ import Domain
 import Data
 import Presentation
 import Telemetry
+import Notification
 
 // MARK: - feature imports
 import FeatureSplash
 import FeatureOnboarding
 import FeatureAuth
 import FeatureMain
-import FeatureNotification
 import FeaturePurchase
 
 @MainActor

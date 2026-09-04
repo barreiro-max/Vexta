@@ -8,7 +8,7 @@
 import SwiftUI
 
 import FeatureMain
-import FeatureNotification
+import Notification
 import FeaturePurchase
 
 struct TabFlowView: View {

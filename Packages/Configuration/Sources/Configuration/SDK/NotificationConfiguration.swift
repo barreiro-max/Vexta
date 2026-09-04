@@ -20,11 +20,15 @@ public struct NotificationConfiguration: NotificationConfigurable {
         do {
             let center: UNUserNotificationCenter = .current()
 
-            let granted = try await center.requestAuthorization()
+            let options: UNAuthorizationOptions = [
+                .alert,
+                .badge,
+                .sound,
+                .providesAppNotificationSettings // TODO: — implement notification settings screen in settings
+            ]
+            let granted = try await center.requestAuthorization(options: options)
 
-            let status = await center.notificationSettings().authorizationStatus
-
-            Log.notification.notice("🔔 Notification authorization is granted by user: \(granted), authStatus: \(status)")
+            Log.notification.notice("🔔 Notification authorization is granted by user: \(granted)")
 
         } catch {
             Log.notification.error("⛔️ Notification authorization failed with error: \(error.localizedDescription)")
