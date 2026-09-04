@@ -32,11 +32,12 @@ extension FirebaseAuthStateObserver: AuthStateObserver {
         return authResult
     }
 
-    @MainActor public var streamUserIds: AsyncStream<String?> {
+    public var streamUserIds: AsyncStream<String?> {
         AsyncStream { continuation in
             let task = Task {
                 Log.auth.debug("Stream user ids started")
                 await observeAuthState(with: continuation)
+                continuation.finish()
             }
             continuation.onTermination = { _ in
                 Log.auth.debug("Stream user ids stopped")
