@@ -36,9 +36,9 @@ extension LogOutUseCaseImpl: LogOutUseCase {
                 try await accountRepository.deleteUser()
             } else {
                 try accountRepository.signOut()
+                analyticsTracker.track(event: .userLoggedOut)
             }
 
-            analyticsTracker.track(event: .userLoggedOut)
         } catch {
             throw error
         }
