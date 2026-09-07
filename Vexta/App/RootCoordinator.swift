@@ -26,15 +26,18 @@ import FeaturePurchase
 final class RootCoordinator {
 
     // MARK: - Nested Types
-    enum Route: Hashable, Codable, Sendable {
+    enum Route: Hashable, Codable, Identifiable, Sendable {
         case splash
         case onboarding
         case auth
         case mainTab
+
+        var id: String { "\(self)" }
     }
 
-    enum Sheet: Hashable, Sendable, Identifiable {
+    enum Sheet: Hashable, Identifiable, Sendable {
         case subscription
+        case emailVerification
 
         var id: String { "\(self)" }
     }
@@ -44,20 +47,28 @@ final class RootCoordinator {
     var rootSheet: Sheet?
     var alert: AppAlert?
 
-    // MARK: - Dependencies
+    // MARK: - Factory
     private let rootViewFactory: any RootViewFactory
     private let alertFactory: any RootAlertFactory
     private let rootSheetFactory: any RootSheetFactory
 
+    // MARK: - Observer
+    private let rootObserver: RootObserver
+
     // MARK: - Init
     init(
-        rootViewFactory: any RootViewFactory,
-        alertFactory: any RootAlertFactory,
-        rootSheetFactory: any RootSheetFactory
+        rootViewFactory:            any RootViewFactory,
+        alertFactory:               any RootAlertFactory,
+        rootSheetFactory:           any RootSheetFactory,
+        rootObserver:               RootObserver,
     ) {
         self.rootViewFactory = rootViewFactory
         self.alertFactory = alertFactory
         self.rootSheetFactory = rootSheetFactory
+        self.rootObserver = rootObserver
+
+        // MARK: - Start Observion
+        startSessionObservation()
     }
 
     // MARK: - View Destination
@@ -67,7 +78,9 @@ final class RootCoordinator {
 
     @ViewBuilder
     private func featureFlowView(by route: Route) -> some View {
-        let _ = Log.ui.debug("Will build by route: \(route)")
+        if self.rootRoute != route {
+            let _ = Log.ui.debug("Will build by route: \(route)")
+        }
 
         switch route {
 
@@ -95,11 +108,22 @@ final class RootCoordinator {
 
     @ViewBuilder
     func featureFlowView(by sheet: Sheet) -> some View {
-        let _ = Log.ui.debug("Will build by sheet: \(sheet)")
+        if self.rootSheet != sheet {
+            let _ = Log.ui.debug("Will build by sheet: \(sheet)")
+        }
 
         switch sheet {
+
         case .subscription:
             rootSheetFactory.makeSubcriptionSheet() // TODO: — RevenueCatUI paywall view
+
+        case .emailVerification:
+            ContentUnavailableView(
+                "Email Not Verified",
+                systemImage: "envelope.badge.shield.half.filled",
+                description: Text("Please check your inbox and verify your email address to continue.")
+            )
+            .presentationDetents([.medium])
         }
     }
 }
@@ -115,7 +139,7 @@ extension RootCoordinator {
         case dismissedAlert
     }
 
-    func send(_ intent: RootCoordinator.Intent) {
+    private func send(_ intent: RootCoordinator.Intent) {
         switch intent {
         case .presentedRoute(let rootRoute):
             if self.rootRoute != rootRoute {
@@ -127,10 +151,17 @@ extension RootCoordinator {
                 self.rootSheet = rootSheet
             }
 
-        case .dismissedSheet:                self.rootSheet = nil
-            
-        case .presentedAlert(let alert):     self.alert = alert
-        case .dismissedAlert:                self.alert = nil
+        case .dismissedSheet:
+            if self.rootSheet != nil {
+                self.rootSheet = nil
+            }
+
+        case .presentedAlert(let alert):
+            self.alert = alert
+
+        case .dismissedAlert:
+            self.alert = nil
+
         }
         
         Log.ui.debug("Send intent: \(intent)")
@@ -153,6 +184,9 @@ extension RootCoordinator {
         case .neededOnboarding:
             send(.presentedRoute(.onboarding))
 
+        case .neededEmailVerification:
+            send(.presentedRoute(.auth))
+
         case .authenticated:
             send(.presentedRoute(.mainTab))
 
@@ -172,6 +206,11 @@ extension RootCoordinator {
             send(.presentedRoute(.mainTab))
 
         case .alerted(let error):
+            guard error != .emailNotVerified else {
+                send(.presentedSheet(.emailVerification))
+                return
+            }
+
             let authAlert = alertFactory.makeAuthAlert(with: error)
             send(.presentedAlert(authAlert))
         }
@@ -186,6 +225,76 @@ extension RootCoordinator {
         case .alertedMain(let error):
             let alert = alertFactory.makeAccountAlert(with: error)
             send(.presentedAlert(alert))
+        }
+    }
+}
+
+// MARK: - Observe handle
+extension RootCoordinator {
+
+    private func startSessionObservation() {
+        rootObserver.observeSession() { [weak self] observerEvent in
+            self?.matchObserverEvent(for: observerEvent)
+        }
+    }
+
+    private func matchObserverEvent(
+        for observerEvent: RootObserver.ObserverEvent
+    ) {
+        switch observerEvent {
+
+        case .networkStatus(let status):
+            matchNetworkStatus(for: status)
+
+        case .authState(let state):
+            matchAuthState(for: state)
+
+        case .notificationEvent(let event):
+            matchNotificationEvent(for: event)
+        }
+    }
+}
+
+// MARK: - Observe event matching
+extension RootCoordinator {
+
+    private func matchNetworkStatus(for status: NetworkStatus) {
+        switch status {
+
+        case .connected:
+            break
+
+        case .requiresConnection:
+            let alert = alertFactory.makeNetworkAlert(with: .requiresConnection)
+            send(.presentedAlert(alert))
+
+        case .notConnected:
+            let alert = alertFactory.makeNetworkAlert(with: .noInternet)
+            send(.presentedAlert(alert))
+        }
+    }
+
+    private func matchAuthState(for state: AuthState) {
+        switch state {
+
+        case .authenticated:
+            send(.presentedRoute(.mainTab))
+
+        case .neededEmailVerification:
+            send(.presentedRoute(.auth))
+
+        case .unauthenticated:
+            send(.presentedRoute(.auth))
+        }
+    }
+
+    private func matchNotificationEvent(for event: NotificationEvent) {
+        switch event {
+
+        case .didReceive(let actionIdentifier, let userInfo):
+            break
+        case .willPresent(let userInfo):
+            break
         }
     }
 }

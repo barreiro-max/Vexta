@@ -102,11 +102,13 @@ extension RootContainer: RootCoordinatorFactory {
         let rootViewFactory = makeRootViewFactory()
         let alertFactory = RootAlertFactoryImpl()
         let rootSheetFactory = RootSheetFactoryImpl()
+        let rootObserver = makeRootObserver()
 
         return RootCoordinator(
             rootViewFactory: rootViewFactory,
             alertFactory: alertFactory,
             rootSheetFactory: rootSheetFactory,
+            rootObserver: rootObserver,
         )
     }
 
@@ -116,7 +118,7 @@ extension RootContainer: RootCoordinatorFactory {
         )
 
         let splashViewFactory = SplashViewFactory(
-            networkMonitor: dataContainer.networkMonitor,
+            networkStatusObserver: dataContainer.networkStatusObserver,
             fetchRemoteConfigUseCase: domainContainer.fetchRemoteConfigUseCase,
             authStateObserver: dataContainer.authStateObserver,
             checkOnboardingPassedUseCase: domainContainer.checkOnboardingPassedUseCase
@@ -138,6 +140,14 @@ extension RootContainer: RootCoordinatorFactory {
             splashViewFactory: splashViewFactory,
             authViewFactory: authViewFactory,
             tabFlowViewFactory: tabFlowViewFactory,
+        )
+    }
+
+    private func makeRootObserver() -> RootObserver {
+        return RootObserver(
+            networkStatusObserver: dataContainer.networkStatusObserver,
+            authStateObserver: dataContainer.authStateObserver,
+            notificationEventObserver: notificationContainer.notificationEventObserver,
         )
     }
 
