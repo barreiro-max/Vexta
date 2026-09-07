@@ -8,9 +8,14 @@
 import Foundation
 
 public struct FacebookSignInResult: Sendable {
-    public init(accessToken: String) {
-        self.accessToken = accessToken
-    }
+    public let authToken: String
+    public let nonce: String
 
-    public let accessToken: String
+    public init(
+        authToken: String,
+        nonce: String,
+    ) {
+        self.authToken = authToken
+        self.nonce = nonce
+    }
 }

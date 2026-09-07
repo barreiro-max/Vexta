@@ -72,8 +72,10 @@ extension FirebaseAuthDataSource: AuthDataSource {
     public func signInFacebook() async throws -> String {
         let tokens = try await facebookAuthProvider.signIn()
 
-        let facebookCredential = FirebaseAuth.FacebookAuthProvider.credential(
-            withAccessToken: tokens.accessToken
+        let facebookCredential = OAuthProvider.credential(
+            providerID: .facebook,
+            idToken: tokens.authToken,
+            rawNonce: tokens.nonce
         )
         let authDataResult = try await auth.signIn(with: facebookCredential)
         return authDataResult.user.uid

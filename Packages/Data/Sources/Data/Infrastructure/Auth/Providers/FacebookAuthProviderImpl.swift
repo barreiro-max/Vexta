@@ -10,18 +10,24 @@ import Telemetry
 import Domain
 import FacebookLogin
 
-public final class FacebookAuthProviderImpl: @unchecked Sendable {
+public final class FacebookAuthProviderImpl: Sendable {
     private var facebookLoginManager: LoginManager {
-        LoginManager.makeOpener()
+        LoginManager()
     }
 
+    private let nonceProvider: NonceProvider
     private let topViewControllerProvider: TopViewControllerProvider
 
-    public init(topViewControllerProvider: TopViewControllerProvider) {
+    public init(
+        nonceProvider: NonceProvider,
+        topViewControllerProvider: TopViewControllerProvider
+    ) {
+        self.nonceProvider = nonceProvider
         self.topViewControllerProvider = topViewControllerProvider
     }
 
-    private var continuation: CheckedContinuation<FacebookSignInResult, Error>?
+    @MainActor private var rawNonce: String?
+    @MainActor private var continuation: CheckedContinuation<FacebookSignInResult, Error>?
 }
 
 extension FacebookAuthProviderImpl: FacebookAuthProvider {
@@ -31,10 +37,19 @@ extension FacebookAuthProviderImpl: FacebookAuthProvider {
             throw FacebookSignInError.cannotFindTopViewController
         }
 
+        let nonceLength = 32
+        let nonce = nonceProvider.randomNonceString(length: nonceLength)
+        let hashedNonce = nonceProvider.sha256(nonce)
+        self.rawNonce = nonce
+
         return try await withCheckedThrowingContinuation { continuation in
             self.continuation = continuation
 
-            guard let config = limitedLoginConfiguration else {
+            guard let config = LoginConfiguration(
+                permissions: ["public_profile", "email"],
+                tracking: .limited,
+                nonce: hashedNonce,
+            ) else {
                 Log.auth.error("Missing Facebook Login confuguration")
                 continuation.resume(throwing: FacebookSignInError.missingLoginConfiguration)
                 return
@@ -45,28 +60,33 @@ extension FacebookAuthProviderImpl: FacebookAuthProvider {
         }
     }
 
-    private var limitedLoginConfiguration: LoginConfiguration? {
-        LoginConfiguration(
-            permissions: ["public_profile", "email"],
-            tracking: .limited
-        )
-    }
-
-    private func matchLoginResult(
+    @MainActor private func matchLoginResult(
         with continuation: CheckedContinuation<FacebookSignInResult, Error>,
         by result: LoginResult
     ) {
         switch result {
 
-        case let .success(_, _, accessToken):
+        case let .success(granted, declined, _):
 
-            guard let accessTokenString = accessToken?.tokenString else {
-                Log.auth.error("Facebook AccessToken is nil")
-                continuation.resume(throwing: FacebookSignInError.invalidAccessToken)
+            Log.auth.debug("Facebook Permissions, granted: \(granted), declined: \(declined)")
+
+            guard let authToken = AuthenticationToken.current else {
+                Log.auth.error("Facebook AuthenticationToken is nil")
+                continuation.resume(throwing: FacebookSignInError.invalidAuthToken)
                 return
             }
+
+            guard let nonce = rawNonce else {
+                Log.auth.error("Facebook current nonce is nil")
+                continuation.resume(throwing: FacebookSignInError.invalidCurrentNonce)
+                return
+            }
+
             continuation.resume(
-                returning: FacebookSignInResult(accessToken: accessTokenString)
+                returning: FacebookSignInResult(
+                    authToken: authToken.tokenString,
+                    nonce: nonce
+                )
             )
 
         case .cancelled:

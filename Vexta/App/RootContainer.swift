@@ -47,7 +47,8 @@ final class RootContainer {
     )
 
     private lazy var facebookAuthProvider      = FacebookAuthProviderImpl(
-        topViewControllerProvider: topViewControllerProvider
+        nonceProvider: nonceProvider,
+        topViewControllerProvider: topViewControllerProvider,
     )
 
     lazy var authRepository            = {

@@ -64,8 +64,10 @@ extension FirebaseAccountDataSource: AccountDataSource {
     public func linkWithFacebook() async throws -> String {
         let tokens = try await facebookAuthProvider.signIn()
 
-        let facebookCredential = FirebaseAuth.FacebookAuthProvider.credential(
-            withAccessToken: tokens.accessToken
+        let facebookCredential = OAuthProvider.credential(
+            providerID: .facebook,
+            idToken: tokens.authToken,
+            rawNonce: tokens.nonce
         )
         let authDataResult = try await firebaseUser.link(with: facebookCredential)
         return authDataResult.user.uid
