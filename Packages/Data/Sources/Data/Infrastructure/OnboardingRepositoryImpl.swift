@@ -7,7 +7,6 @@
 
 import Foundation
 import Domain
-import Environment
 import Telemetry
 
 public struct OnboardingRepositoryImpl {
@@ -32,14 +31,8 @@ extension OnboardingRepositoryImpl: OnboardingRepository {
     }
 
     public func setOnboardingPassed() throws {
-        switch AppEnvironment.current {
-        case .prod:
-            Log.onboarding.debug("Onboarding completed")
-            preferenceDataSource.set(true, forKey: preferenceKey)
-        default:
-            Log.onboarding.debug("[DEBUG] Onboarding completed (without setting value)")
-            return
-        }
+        preferenceDataSource.set(true, forKey: preferenceKey)
+        Log.onboarding.debug("Onboarding completed")
     }
 }
 
