@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+
+// MARK: - Shared imports
 import Telemetry
 
 public struct AppConfiguration: Sendable {

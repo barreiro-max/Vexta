@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - feature imports
+// MARK: - Feature imports
 import FeatureMain
 //import FeatureSearch
 //import FeatureCart

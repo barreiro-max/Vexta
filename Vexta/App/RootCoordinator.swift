@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-// MARK: - shared imports
+// MARK: - Shared imports
 import Domain
 import Data
 import Presentation
 import Telemetry
 import Notification
 
-// MARK: - feature imports
+// MARK: - Feature imports
 import FeatureSplash
 import FeatureOnboarding
 import FeatureAuth

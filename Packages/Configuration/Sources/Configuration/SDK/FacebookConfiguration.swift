@@ -6,7 +6,11 @@
 //
 
 import Foundation
+
+// MARK: - Shared imports
 import FacebookCore
+
+// MARK: - SDK imports
 import Telemetry
 
 public protocol FacebookConfigurable: Sendable {

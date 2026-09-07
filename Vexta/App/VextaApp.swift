@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+
+// MARK: - Shared imports
 import Telemetry
 import Environment
 import Notification

@@ -7,12 +7,12 @@
 
 import Foundation
 
-// MARK: - shared imports
+// MARK: - Shared imports
 import Domain
 import Presentation
 import Notification
 
-// MARK: - feature imports
+// MARK: - Feature imports
 import FeatureSplash
 import FeatureMain
 

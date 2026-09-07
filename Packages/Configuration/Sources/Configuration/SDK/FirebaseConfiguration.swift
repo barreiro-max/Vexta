@@ -6,11 +6,15 @@
 //
 
 import Foundation
+
+// MARK: - Shared imports
+import Telemetry
+import Environment
+
+// MARK: - SDK imports
 import FirebaseCore
 import FirebaseAuth
 import FirebaseRemoteConfig
-import Telemetry
-import Environment
 
 public protocol FirebaseConfigurable: Sendable {
     func configureFirebaseApp()

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-// MARK: - shared imports
+// MARK: - Shared imports
 import Domain
 import Presentation
 
-// MARK: - feature imports
+// MARK: - Feature imports
 import FeatureSplash
 import FeatureOnboarding
 import FeatureAuth

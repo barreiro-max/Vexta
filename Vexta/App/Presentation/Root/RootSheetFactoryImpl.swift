@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-// MARK: - shared imports
+// MARK: - Shared imports
 import Presentation
 
-// MARK: - feature imports
+// MARK: - Feature imports
 import FeaturePurchase
 
 protocol RootSheetFactory {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - shared imports
+// MARK: - Shared imports
 import Domain
 import Telemetry
 import Notification

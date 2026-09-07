@@ -6,8 +6,12 @@
 //
 
 import Foundation
-import GoogleSignIn
+
+// MARK: - Shared imports
 import Telemetry
+
+// MARK: - SDK imports
+import GoogleSignIn
 
 public protocol GoogleConfigurable {
     @MainActor func configureGoogleURL(

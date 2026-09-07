@@ -5,7 +5,10 @@
 //  Created by MaxAdmin on 02.07.2026.
 //
 
+import Foundation
 import UserNotifications
+
+// MARK: - Shared imports
 import Telemetry
 
 public protocol NotificationConfigurable: Sendable {

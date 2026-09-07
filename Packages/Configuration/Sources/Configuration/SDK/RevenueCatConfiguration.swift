@@ -6,9 +6,13 @@
 //
 
 import Foundation
-import RevenueCat
+
+// MARK: - Shared imports
 import Environment
 import Telemetry
+
+// MARK: - SDK imports
+import RevenueCat
 
 public protocol RevenueCatConfigurable: Sendable {
     func configure() async
