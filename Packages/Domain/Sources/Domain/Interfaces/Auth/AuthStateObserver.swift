@@ -10,5 +10,5 @@ import Foundation
 public protocol AuthStateObserver: Sendable {
     func fetchAuthState() -> AuthState
     var isAuthenticated: Bool { get }
-    var streamUserIds: AsyncStream<String?> { get }
+    var stream: AsyncStream<AuthState> { get }
 }

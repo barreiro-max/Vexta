@@ -22,10 +22,10 @@ public struct PreviewAuthStateObserver: AuthStateObserver {
         }
     }
 
-    public var streamUserIds: AsyncStream<String?> = .init { continuation in
-        continuation.yield("preview_user_uid_2")
-        continuation.yield("preview_user_uid_3")
-        continuation.yield("preview_user_uid_4")
+    public var stream: AsyncStream<AuthState> = .init { continuation in
+        continuation.yield(.authenticated(userId: "preview_user_uid_2"))
+        continuation.yield(.authenticated(userId: "preview_user_uid_3"))
+        continuation.yield(.authenticated(userId: "preview_user_uid_4"))
         continuation.finish()
     }
 }

@@ -18,42 +18,84 @@ public struct FirebaseAuthStateObserver {
 extension FirebaseAuthStateObserver: AuthStateObserver {
 
     public func fetchAuthState() -> AuthState {
-        guard let userId = auth.currentUser?.uid else {
+        guard let user = auth.currentUser else {
             Log.auth.debug("Auth state is unauthenticated")
             return .unauthenticated
         }
-        Log.auth.debug("Auth state is authenticated with id: \(userId)")
-        return .authenticated(userId: userId)
+
+        guard user.isEmailVerified || user.isAnonymous else {
+            Log.auth.debug("Auth state is not verificated with id: \(user.uid)")
+            return .neededEmailVerification(userId: user.uid)
+        }
+
+        Log.auth.debug("Auth state is authenticated with id: \(user.uid)")
+        return .authenticated(userId: user.uid)
     }
 
     public var isAuthenticated: Bool {
-        let authResult = auth.currentUser != nil
-        Log.auth.debug("User is authenticated: [\(authResult)]")
-        return authResult
+        guard let user = auth.currentUser else {
+            Log.auth.debug("User is unauthenticated")
+            return false
+        }
+        Log.auth.debug("User is authenticated with id: [\(user.uid)]")
+        return user.isEmailVerified || user.isAnonymous
     }
 
-    public var streamUserIds: AsyncStream<String?> {
+    public var stream: AsyncStream<AuthState> {
         AsyncStream { continuation in
             let task = Task {
-                Log.auth.debug("Stream user ids started")
+                Log.auth.debug("Stream auth state started")
                 await observeAuthState(with: continuation)
                 continuation.finish()
+                Log.auth.debug("Stream auth state finished")
             }
             continuation.onTermination = { _ in
-                Log.auth.debug("Stream user ids stopped")
                 task.cancel()
+                Log.auth.debug("Stream auth state stopped")
             }
         }
     }
 
     private func observeAuthState(
-        with continuation: AsyncStream<String?>.Continuation
+        with continuation: AsyncStream<AuthState>.Continuation
     ) async {
+        var previous: AuthState?
+
         for await user in auth.authStateChanges {
             if Task.isCancelled { break }
-            let uid = user?.uid
-            Log.auth.debug("Stream user ids yields with: [\(String(describing: uid))]")
-            continuation.yield(uid)
+
+            let currentState: AuthState? = await {
+                guard let user else {
+                    return .unauthenticated
+                }
+
+                guard user.isEmailVerified || user.isAnonymous else {
+                    return .neededEmailVerification(userId: user.uid)
+                }
+
+                do {
+                    try await user.getIDToken(forcingRefresh: true)
+                    return .authenticated(userId: user.uid)
+                } catch {
+                    try? auth.signOut()
+                    Log.auth.error("Token refresh failed, sign out from account...: \(error)")
+                    return nil
+                }
+            }()
+
+            guard let currentState else {
+                Log.auth.debug("Current auth state is nil")
+                continue
+            }
+
+            guard currentState != previous else {
+                Log.auth.debug("Current auth state is equal previous")
+                continue
+            }
+            previous = currentState
+
+            continuation.yield(currentState)
+            Log.auth.debug("Stream auth state yields with: \(currentState)")
         }
     }
 }
