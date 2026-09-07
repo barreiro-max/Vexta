@@ -11,18 +11,18 @@ import Domain
 @MainActor
 public struct SplashViewFactory {
 
-    private let networkMonitor: NetworkMonitor
+    private let networkStatusObserver: NetworkStatusObserver
     private let fetchRemoteConfigUseCase: FetchRemoteConfigUseCase
     private let authStateObserver: AuthStateObserver
     private let checkOnboardingPassedUseCase: CheckOnboardingPassedUseCase
 
     public init(
-        networkMonitor: NetworkMonitor,
+        networkStatusObserver: NetworkStatusObserver,
         fetchRemoteConfigUseCase: FetchRemoteConfigUseCase,
         authStateObserver: AuthStateObserver,
         checkOnboardingPassedUseCase: CheckOnboardingPassedUseCase
     ) {
-        self.networkMonitor = networkMonitor
+        self.networkStatusObserver = networkStatusObserver
         self.fetchRemoteConfigUseCase = fetchRemoteConfigUseCase
         self.authStateObserver = authStateObserver
         self.checkOnboardingPassedUseCase = checkOnboardingPassedUseCase
@@ -32,7 +32,7 @@ public struct SplashViewFactory {
         onStoreEvent: @escaping (SplashStore.Event) -> Void
     ) -> SplashView {
         let store = SplashStore(
-            networkMonitor: networkMonitor,
+            networkStatusObserver: networkStatusObserver,
             fetchRemoteConfigUseCase: fetchRemoteConfigUseCase,
             authStateObserver: authStateObserver,
             checkOnboardingPassedUseCase: checkOnboardingPassedUseCase,
