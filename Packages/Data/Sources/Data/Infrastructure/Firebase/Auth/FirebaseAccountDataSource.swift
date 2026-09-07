@@ -76,6 +76,17 @@ extension FirebaseAccountDataSource: AccountDataSource {
 
     public func unlink(providerId: String) async throws -> String {
         do {
+            let userProviderData = try firebaseUser.providerData
+            let isProviderLinked = userProviderData.contains { $0.providerID == providerId }
+
+            guard isProviderLinked else {
+                throw AccountError.noSuchProvider
+            }
+
+            guard userProviderData.count > 1 else {
+                throw AccountError.cannotUnlinkLastProvider
+            }
+
             let user = try await firebaseUser.unlink(fromProvider: providerId)
             return user.uid
         } catch {

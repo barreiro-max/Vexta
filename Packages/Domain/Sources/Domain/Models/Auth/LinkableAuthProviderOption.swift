@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum LinkableAuthProviderOption: Sendable {
+public enum LinkableAuthProviderOption: Equatable, Sendable {
     case email(email: String, password: String)
     case google
     case apple

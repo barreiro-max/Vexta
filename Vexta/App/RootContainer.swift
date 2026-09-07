@@ -156,6 +156,8 @@ extension RootContainer: RootCoordinatorFactory {
             logOutUseCase: mainContainer.logOutUseCase,
             userAnonymousUseCase: mainContainer.userAnonymousUseCase,
             deleteAccountUseCase: mainContainer.deleteAccountUseCase,
+            linkAccountUseCase: mainContainer.linkAccountUseCase,
+            unlinkAccountUseCase: mainContainer.unlinkAccountUseCase,
         )
 
         return TabFlowViewFactoryImpl(

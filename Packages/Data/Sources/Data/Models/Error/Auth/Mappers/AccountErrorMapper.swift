@@ -8,6 +8,7 @@
 import Foundation
 import Domain
 import FirebaseAuth
+import AuthenticationServices
 
 extension AccountError {
 
@@ -25,6 +26,9 @@ extension AccountError {
 
         case let facebookSignInError as FacebookSignInError:
             self.init(from: facebookSignInError)
+
+        case let appleAuthError as ASAuthorizationError:
+            self.init(from: appleAuthError)
 
         case let nsError as NSError where nsError.domain == AuthErrorDomain:
             guard let authErrorCode = AuthErrorCode(rawValue: nsError.code) else {
@@ -63,6 +67,25 @@ extension AccountError {
         }
     }
 
+    private init(from appleAuthError: ASAuthorizationError) {
+        switch appleAuthError.code {
+        case .canceled:
+            self = .userCancelled
+        case .notInteractive:
+            self = .uiError
+        default:
+            let nsError = appleAuthError as NSError
+            let customNSError = NSError(
+                domain: nsError.domain,
+                code: nsError.code,
+                userInfo: [
+                    NSLocalizedDescriptionKey: "Sign In with Apple is not configured (not set capabilities)"
+                ]
+            )
+            self = .unknown(underlying: customNSError)
+        }
+    }
+
     private init(from authErrorCode: AuthErrorCode) {
         self = switch authErrorCode {
         case .userNotFound:
@@ -71,7 +94,13 @@ extension AccountError {
             .requiresRecentLogin
         case .providerAlreadyLinked:
             .providerAlreadyLinked
-        case .credentialAlreadyInUse, .accountExistsWithDifferentCredential:
+        case .missingEmail:
+            .missingEmail
+        case .invalidEmail:
+            .invalidEmail
+        case .noSuchProvider:
+            .noSuchProvider
+        case .credentialAlreadyInUse, .accountExistsWithDifferentCredential, .emailAlreadyInUse:
             .credentialAlreadyInUse
         case .networkError:
             .networkError

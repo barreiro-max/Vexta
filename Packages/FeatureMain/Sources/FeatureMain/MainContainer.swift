@@ -34,4 +34,12 @@ public final class MainContainer {
     public lazy var userAnonymousUseCase = UserAnonymousUseCaseImpl(
         accountRepository: accountRepository
     )
+
+    public lazy var linkAccountUseCase = LinkAccountUseCaseImpl(
+        accountRepository: accountRepository
+    )
+
+    public lazy var unlinkAccountUseCase = UnlinkAccountUseCaseImpl(
+        accountRepository: accountRepository
+    )
 }

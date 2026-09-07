@@ -90,6 +90,19 @@ extension MainFlowCoordinator {
 
         case .logOutFailed(let error):
             send(.showAlert(error: error))
+
+        case .linkFailed(let error):
+            guard error != .userCancelled else {
+                Log.ui.debug("Alert is not sent, error: \(error.localizedDescription)")
+                return
+            }
+
+            send(.showAlert(error: error))
+
+        case .unlinkFailed(let error):
+            send(.showAlert(error: error))
+            
+        default: break
         }
     }
 }

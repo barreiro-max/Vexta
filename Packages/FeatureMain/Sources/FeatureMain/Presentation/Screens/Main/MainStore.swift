@@ -16,7 +16,7 @@ final class MainStore {
     enum State: Equatable {
         case idle
         case loading
-        case success
+        case completed
         case failure(error: AccountError)
 
         var isLoading: Bool {
@@ -26,11 +26,19 @@ final class MainStore {
 
     enum Intent {
         case logOut
+        case link(with: LinkableAuthProviderOption)
+        case unlink(from: LinkableAuthProviderOption)
     }
 
     enum Event {
         case logOutSucceeded
         case logOutFailed(error: AccountError)
+
+        case linkSucceeded
+        case linkFailed(error: AccountError)
+
+        case unlinkSucceeded
+        case unlinkFailed(error: AccountError)
     }
 
     // MARK: - State
@@ -38,6 +46,8 @@ final class MainStore {
 
     // MARK: - UseCase
     private let logOutUseCase: LogOutUseCase
+    private let linkAccountUseCase: LinkAccountUseCase
+    private let unlinkAccountUseCase: UnlinkAccountUseCase
 
     // MARK: - Event
     private let onStoreEvent: (Event) -> Void
@@ -45,12 +55,22 @@ final class MainStore {
     @ObservationIgnored
     private var logOutTask: Task<Void, Never>?
 
+    @ObservationIgnored
+    private var linkTask: Task<Void, Never>?
+
+    @ObservationIgnored
+    private var unlinkTask: Task<Void, Never>?
+
     // MARK: - Init
     init(
         logOutUseCase: LogOutUseCase,
+        linkAccountUseCase: LinkAccountUseCase,
+        unlinkAccountUseCase: UnlinkAccountUseCase,
         onStoreEvent: @escaping (Event) -> Void
     ) {
         self.logOutUseCase = logOutUseCase
+        self.linkAccountUseCase = linkAccountUseCase
+        self.unlinkAccountUseCase = unlinkAccountUseCase
         self.onStoreEvent = onStoreEvent
     }
 
@@ -60,6 +80,12 @@ final class MainStore {
         case .logOut:
             logOutTask?.cancel()
             logOutTask = Task { await logOut() }
+        case .link(let linkableProvider):
+            linkTask?.cancel()
+            linkTask = Task { await link(with: linkableProvider) }
+        case .unlink(let linkableProvider):
+            unlinkTask?.cancel()
+            unlinkTask = Task { await unlink(from: linkableProvider) }
         }
     }
 
@@ -73,12 +99,48 @@ final class MainStore {
             try await logOutUseCase.execute()
             if Task.isCancelled { return }
 
-            state = .success
+            state = .completed
             onStoreEvent(.logOutSucceeded)
         } catch {
             if Task.isCancelled { return }
             state = .failure(error: error)
             onStoreEvent(.logOutFailed(error: error))
+        }
+    }
+
+    private func link(with provider: LinkableAuthProviderOption) async {
+        guard !state.isLoading else { return }
+        state = .idle
+        state = .loading
+
+        do throws(AccountError) {
+            let uid = try await linkAccountUseCase.execute(with: provider)
+            if Task.isCancelled { return }
+
+            state = .completed
+            onStoreEvent(.linkSucceeded)
+        } catch {
+            if Task.isCancelled { return }
+            state = .failure(error: error)
+            onStoreEvent(.linkFailed(error: error))
+        }
+    }
+
+    private func unlink(from provider: LinkableAuthProviderOption) async {
+        guard !state.isLoading else { return }
+        state = .idle
+        state = .loading
+
+        do throws(AccountError) {
+            let uid = try await unlinkAccountUseCase.execute(from: provider)
+            if Task.isCancelled { return }
+
+            state = .completed
+            onStoreEvent(.unlinkSucceeded)
+        } catch {
+            if Task.isCancelled { return }
+            state = .failure(error: error)
+            onStoreEvent(.unlinkFailed(error: error))
         }
     }
 }
