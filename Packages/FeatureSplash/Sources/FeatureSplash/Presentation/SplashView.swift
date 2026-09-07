@@ -30,7 +30,7 @@ public struct SplashView: View {
     let isAuthenticated = true
     let isPassedOnboarding = true
 
-    let networkMonitor = PreviewNetworkMonitor(
+    let networkStatusObserver = PreviewNetworkStatusObserver(
         isConnected: isConnected
     )
     let fetchRemoteConfigUseCase = PreviewFetchRemoteConfigUseCase(
@@ -45,7 +45,7 @@ public struct SplashView: View {
     )
 
     let store = SplashStore(
-        networkMonitor: networkMonitor,
+        networkStatusObserver: networkStatusObserver,
         fetchRemoteConfigUseCase: fetchRemoteConfigUseCase,
         authStateObserver: authStateObserver,
         checkOnboardingPassedUseCase: checkOnboardingPassedUseCase,

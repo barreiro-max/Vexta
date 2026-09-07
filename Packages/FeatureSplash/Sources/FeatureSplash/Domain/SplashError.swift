@@ -7,10 +7,21 @@
 
 import Foundation
 
-public enum SplashError: Error {
+public enum SplashError: Error, LocalizedError, Equatable {
     case noInternetConnection
     case maintenanceMode(message: String)
     case forceUpdateRequired(storeURL: URL)
+
+    public var errorDescription: String? {
+        switch self {
+        case .noInternetConnection:
+            String(localized: "No internet connection.")
+        case .maintenanceMode(let message):
+            String(localized: "App is under maintenance, message: \(message)")
+        case .forceUpdateRequired(let url):
+            String(localized: "Update required, url: \(url.absoluteString)")
+        }
+    }
 }
 
 extension SplashError: CustomNSError {
@@ -23,42 +34,6 @@ extension SplashError: CustomNSError {
         case .noInternetConnection: 401
         case .maintenanceMode:      402
         case .forceUpdateRequired:  403
-        }
-    }
-}
-
-extension SplashError: LocalizedError {
-
-    public var errorDescription: String? {
-        switch self {
-        case .noInternetConnection:
-            String(localized: "No internet connection.")
-        case .maintenanceMode:
-            String(localized: "App is under maintenance.")
-        case .forceUpdateRequired:
-            String(localized: "Update required.")
-        }
-    }
-
-    public var failureReason: String? {
-        switch self {
-        case .noInternetConnection:
-            "Device is offline or network is unreachable."
-        case .maintenanceMode(let message):
-            message
-        case .forceUpdateRequired(let storeURL):
-            "Current app version is no longer supported. Store URL: \(storeURL.absoluteString)"
-        }
-    }
-
-    public var recoverySuggestion: String? {
-        switch self {
-        case .noInternetConnection:
-            String(localized: "Check your network settings and try again.")
-        case .maintenanceMode:
-            String(localized: "Please try again later.")
-        case .forceUpdateRequired:
-            String(localized: "Please update the app from the App Store to continue.")
         }
     }
 }

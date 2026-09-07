@@ -25,6 +25,7 @@ public final class SplashStore {
 
     public enum Event {
         case neededOnboarding
+        case neededEmailVerification(userId: String)
         case authenticated(userId: String)
         case unauthenticated
         case alerted(error: SplashError, onRetry: @MainActor () async -> Void)
@@ -34,7 +35,7 @@ public final class SplashStore {
     private(set) var state: State = .idle
 
     // MARK: - Dependency
-    private let networkMonitor: NetworkMonitor
+    private let networkStatusObserver: NetworkStatusObserver
     private let fetchRemoteConfigUseCase: FetchRemoteConfigUseCase
     private let authStateObserver: AuthStateObserver
     private let checkOnboardingPassedUseCase: CheckOnboardingPassedUseCase
@@ -44,13 +45,13 @@ public final class SplashStore {
 
     // MARK: - Init
     public init(
-        networkMonitor: NetworkMonitor,
+        networkStatusObserver: NetworkStatusObserver,
         fetchRemoteConfigUseCase: FetchRemoteConfigUseCase,
         authStateObserver: AuthStateObserver,
         checkOnboardingPassedUseCase: CheckOnboardingPassedUseCase,
         onStoreEvent: @escaping (Event) -> Void
     ) {
-        self.networkMonitor = networkMonitor
+        self.networkStatusObserver = networkStatusObserver
         self.fetchRemoteConfigUseCase = fetchRemoteConfigUseCase
         self.authStateObserver = authStateObserver
         self.checkOnboardingPassedUseCase = checkOnboardingPassedUseCase
@@ -61,7 +62,7 @@ public final class SplashStore {
     func bootstrap() async {
         guard !state.isLoading else { return }
 
-        guard networkMonitor.isConnected else {
+        guard networkStatusObserver.isConnected else {
             handleError(.noInternetConnection)
             return
         }
@@ -83,6 +84,8 @@ public final class SplashStore {
 
         let authState = authStateObserver.fetchAuthState()
         switch authState {
+        case .neededEmailVerification(let userId):
+            onStoreEvent(.neededEmailVerification(userId: userId))
         case .authenticated(let userId):
             onStoreEvent(.authenticated(userId: userId))
         case .unauthenticated:
