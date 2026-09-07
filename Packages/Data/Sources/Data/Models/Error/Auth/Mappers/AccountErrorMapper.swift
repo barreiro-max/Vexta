@@ -13,7 +13,7 @@ extension AccountError {
 
     public init(from error: any Error) {
         switch error {
-            
+
         case let accountError as AccountError:
             self = accountError
 
@@ -26,10 +26,15 @@ extension AccountError {
         case let facebookSignInError as FacebookSignInError:
             self.init(from: facebookSignInError)
 
-        default:
-            let nsError = error as NSError
-            let authErrorCode = AuthErrorCode(rawValue: nsError.code)
+        case let nsError as NSError where nsError.domain == AuthErrorDomain:
+            guard let authErrorCode = AuthErrorCode(rawValue: nsError.code) else {
+                self = .unknown(underlying: nsError)
+                return
+            }
             self.init(from: authErrorCode)
+
+        default:
+            self = .unknown(underlying: error as NSError)
         }
     }
 
@@ -53,12 +58,12 @@ extension AccountError {
             .uiError
         case .userCancelled:
             .userCancelled
-        case .invalaidCurrentNonce, .missingLoginConfiguration, .invalidAccessToken:
-            .unknown
+        case .invalidCurrentNonce, .missingLoginConfiguration, .invalidAuthToken:
+            .invalidCredentials
         }
     }
 
-    private init(from authErrorCode: AuthErrorCode?) {
+    private init(from authErrorCode: AuthErrorCode) {
         self = switch authErrorCode {
         case .userNotFound:
             .userNotFound
@@ -73,7 +78,7 @@ extension AccountError {
         case .tooManyRequests:
             .tooManyRequests
         default:
-            .unknown
+            .unknown(underlying: authErrorCode as NSError)
         }
     }
 }
