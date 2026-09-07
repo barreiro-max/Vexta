@@ -10,7 +10,7 @@ import AuthenticationServices
 import Domain
 import Telemetry
 
-public final class AppleAuthProviderImpl: NSObject, @unchecked Sendable {
+public final class AppleAuthProviderImpl: NSObject, Sendable {
 
     private let nonceProvider: NonceProvider
     private let topViewControllerProvider: TopViewControllerProvider
@@ -23,11 +23,13 @@ public final class AppleAuthProviderImpl: NSObject, @unchecked Sendable {
         self.topViewControllerProvider = topViewControllerProvider
     }
 
-    private var rawNonce: String?
-    private var continuation: CheckedContinuation<AppleSignInResult, Error>?
+    @MainActor private var rawNonce: String?
+    @MainActor private var continuation: CheckedContinuation<AppleSignInResult, Error>?
 }
 
 extension AppleAuthProviderImpl: AppleAuthProvider {
+
+    @MainActor
     public func signIn() async throws -> AppleSignInResult {
         guard let topVC = topViewControllerProvider.getTopViewController() else {
             throw AppleSignInError.cannotFindTopViewController
@@ -36,6 +38,7 @@ extension AppleAuthProviderImpl: AppleAuthProvider {
         let nonceLength = 32
         let rawNonce = nonceProvider.randomNonceString(length: nonceLength)
         let hashedNonce = nonceProvider.sha256(rawNonce)
+        self.rawNonce = rawNonce
 
         let appleIdProvider = ASAuthorizationAppleIDProvider()
         let request = appleIdProvider.createRequest()
@@ -93,6 +96,6 @@ extension AppleAuthProviderImpl: ASAuthorizationControllerDelegate {
 // MARK: - UIViewController + ASAuthorizationControllerPresentationContextProviding
 extension UIViewController: @retroactive ASAuthorizationControllerPresentationContextProviding {
     public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        self.view.window!
+        self.view.window ?? UIWindow()
     }
 }
