@@ -7,7 +7,8 @@
 
 import Foundation
 
-public enum AuthState: Sendable {
+public enum AuthState: Equatable, Sendable {
+    case neededEmailVerification(userId: String)
     case authenticated(userId: String)
     case unauthenticated
 }
