@@ -123,6 +123,10 @@ extension AuthFlowCoordinator {
             send(.pushed(route: .sendEmailVerification))
 
         case .loginFailed(let error):
+            guard error != .userCancelled else {
+                Log.ui.debug("Alert is not sent, error: \(error.localizedDescription)")
+                return
+            }
             send(.showAlert(with: error))
 
         case .registerSelected:
@@ -140,6 +144,10 @@ extension AuthFlowCoordinator {
             send(.pushed(route: .sendEmailVerification))
 
         case .registerFailed(let error):
+            guard error != .userCancelled else {
+                Log.ui.debug("Alert is not sent, error: \(error.localizedDescription)")
+                return
+            }
             send(.showAlert(with: error))
         }
     }
@@ -151,6 +159,10 @@ extension AuthFlowCoordinator {
             send(.popped)
 
         case .sendPasswordResetFailed(let error):
+            guard error != .userCancelled else {
+                Log.ui.debug("Alert is not sent, error: \(error.localizedDescription)")
+                return
+            }
             send(.showAlert(with: error))
         }
     }
@@ -162,6 +174,10 @@ extension AuthFlowCoordinator {
             send(.finishedFlow)
 
         case .failed(let error):
+            guard error != .userCancelled else {
+                Log.ui.debug("Alert is not sent, error: \(error.localizedDescription)")
+                return
+            }
             send(.showAlert(with: error))
         }
     }
