@@ -15,11 +15,19 @@ struct RegisterView: View {
         _store = State(wrappedValue: store)
     }
 
+    @State private var email = ""
+
     var body: some View {
         Text("Register")
+
+        TextField(
+            "Enter the email...",
+            text: $email
+        )
+        .textInputAutocapitalization(.never)
+
         Button("Register with test credentials") {
-            store.send(.register(email: "createuser@gmail.com",password: "123124dsnc")
-            )
+            store.send(.register(email: email, password: "123124dsnc"))
         }
     }
 }

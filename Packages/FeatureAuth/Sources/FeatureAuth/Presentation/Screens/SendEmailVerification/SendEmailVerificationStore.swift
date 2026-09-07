@@ -13,16 +13,25 @@ import Domain
 final class SendEmailVerificationStore {
 
     // MARK: - Nested Types
-    enum State {
+    enum State: Equatable {
         case idle
-        case loading
-        case failure(error: AuthError)
-        case verificationSent
-        case verified
+        case loading(for: Operation)
+        case failure(for: Operation, error: AuthError)
+        case completed(for: Operation)
+
+        var isLoading: Bool {
+            if case .loading = self { true } else { false }
+        }
+    }
+
+    enum Operation {
+        case sendEmailVerification
+        case checkEmailVerification
+        case observeTimer
     }
 
     enum Intent {
-        case sendEmailVerification(with: String)
+        case sendEmailVerification
         case checkEmailVerification
     }
 
@@ -83,15 +92,18 @@ final class SendEmailVerificationStore {
     // MARK: - Private Actions
     private func sendEmailVerification() async {
 
+        guard !state.isLoading else { return }
+        state = .loading(for: .sendEmailVerification)
+
         do throws(AuthError) {
-            try await sendEmailVerificationUseCase.execute(email: email)
+            try await sendEmailVerificationUseCase.execute()
             if Task.isCancelled { return }
-            state = .verificationSent
+            state = .completed(for: .sendEmailVerification)
 
             await observeTimer(duration: 60)
         } catch {
             if Task.isCancelled { return }
-            handleError(error)
+            handleError(for: .sendEmailVerification, error: error)
         }
     }
 
@@ -99,39 +111,45 @@ final class SendEmailVerificationStore {
     private func observeTimer(duration: Int) async {
         precondition(duration > 0)
         isCooldownActive = true
+        state = .loading(for: .observeTimer)
+
         defer {
             isCooldownActive = false
             cooldownSeconds = 0
+            state = .completed(for: .observeTimer)
         }
-        
+
         for await second in cooldownTimerUseCase.execute(from: duration) {
-            if Task.isCancelled { break }
+            if Task.isCancelled {
+                state = .failure(for: .observeTimer, error: .userCancelled)
+                break
+            }
             cooldownSeconds = second
         }
     }
 
     private func checkEmailVerification() async {
-        state = .loading
+        state = .loading(for: .checkEmailVerification)
 
         do throws(AuthError) {
             let isVerified = try await completeEmailVerificationUseCase.execute()
             if Task.isCancelled { return }
 
             if isVerified {
-                state = .verified
+                state = .completed(for: .checkEmailVerification)
                 onStoreEvent(.emailVerified)
             } else {
-                handleError(.emailNotVerified)
+                handleError(for: .checkEmailVerification, error: .emailNotVerified)
             }
 
         } catch {
             if Task.isCancelled { return }
-            handleError(error)
+            handleError(for: .checkEmailVerification, error: error)
         }
     }
 
-    private func handleError(_ error: AuthError) {
-        state = .failure(error: error)
+    private func handleError(for operation: Operation, error: AuthError) {
+        state = .failure(for: operation, error: error)
         onStoreEvent(.failed(error: error))
     }
 }

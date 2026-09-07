@@ -13,12 +13,18 @@ import Domain
 final class LoginStore {
 
     // MARK: - Nested Types
-    enum State {
+    enum State: Equatable {
         case idle
-        case loading
-        case failure(error: AuthError)
-        case completed(userUID: String?)
+        case loading(for: AuthProviderOption)
+        case failure(for: AuthProviderOption, error: AuthError)
+        case completed(for: AuthProviderOption, userUID: String?)
+
+        var isLoading: Bool {
+            if case .loading = self { true } else { false }
+        }
     }
+
+    // TODO: — maybe will make nested type operation for state (need implement presenter mappers from domain models)
 
     enum Intent {
         case login(provider: AuthProviderOption)
@@ -72,8 +78,9 @@ final class LoginStore {
 
     // MARK: - Private Actions
     private func login(with provider: AuthProviderOption) async {
+        guard !state.isLoading else { return }
         state = .idle
-        state = .loading
+        state = .loading(for: provider)
 
         do throws(AuthError) {
             let uid = try await loginUseCase.execute(with: provider)
@@ -88,7 +95,7 @@ final class LoginStore {
             if Task.isCancelled { return }
 
             if isVerified {
-                state = .completed(userUID: uid)
+                state = .completed(for: provider, userUID: uid)
                 onStoreEvent(.loginSucceeded)
             } else {
                 state = .idle
@@ -97,7 +104,7 @@ final class LoginStore {
 
         } catch {
             if Task.isCancelled { return }
-            state = .failure(error: error)
+            state = .failure(for: provider, error: error)
             onStoreEvent(.loginFailed(error: error))
         }
     }

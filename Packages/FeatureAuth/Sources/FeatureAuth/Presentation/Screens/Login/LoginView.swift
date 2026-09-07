@@ -16,12 +16,35 @@ struct LoginView: View {
         _store = State(wrappedValue: store)
     }
 
+    @State private var email = ""
+
     var body: some View {
         VStack(spacing: 8) {
+            switch store.state {
+
+            case .idle:
+                Text("User didn't tap anything")
+
+            case .loading(let operation):
+                Text("Loading for provider operation: \(operation)")
+
+            case .failure(let operation, let error):
+                Text("Failure for: \(operation), error: \(error)")
+
+            case .completed(let operation, let userUID):
+                Text("Completed for: \(operation), userId: \(userUID)")
+            }
+
             loginButton(with: .anonymous)
 
+            TextField(
+                "Enter the email...",
+                text: $email
+            )
+            .textInputAutocapitalization(.never)
+
             loginButton(with: .email(
-                email: "createuser@gmail.com",
+                email: email,
                 password: "123124dsnc")
             )
 

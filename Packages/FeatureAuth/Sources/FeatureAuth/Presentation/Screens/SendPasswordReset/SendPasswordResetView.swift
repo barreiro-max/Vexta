@@ -15,10 +15,19 @@ struct SendPasswordResetView: View {
         _store = State(wrappedValue: store)
     }
 
+    @State private var email = ""
+
     var body: some View {
         Text("Send reset password")
+
+        TextField(
+            "Enter the email...",
+            text: $email
+        )
+        .textInputAutocapitalization(.never)
+
         Button("test sending") {
-            store.send(.sendPasswordReset(email: "createuser@gmail.com"))
+            store.send(.sendPasswordReset(email: email))
         }
     }
 }

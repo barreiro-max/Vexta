@@ -18,6 +18,10 @@ final class RegisterStore {
         case loading
         case failure(error: AuthError)
         case completed(userUID: String?)
+
+        var isLoading: Bool {
+            if case .loading = self { true } else { false }
+        }
     }
 
     enum Intent {
@@ -59,6 +63,7 @@ final class RegisterStore {
 
     // MARK: - Private Actions
     private func register(email: String, password: String) async {
+        guard !state.isLoading else { return }
         state = .idle
         state = .loading
 
