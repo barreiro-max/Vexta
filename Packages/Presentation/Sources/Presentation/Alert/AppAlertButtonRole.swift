@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AppAlertButtonRole: Sendable {
+public enum AppAlertButtonRole: Equatable, Sendable {
     case ok
     case cancel
     case close

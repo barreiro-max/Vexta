@@ -26,11 +26,6 @@ public struct AppAlertModifier: ViewModifier {
                 ForEach(currentAlert.buttonActions) { buttonAction in
                     alertButton(buttonAction)
                 }
-            } message: { currentAlert in
-                if let recovery = currentAlert.error.recoverySuggestion,
-                   let failureReason = currentAlert.error.failureReason {
-                    Text("\(recovery)\n\n\(failureReason)")
-                }
             }
     }
 
