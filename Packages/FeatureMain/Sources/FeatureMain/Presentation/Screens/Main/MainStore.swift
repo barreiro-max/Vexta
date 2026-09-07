@@ -13,10 +13,15 @@ import Domain
 final class MainStore {
 
     // MARK: - Nested Types
-    enum State {
+    enum State: Equatable {
         case idle
+        case loading
         case success
         case failure(error: AccountError)
+
+        var isLoading: Bool {
+            if case .loading = self { true } else { false }
+        }
     }
 
     enum Intent {
@@ -60,6 +65,10 @@ final class MainStore {
 
     // MARK: - Private Actions
     private func logOut() async {
+        guard !state.isLoading else { return }
+        state = .idle
+        state = .loading
+
         do throws(AccountError) {
             try await logOutUseCase.execute()
             if Task.isCancelled { return }
