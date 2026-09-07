@@ -9,6 +9,7 @@ import Foundation
 import FirebaseAuth
 import Domain
 import Telemetry
+import Environment
 
 public struct FirebaseAccountDataSource {
 
@@ -85,12 +86,13 @@ extension FirebaseAccountDataSource: AccountDataSource {
     public var isAnonymous: Bool {
         get async throws {
             do {
-                // WARN: — don't use `reload()` with firebase auth emulator
+                guard !EnvironmentVariables.isUseFirebaseEmulator else {
+                    preconditionFailure("Don't use `User.reload` with firebase auth emulator")
+                }
                 try await firebaseUser.reload()
 
                 let isAnonymous = try firebaseUser.isAnonymous
-                Log.auth.debug("User anonymous: \(isAnonymous)")
-                return try isAnonymous
+                return isAnonymous
             } catch {
                 throw error
             }

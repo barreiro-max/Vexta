@@ -9,6 +9,7 @@ import Foundation
 import FirebaseAuth
 import Domain
 import Telemetry
+import Environment
 
 public struct FirebaseAuthDataSource {
 
@@ -100,12 +101,13 @@ extension FirebaseAuthDataSource: AuthDataSource {
     public var isEmailVerified: Bool {
         get async throws {
             do {
-                // WARN: — don't use `reload()` with firebase auth emulator
+                guard !EnvironmentVariables.isUseFirebaseEmulator else {
+                    preconditionFailure("Don't use `User.reload` with firebase auth emulator")
+                }
                 try await firebaseUser.reload()
 
                 let isEmailVerified = try firebaseUser.isEmailVerified
-                Log.auth.debug("Email verified: \(isEmailVerified)")
-                return try isEmailVerified
+                return isEmailVerified
             } catch {
                 throw error
             }
