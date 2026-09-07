@@ -36,7 +36,7 @@ protocol RootViewFactory {
     ) -> TabFlowView
 }
 
-public struct RootViewFactoryImpl {
+struct RootViewFactoryImpl {
     private let onboardingViewFactory: OnboardingViewFactory
     private let splashViewFactory: SplashViewFactory
     private let authViewFactory: AuthViewFactory
