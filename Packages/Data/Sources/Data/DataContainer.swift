@@ -43,7 +43,7 @@ public final class DataContainer {
         remote: remoteDataSource,
     )
 
-    public lazy var networkMonitor = NWPathNetworkMonitor(monitor: .init())
+    public lazy var networkStatusObserver = NWPathNetworkStatusObserver(monitor: .init())
     public lazy var authStateObserver = FirebaseAuthStateObserver()
 }
 
