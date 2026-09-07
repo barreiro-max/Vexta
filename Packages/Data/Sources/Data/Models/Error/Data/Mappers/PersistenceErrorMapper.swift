@@ -24,11 +24,11 @@ extension PersistenceError {
         case let cocoaError as CocoaError:
             self.init(from: cocoaError)
 
-        case let nsError as NSError:
+        case let nsError as NSError where nsError.domain == NSSQLiteErrorDomain:
             self.init(from: nsError)
 
         default:
-            self = .unknown
+            self = .unknown(underlying: error as NSError)
         }
     }
 
@@ -60,7 +60,7 @@ extension PersistenceError {
             self = .internalStore
 
         default:
-            self = .unknown
+            self = .unknown(underlying: swiftDataError as NSError)
         }
     }
 
@@ -74,7 +74,7 @@ extension PersistenceError {
             .internalStore
 
         default:
-            .unknown
+            .unknown(underlying: dataStoreError as NSError)
         }
     }
 
@@ -160,18 +160,13 @@ extension PersistenceError {
                 .readingData
 
             default:
-                .unknown
+                .unknown(underlying: cocoaError as NSError)
             }
         }
-        self = .unknown
+        self = .unknown(underlying: cocoaError as NSError)
     }
 
     private init(from nsError: NSError) {
-        guard nsError.domain == NSSQLiteErrorDomain else {
-            self = .unknown
-            return
-        }
-
         let sqliteErrorCode = nsError.code
 
         let rawPersistenceError = SQLiteError(rawValue: sqliteErrorCode)
@@ -184,7 +179,7 @@ extension PersistenceError {
         case .schema:           .migrationFailed
         case .constraint:       .savingContext
         case .notaDB:           .readingData
-        case nil:               .unknown
+        case nil:               .unknown(underlying: nsError)
         }
     }
 }
@@ -201,7 +196,7 @@ extension PersistenceError: RepositoryErrorConvertible {
         case .cancelled:
             .cancelled
         case .unknown:
-            .unknown
+            .unknown(underlying: self as NSError)
         }
     }
 }

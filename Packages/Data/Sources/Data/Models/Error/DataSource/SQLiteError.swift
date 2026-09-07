@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SQLiteError: Int, Error {
+enum SQLiteError: Int, Error, LocalizedError, Equatable {
     case `internal` = 1
     case perm = 3
     case busy = 5
@@ -16,21 +16,8 @@ enum SQLiteError: Int, Error {
     case schema = 17
     case constraint = 19
     case notaDB = 26
-}
-
-extension SQLiteError: CustomNSError {
-
-    static var errorDomain: String {
-        String(reflecting: Self.self)
-    }
-    
-    var errorCode: Int { self.rawValue }
-}
-
-extension SQLiteError: LocalizedError {
 
     var errorDescription: String? {
-
         let statusText = switch self {
         case .internal:         "SQLITE_INTERNAL"
         case .perm:             "SQLITE_PERM"
@@ -41,9 +28,15 @@ extension SQLiteError: LocalizedError {
         case .constraint:       "SQLITE_CONSTRAINT"
         case .notaDB:           "SQLITE_NOTADB"
         }
-
         return "\(errorCode) \(statusText)"
     }
 }
 
-extension SQLiteError: CaseIterable {}
+extension SQLiteError: CustomNSError {
+
+    static var errorDomain: String {
+        String(reflecting: Self.self)
+    }
+    
+    var errorCode: Int { self.rawValue }
+}

@@ -20,8 +20,10 @@ extension RemoteError {
         case let urlError as URLError:
             self.init(from: urlError)
 
+
+
         default:
-            self = .serverUnknown
+            self = .serverUnknown(underlying: error as NSError)
         }
     }
 
@@ -34,7 +36,7 @@ extension RemoteError {
 
         case let .responseValidationFailed(reason):
             guard case let .unacceptableStatusCode(statusCode) = reason else {
-                self = .serverUnknown
+                self = .serverUnknown(underlying: afError as NSError)
                 return
             }
 
@@ -69,7 +71,7 @@ extension RemoteError {
             self.init(from: (underlyingError as NSError).code)
 
         default:
-            self = .serverUnknown
+            self = .serverUnknown(underlying: afError as NSError)
         }
     }
 
@@ -133,12 +135,16 @@ extension RemoteError {
             self = .badResponse
 
         default:
-            self = .serverUnknown
+            self = .serverUnknown(underlying: urlError as NSError)
         }
     }
 
     private init(from afStatusCode: Int) {
-        let rawNetworkError = HTTPError(rawValue: afStatusCode)
+        guard let rawNetworkError = HTTPError(rawValue: afStatusCode) else {
+            let nsError = NSError(domain: "AfStatusCodeError", code: afStatusCode)
+            self = .serverUnknown(underlying: nsError)
+            return
+        }
         self = switch rawNetworkError {
             case .badRequest:          .badRequest
             case .unauthorized:        .unauthorized
@@ -147,7 +153,6 @@ extension RemoteError {
             case .internalServerError: .serverError
             case .badGateway:          .badResponse
             case .serviceUnavailable:  .unavailable
-            case nil:                  .serverUnknown
         }
     }
 }
@@ -163,7 +168,7 @@ extension RemoteError: RepositoryErrorConvertible {
         case .serverError, .badResponse, .unavailable: .serverError
         case .decodingFailed:                     .dataCorrupted
         case .cancelled:                          .cancelled
-        case .badRequest, .serverUnknown:         .unknown
+        case .badRequest, .serverUnknown:         .unknown(underlying: self as NSError)
         }
     }
 }

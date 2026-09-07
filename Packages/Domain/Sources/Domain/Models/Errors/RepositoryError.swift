@@ -7,18 +7,30 @@
 
 import Foundation
 
-public enum RepositoryError: Error {
+public enum RepositoryError: Error, LocalizedError, Equatable {
     case noInternet
     case timeout
     case unauthenticated
     case notFound
     case serverError
-
     case storageFailure
     case dataCorrupted
-
     case cancelled
-    case unknown
+    case unknown(underlying: NSError)
+
+    public var errorDescription: String? {
+        switch self {
+        case .noInternet:                      String(localized: "No internet connection.")
+        case .timeout:                         String(localized: "Operation timed out.")
+        case .unauthenticated:                 String(localized: "Session expired. Please log in again.")
+        case .notFound:                        String(localized: "Requested item was not found.")
+        case .serverError:                     String(localized: "Server encountered an error.")
+        case .storageFailure:                  String(localized: "Failed to access local storage.")
+        case .dataCorrupted:                   String(localized: "Data format is invalid or corrupted.")
+        case .cancelled:                       String(localized: "Operation was cancelled.")
+        case .unknown(let underlying):         underlying.localizedDescription
+        }
+    }
 }
 
 extension RepositoryError: CustomNSError {
@@ -42,52 +54,6 @@ extension RepositoryError: CustomNSError {
     }
 }
 
-extension RepositoryError: LocalizedError {
-
-    public var errorDescription: String? {
-        switch self {
-        case .noInternet:      String(localized: "No internet connection.")
-        case .timeout:         String(localized: "Operation timed out.")
-        case .unauthenticated: String(localized: "Session expired. Please log in again.")
-        case .notFound:        String(localized: "Requested item was not found.")
-        case .serverError:     String(localized: "Server encountered an error.")
-        case .storageFailure:  String(localized: "Failed to access local storage.")
-        case .dataCorrupted:   String(localized: "Data format is invalid or corrupted.")
-        case .cancelled:       String(localized: "Operation was cancelled.")
-        case .unknown:         String(localized: "An unexpected error occurred.")
-        }
-    }
-
-    public var failureReason: String? {
-        switch self {
-        case .noInternet:      "Device is offline or unreachable."
-        case .timeout:         "The request took too long to complete."
-        case .unauthenticated: "Authentication token is missing or invalid."
-        case .notFound:        "Resource does not exist on server or local database."
-        case .serverError:     "Remote server returned a 5xx status code."
-        case .storageFailure:  "Read/write operation on local persistent store failed."
-        case .dataCorrupted:   "Data mapping or decoding failed."
-        case .cancelled:       "Task was explicitly aborted."
-        case .unknown:         "An unclassified domain-level error occurred."
-        }
-    }
-
-    public var recoverySuggestion: String? {
-        switch self {
-        case .noInternet, .timeout:
-            String(localized: "Check your network settings and try again.")
-        case .unauthenticated:
-            String(localized: "Please log in again.")
-        case .notFound, .dataCorrupted, .cancelled:
-            String(localized: "Try repeating the action.")
-        case .serverError, .storageFailure, .unknown:
-            String(localized: "Please try again later or restart the app.")
-        }
-    }
-}
-
-extension RepositoryError: CaseIterable {}
-
 public extension RepositoryError {
     init(from error: any Error) {
         switch error {
@@ -96,7 +62,7 @@ public extension RepositoryError {
         case let convertible as RepositoryErrorConvertible:
             self = convertible.asRepositoryError
         default:
-            self = .unknown
+            self = .unknown(underlying: error as NSError)
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AppleSignInError: Error {
+enum AppleSignInError: Error, Equatable {
     case cannotFindTopViewController
     case invalidAppleIdCredential
 }

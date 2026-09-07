@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum FacebookSignInError: Error {
+enum FacebookSignInError: Error, Equatable {
     case cannotFindTopViewController
-    case invalaidCurrentNonce
+    case invalidCurrentNonce
     case missingLoginConfiguration
-    case invalidAccessToken
+    case invalidAuthToken
     case userCancelled
 }

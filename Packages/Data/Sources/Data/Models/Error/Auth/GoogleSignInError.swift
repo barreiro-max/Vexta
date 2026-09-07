@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GoogleSignInError: Error {
+enum GoogleSignInError: Error, Equatable {
     case invalidRestorePreviousSignIn
     case cannotFindTopViewController
     case invalidSignIn

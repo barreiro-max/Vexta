@@ -8,6 +8,7 @@
 import Foundation
 import Domain
 import FirebaseAuth
+import AuthenticationServices
 
 extension AuthError {
 
@@ -26,10 +27,18 @@ extension AuthError {
         case let facebookSignInError as FacebookSignInError:
             self.init(from: facebookSignInError)
 
-        default:
-            let nsError = error as NSError
-            let authErrorCode = AuthErrorCode(rawValue: nsError.code)
+        case let appleAuthError as ASAuthorizationError:
+            self.init(from: appleAuthError)
+
+        case let nsError as NSError where nsError.domain == AuthErrorDomain:
+            guard let authErrorCode = AuthErrorCode(rawValue: nsError.code) else {
+                self = .unknown(underlying: nsError)
+                return
+            }
             self.init(from: authErrorCode)
+
+        default:
+            self = .unknown(underlying: error as NSError)
         }
     }
 
@@ -55,14 +64,33 @@ extension AuthError {
         self = switch facebookSignInError {
         case .cannotFindTopViewController:
             .uiError
-        case .invalaidCurrentNonce, .missingLoginConfiguration, .invalidAccessToken:
+        case .invalidCurrentNonce, .missingLoginConfiguration, .invalidAuthToken:
             .invalidCredential
         case .userCancelled:
             .userCancelled
         }
     }
 
-    private init(from authErrorCode: AuthErrorCode?) {
+    private init(from appleAuthError: ASAuthorizationError) {
+        switch appleAuthError.code {
+        case .canceled:
+            self = .userCancelled
+        case .notInteractive:
+            self = .uiError
+        default:
+            let nsError = appleAuthError as NSError
+            let customNSError = NSError(
+                domain: nsError.domain,
+                code: nsError.code,
+                userInfo: [
+                    NSLocalizedDescriptionKey: "Sign In with Apple is not configured (not set capabilities)"
+                ]
+            )
+            self = .unknown(underlying: customNSError)
+        }
+    }
+
+    private init(from authErrorCode: AuthErrorCode) {
         self = switch authErrorCode {
         case .userNotFound:
             .userNotFound
@@ -74,18 +102,22 @@ extension AuthError {
             .tooManyRequests
         case .invalidEmail:
             .invalidEmail
+        case .missingEmail:
+            .missingEmail
         case .wrongPassword:
             .wrongPassword
         case .emailAlreadyInUse:
             .emailAlreadyInUse
-        case .credentialAlreadyInUse, .accountExistsWithDifferentCredential:
+        case .accountExistsWithDifferentCredential:
+            .accountExistsWithDifferentCredential
+        case .credentialAlreadyInUse:
             .credentialAlreadyInUse
         case .requiresRecentLogin:
             .requiresRecentLogin
         case .invalidCredential, .invalidCustomToken:
             .invalidCredential
         default:
-            .unknown
+            .unknown(underlying: authErrorCode as NSError)
         }
     }
 }
