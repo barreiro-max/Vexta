@@ -10,6 +10,7 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseRemoteConfig
 import Telemetry
+import Environment
 
 public protocol FirebaseConfigurable: Sendable {
     func configureFirebaseApp()
@@ -51,8 +52,12 @@ public struct FirebaseConfiguration: FirebaseConfigurable {
 
 #if DEBUG
     private func configureAuthEmulator() async {
-        Auth.auth().useEmulator(withHost: "localhost", port: 9099)
-        Log.auth.notice("🔥 Firebase Auth Emulator configured")
+        if EnvironmentVariables.isUseFirebaseEmulator {
+            Auth.auth().useEmulator(withHost: "localhost", port: 9099)
+            Log.auth.notice("🔥 Firebase Auth Emulator configured")
+        } else {
+            Log.auth.notice("🔥 Firebase Auth Emulator is not used")
+        }
     }
 #endif
 
