@@ -24,7 +24,7 @@ struct PreviewAuthRepository: AuthRepository {
     }
 
     func sendPasswordReset(email: String) async throws(AuthError) {}
-    func sendEmailVerification(email: String) async throws(AuthError) {}
+    func sendEmailVerification() async throws(AuthError) {}
 
     var isEmailVerified: Bool { true }
     var isAnonymous: Bool { true }

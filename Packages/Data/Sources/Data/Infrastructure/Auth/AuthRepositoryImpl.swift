@@ -73,7 +73,7 @@ extension AuthRepositoryImpl: AuthRepository {
     public func sendPasswordReset(email: String) async throws(AuthError) {
         do {
             try await authDataSource.sendPasswordReset(email: email)
-            Log.auth.notice("Successfully sent password reset from Firebase")
+            Log.auth.notice("Successfully sent password reset in: \(email) from Firebase")
         } catch {
             let authError = AuthError(from: error)
 
@@ -81,9 +81,9 @@ extension AuthRepositoryImpl: AuthRepository {
         }
     }
 
-    public func sendEmailVerification(email: String) async throws(AuthError) {
+    public func sendEmailVerification() async throws(AuthError) {
         do {
-            try await authDataSource.sendEmailVerification(email: email)
+            try await authDataSource.sendEmailVerification()
             Log.auth.notice("Successfully sent email verification from Firebase")
         } catch {
             let authError = AuthError(from: error)
