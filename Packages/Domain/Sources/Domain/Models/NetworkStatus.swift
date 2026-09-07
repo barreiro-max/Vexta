@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum NetworkStatus: Sendable {
+public enum NetworkStatus: Sendable, Equatable {
     case connected
     case notConnected
     case requiresConnection

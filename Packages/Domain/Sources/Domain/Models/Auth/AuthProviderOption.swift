@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AuthProviderOption: Sendable {
+public enum AuthProviderOption: Equatable, Sendable {
     case anonymous
     case email(email: String, password: String)
     case google
