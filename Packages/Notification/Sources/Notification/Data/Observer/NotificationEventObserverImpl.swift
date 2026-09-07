@@ -8,7 +8,7 @@
 import Foundation
 import Telemetry
 
-public struct NotificationEventsObserverImpl {
+public struct NotificationEventObserverImpl {
     private let notificationDelegate: NotificationDelegate
 
     public init(notificationDelegate: NotificationDelegate) {
@@ -16,7 +16,7 @@ public struct NotificationEventsObserverImpl {
     }
 }
 
-extension NotificationEventsObserverImpl: NotificationEventsObserver {
+extension NotificationEventObserverImpl: NotificationEventObserver {
 
     public var stream: AsyncStream<NotificationEvent> {
         AsyncStream { continuation in
@@ -24,6 +24,7 @@ extension NotificationEventsObserverImpl: NotificationEventsObserver {
                 Log.notification.debug("Notification delegate stream started")
                 await observeNotificationEvents(with: continuation)
                 continuation.finish()
+                Log.notification.debug("Notification delegate stream finished")
             }
             continuation.onTermination = { @Sendable _ in
                 task.cancel()
@@ -37,6 +38,7 @@ extension NotificationEventsObserverImpl: NotificationEventsObserver {
     ) async {
         for await event in notificationDelegate.stream {
             if Task.isCancelled { break }
+
             continuation.yield(event)
             Log.notification.debug("Stream notification events yields with: [\(String(describing: event))]")
         }

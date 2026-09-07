@@ -33,7 +33,7 @@ public final class NotificationContainer {
         notificationRepository: notificationRepository
     )
 
-    public lazy var notificationEventsObserver = NotificationEventsObserverImpl(
+    public lazy var notificationEventObserver = NotificationEventObserverImpl(
         notificationDelegate: notificationDelegate
     )
 }
