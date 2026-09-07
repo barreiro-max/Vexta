@@ -9,7 +9,7 @@ import Foundation
 import Domain
 
 public protocol SendEmailVerificationUseCase: Sendable {
-    func execute(email: String) async throws(AuthError)
+    func execute() async throws(AuthError)
 }
 
 public struct SendEmailVerificationUseCaseImpl {
@@ -28,9 +28,9 @@ public struct SendEmailVerificationUseCaseImpl {
 
 extension SendEmailVerificationUseCaseImpl: SendEmailVerificationUseCase {
 
-    public func execute(email: String) async throws(AuthError) {
+    public func execute() async throws(AuthError) {
         do throws(AuthError) {
-            try await authRepository.sendEmailVerification(email: email)
+            try await authRepository.sendEmailVerification()
             analyticsTracker.track(event: .emailVerificationSent)
         } catch {
             throw error

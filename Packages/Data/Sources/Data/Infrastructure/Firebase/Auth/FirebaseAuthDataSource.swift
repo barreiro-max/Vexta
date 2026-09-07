@@ -94,7 +94,7 @@ extension FirebaseAuthDataSource: AuthDataSource {
         try await auth.sendPasswordReset(withEmail: email)
     }
 
-    public func sendEmailVerification(email: String) async throws {
+    public func sendEmailVerification() async throws {
         try await firebaseUser.sendEmailVerification()
     }
 

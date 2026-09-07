@@ -22,6 +22,6 @@ public protocol AuthDataSource: Sendable {
 
     func sendPasswordReset(email: String) async throws
 
-    func sendEmailVerification(email: String) async throws
+    func sendEmailVerification() async throws
     var isEmailVerified: Bool { get async throws }
 }

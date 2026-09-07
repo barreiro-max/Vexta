@@ -9,5 +9,5 @@ import Foundation
 import Domain
 
 struct PreviewSendEmailVerificationUseCase: SendEmailVerificationUseCase {
-    func execute(email: String) async throws(AuthError) {}
+    func execute() async throws(AuthError) {}
 }

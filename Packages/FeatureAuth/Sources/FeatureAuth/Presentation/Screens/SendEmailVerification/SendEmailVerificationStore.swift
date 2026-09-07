@@ -68,10 +68,10 @@ final class SendEmailVerificationStore {
     // MARK: - Intent Handler
     func send(_ intent: Intent) {
         switch intent {
-        case .sendEmailVerification(let email):
+        case .sendEmailVerification:
             sendEmailVerificationTask?.cancel()
             sendEmailVerificationTask = Task {
-                await sendEmailVerification(email: email)
+                await sendEmailVerification()
             }
         case .checkEmailVerification:
             checkEmailVerificationTask?.cancel()
@@ -81,8 +81,7 @@ final class SendEmailVerificationStore {
     }
 
     // MARK: - Private Actions
-    private func sendEmailVerification(email: String) async {
-        state = .loading
+    private func sendEmailVerification() async {
 
         do throws(AuthError) {
             try await sendEmailVerificationUseCase.execute(email: email)
