@@ -10,6 +10,7 @@ import Foundation
 // MARK: - shared imports
 import Domain
 import Presentation
+import Notification
 
 // MARK: - feature imports
 import FeatureSplash
@@ -23,6 +24,8 @@ protocol RootAlertFactory {
     ) -> AppAlert
     func makeAuthAlert(with error: AuthError) -> AppAlert
     func makeAccountAlert(with error: AccountError) -> AppAlert
+    func makeNotificationAlert(with error: NotificationError) -> AppAlert
+    func makeNetworkAlert(with error: NetworkError) -> AppAlert
 }
 
 struct RootAlertFactoryImpl {}
@@ -43,6 +46,14 @@ extension RootAlertFactoryImpl: RootAlertFactory {
     }
 
     func makeAccountAlert(with error: AccountError) -> AppAlert {
+        AppAlert(error: error)
+    }
+
+    func makeNotificationAlert(with error: NotificationError) -> AppAlert {
+        AppAlert(error: error)
+    }
+
+    func makeNetworkAlert(with error: NetworkError) -> AppAlert {
         AppAlert(error: error)
     }
 }
