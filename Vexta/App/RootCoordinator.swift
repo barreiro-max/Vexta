@@ -118,12 +118,7 @@ final class RootCoordinator {
             rootSheetFactory.makeSubcriptionSheet() // TODO: — RevenueCatUI paywall view
 
         case .emailVerification:
-            ContentUnavailableView(
-                "Email Not Verified",
-                systemImage: "envelope.badge.shield.half.filled",
-                description: Text("Please check your inbox and verify your email address to continue.")
-            )
-            .presentationDetents([.medium])
+            rootSheetFactory.makeEmailVerificationSheet()
         }
     }
 }

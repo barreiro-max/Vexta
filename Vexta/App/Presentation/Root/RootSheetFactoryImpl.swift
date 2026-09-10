@@ -12,9 +12,12 @@ import Presentation
 
 // MARK: - Feature imports
 import FeaturePurchase
+import FeatureAuth
 
 protocol RootSheetFactory {
     func makeSubcriptionSheet() -> EmptyView
+    func makeEmailVerificationSheet() -> EmailVerificationSheet
+
 }
 
 struct RootSheetFactoryImpl {}
@@ -22,5 +25,9 @@ struct RootSheetFactoryImpl {}
 extension RootSheetFactoryImpl: RootSheetFactory {
     func makeSubcriptionSheet() -> EmptyView {
         EmptyView()
+    }
+
+    func makeEmailVerificationSheet() -> EmailVerificationSheet {
+        EmailVerificationSheet()
     }
 }
