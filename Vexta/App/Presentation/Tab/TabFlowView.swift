@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Feature imports
-import FeatureMain
-
 // MARK: - Shared imports
 import Notification
 

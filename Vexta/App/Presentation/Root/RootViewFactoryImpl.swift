@@ -15,7 +15,6 @@ import Presentation
 import FeatureSplash
 import FeatureOnboarding
 import FeatureAuth
-import FeatureMain
 
 @MainActor
 protocol RootViewFactory {

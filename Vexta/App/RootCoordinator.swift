@@ -18,7 +18,6 @@ import Notification
 import FeatureSplash
 import FeatureOnboarding
 import FeatureAuth
-import FeatureMain
 import FeaturePurchase
 
 @MainActor
