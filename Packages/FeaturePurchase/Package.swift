@@ -20,6 +20,7 @@ let package = Package(
             dependencies: [
                 // External Dependencies
                 .product(name: "RevenueCat", package: revenueCatPackageName),
+                .product(name: "RevenueCatUI", package: revenueCatPackageName),
             ]
         ),
         .testTarget(
