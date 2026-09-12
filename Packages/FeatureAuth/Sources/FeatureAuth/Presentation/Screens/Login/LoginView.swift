@@ -42,15 +42,16 @@ struct LoginView: View {
                 text: $email
             )
             .textInputAutocapitalization(.never)
+            .textContentType(.emailAddress)
+            .keyboardType(.emailAddress)
 
-            loginButton(with: .email(
-                email: email,
-                password: "123124dsnc")
-            )
-
-            loginButton(with: .google)
-            loginButton(with: .apple)
-            loginButton(with: .facebook)
+            VStack(spacing: 8) {
+                loginButton(with: .email(email: email, password: "123124dsnc"))
+                loginButton(with: .google)
+                loginButton(with: .apple)
+                loginButton(with: .facebook)
+            }
+            .buttonStyle(.borderedProminent)
         }
 
         HStack(spacing: 16) {
@@ -65,4 +66,15 @@ struct LoginView: View {
             store.send(.login(provider: provider))
         }
     }
+}
+
+#Preview {
+    let loginUseCase = PreviewLoginUseCase()
+    let completeEmailVerificationUseCase = PreviewCompleteEmailVerificationUseCase()
+    let store = LoginStore(
+        loginUseCase: loginUseCase,
+        completeEmailVerificationUseCase: completeEmailVerificationUseCase,
+        onStoreEvent: {_ in}
+    )
+    LoginView(store: store)
 }
