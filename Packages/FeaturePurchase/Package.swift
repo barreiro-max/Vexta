@@ -12,7 +12,7 @@ let package = Package(
     ],
     dependencies: [
         // External SDKs
-        .package(url: "https://github.com/RevenueCat/\(revenueCatPackageName).git", exact: "5.16.0"),
+        .package(url: "https://github.com/RevenueCat/\(revenueCatPackageName).git", exact: "5.43.0"),
     ],
     targets: [
         .target(

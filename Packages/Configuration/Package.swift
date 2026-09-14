@@ -22,7 +22,8 @@ let package = Package(
         .package(url: "https://github.com/google/\(googleSignInPackageName).git", exact: "9.2.0"),
         .package(url: "https://github.com/facebook/\(facebookPackageName).git", exact: "17.1.0"),
         .package(url: "https://github.com/firebase/\(firebasePackageName).git", exact: "12.17.0"),
-        .package(url: "https://github.com/RevenueCat/\(revenueCatPackageName).git", exact: "5.16.0"),    ],
+        .package(url: "https://github.com/RevenueCat/\(revenueCatPackageName).git", exact: "5.43.0"),
+    ],
     targets: [
         .target(
             name: packageName,
