@@ -122,6 +122,8 @@ final class RootCoordinator {
                 self?.rootRoute = debugRoute
             } onDebugSheet: { [weak self] debugSheet in
                 self?.rootSheet = debugSheet
+            } onDebugAlert: { [weak self] debugAlert in
+                self?.alert = debugAlert
             }
         #endif
         }
