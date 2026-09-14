@@ -36,6 +36,7 @@ final class RootCoordinator {
 
     enum Sheet: Hashable, Identifiable, Sendable {
         case subscription
+        case purchaseSupport
         case emailVerification
 
         var id: String { "\(self)" }
@@ -114,7 +115,10 @@ final class RootCoordinator {
         switch sheet {
 
         case .subscription:
-            rootSheetFactory.makeSubcriptionSheet() // TODO: — RevenueCatUI paywall view
+            rootSheetFactory.makeSubscriptionSheet()
+
+        case .purchaseSupport:
+            rootSheetFactory.makeCustomCenterSheet()
 
         case .emailVerification:
             rootSheetFactory.makeEmailVerificationSheet()

@@ -15,7 +15,8 @@ import FeaturePurchase
 import FeatureAuth
 
 protocol RootSheetFactory {
-    func makeSubcriptionSheet() -> EmptyView
+    func makeSubscriptionSheet() -> SubscriptionSheet
+    func makeCustomCenterSheet() -> CustomCenterSheet
     func makeEmailVerificationSheet() -> EmailVerificationSheet
 
 }
@@ -23,8 +24,13 @@ protocol RootSheetFactory {
 struct RootSheetFactoryImpl {}
 
 extension RootSheetFactoryImpl: RootSheetFactory {
-    func makeSubcriptionSheet() -> EmptyView {
-        EmptyView()
+
+    func makeSubscriptionSheet() -> SubscriptionSheet {
+        SubscriptionSheet()
+    }
+
+    func makeCustomCenterSheet() -> CustomCenterSheet {
+        CustomCenterSheet()
     }
 
     func makeEmailVerificationSheet() -> EmailVerificationSheet {
