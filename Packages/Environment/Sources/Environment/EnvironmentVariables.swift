@@ -11,16 +11,19 @@ public enum EnvironmentVariables {
     public static var isUserPremium:       Bool { EnvironmentKey.isPremium.isActive }
     public static var isTestConfiguration: Bool { EnvironmentKey.isTesting }
     public static var isUseFirebaseEmulator: Bool { EnvironmentKey.isFirebaseEmulator.isActive }
+    public static var isUseDebugView: Bool { EnvironmentKey.isDebugView.isActive }
 }
 
 fileprivate enum EnvironmentKey {
     case isPremium
     case isFirebaseEmulator
+    case isDebugView
 
     private var key: String {
         switch self {
         case .isPremium: "FORCE_PREMIUM"
         case .isFirebaseEmulator: "FIREBASE_EMULATOR"
+        case .isDebugView: "DEBUG_VIEW"
         }
     }
 
@@ -28,6 +31,7 @@ fileprivate enum EnvironmentKey {
         switch self {
         case .isPremium: "YES"
         case .isFirebaseEmulator: "YES"
+        case .isDebugView: "YES"
         }
     }
 

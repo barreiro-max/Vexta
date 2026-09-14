@@ -22,6 +22,11 @@ struct RootFlowView: View {
             .sheet(item: $coordinator.rootSheet) { rootSheet in
                 coordinator.featureFlowView(by: rootSheet)
             }
+            .debugButtonOverlay(
+                rootRoute: $coordinator.rootRoute,
+                rootSheet: $coordinator.rootSheet,
+                debugRoute: .debug
+            )
             .handleAppAlert($coordinator.alert)
     }
 }

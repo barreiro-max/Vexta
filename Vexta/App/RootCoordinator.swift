@@ -13,6 +13,7 @@ import Data
 import Presentation
 import Telemetry
 import Notification
+import Environment
 
 // MARK: - Feature imports
 import FeatureSplash
@@ -31,6 +32,10 @@ final class RootCoordinator {
         case auth
         case mainTab
 
+    #if DEBUG
+        case debug
+    #endif
+
         var id: String { "\(self)" }
     }
 
@@ -43,7 +48,7 @@ final class RootCoordinator {
     }
 
     // MARK: - Navigation & Alert
-    var rootRoute: Route = .splash
+    var rootRoute: Route
     var rootSheet: Sheet?
     var alert: AppAlert?
 
@@ -66,6 +71,13 @@ final class RootCoordinator {
         self.alertFactory = alertFactory
         self.rootSheetFactory = rootSheetFactory
         self.rootObserver = rootObserver
+
+        // MARK: - Define Root Route
+    #if DEBUG
+        rootRoute = EnvironmentVariables.isUseDebugView ? .debug : .splash
+    #else
+        rootRoute = .splash
+    #endif
 
         // MARK: - Start Observion
         startSessionObservation()
@@ -103,6 +115,15 @@ final class RootCoordinator {
             rootViewFactory.makeTabFlowView { [weak self] flowEvent in
                 self?.matchTabFlowEvent(for: flowEvent)
             }
+
+        #if DEBUG
+        case .debug:
+            DebugView { [weak self] debugRoute in
+                self?.rootRoute = debugRoute
+            } onDebugSheet: { [weak self] debugSheet in
+                self?.rootSheet = debugSheet
+            }
+        #endif
         }
     }
 
@@ -231,6 +252,10 @@ extension RootCoordinator {
 extension RootCoordinator {
 
     private func startSessionObservation() {
+        guard rootRoute != .debug else {
+            return
+        }
+
         rootObserver.observeSession() { [weak self] observerEvent in
             self?.matchObserverEvent(for: observerEvent)
         }
