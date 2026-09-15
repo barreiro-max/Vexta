@@ -17,7 +17,8 @@ public struct EmailVerificationSheet: View {
             systemImage: "envelope.badge.shield.half.filled",
             description: Text("Please check your inbox and verify your email address to continue.")
         )
-        .presentationDetents([.medium])
+        .ignoresSafeArea()
+        .presentationDetents([.height(250)])
     }
 }
 
