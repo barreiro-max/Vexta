@@ -33,8 +33,10 @@ struct DebugView: View {
 
     @ViewBuilder
     private func tabContent(for tab: DebugTab) -> some View {
-        let _ = Log.ui.debug("Will build by debug tab: \(tab)")
-
+        if selectedTab != tab {
+            let _ = Log.ui.debug("Will build by debug tab: \(tab)")
+        }
+        
         switch tab {
 
         case .actions:
