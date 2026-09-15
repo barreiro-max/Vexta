@@ -8,6 +8,7 @@
 import SwiftUI
 import Presentation
 import Environment
+import Telemetry
 
 /// Change environment variable `DEBUG_VIEW` to `YES` if you want to see this view
 ///
@@ -32,6 +33,8 @@ struct DebugView: View {
 
     @ViewBuilder
     private func tabContent(for tab: DebugTab) -> some View {
+        let _ = Log.ui.debug("Will build by debug tab: \(tab)")
+
         switch tab {
 
         case .actions:
