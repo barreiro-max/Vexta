@@ -29,10 +29,10 @@
 	</array>
 	<key>FAKESTORE_API_URL</key>
 	<string>$(FAKESTORE_API_URL)</string>
-	<key>FacebookAppID</key>
-	<string>$(FACEBOOK_APP_ID)</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<string>$(FACEBOOK_ADVERTISER_ID_COLLECTION_ENABLED)</string>
+	<key>FacebookAppID</key>
+	<string>$(FACEBOOK_APP_ID)</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<string>$(FACEBOOK_AUTO_LOG_APP_EVENTS_ENABLED)</string>
 	<key>FacebookClientToken</key>
@@ -41,6 +41,8 @@
 	<string>$(FACEBOOK_DISPLAY_NAME)</string>
 	<key>GIDClientID</key>
 	<string>$(GID_CLIENT_ID)</string>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<string>$(IS_ANALYTICS_ENABLED)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
