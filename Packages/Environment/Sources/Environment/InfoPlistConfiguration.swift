@@ -19,7 +19,12 @@ public enum InfoPlistConfiguration {
     }
 
     public static var revenueCatAPIKey: String {
-        InfoPlistKey.revenueCat.value
+        switch AppEnvironment.current {
+        case .test, .dev:
+            InfoPlistKey.revenueCatTestStore.value
+        case .stage, .prod:
+            InfoPlistKey.revenueCatSecret.value
+        }
     }
 
     public static var currentAppEnvironment: String {
@@ -34,7 +39,8 @@ public enum InfoPlistConfiguration {
 
 fileprivate enum InfoPlistKey: String {
     case fakeStoreAPI = "FAKESTORE_API_URL"
-    case revenueCat   = "REVENUE_CAT_API_KEY"
+    case revenueCatTestStore   = "REVENUE_CAT_TEST_STORE_API_KEY"
+    case revenueCatSecret = "REVENUE_CAT_SECRET_API_KEY"
 
     case appEnvironment = "APP_ENVIRONMENT"
 

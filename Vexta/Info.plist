@@ -48,7 +48,9 @@
 		<string>fbapi</string>
 		<string>fb-messenger-share-api</string>
 	</array>
-	<key>REVENUE_CAT_API_KEY</key>
-	<string>$(REVENUE_CAT_API_KEY)</string>
+	<key>REVENUE_CAT_SECRET_API_KEY</key>
+	<string>$(REVENUE_CAT_SECRET_API_KEY)</string>
+	<key>REVENUE_CAT_TEST_STORE_API_KEY</key>
+	<string>$(REVENUE_CAT_TEST_STORE_API_KEY)</string>
 </dict>
 </plist>
