@@ -9,6 +9,7 @@
 import SwiftUI
 import Presentation
 import Domain
+import Environment
 
 struct DebugActionsView: View {
 
@@ -27,7 +28,13 @@ struct DebugActionsView: View {
 
                 Section("Sheets") {
                     Button("Launch EmailVerification Sheet") { onDebugSheet(.emailVerification) }
-                    Button("Launch Subscription Sheet") { onDebugSheet(.subscription) }
+
+                    Button("Launch Subscription Sheet") {
+                        if !EnvironmentVariables.isUserPremium {
+                            onDebugSheet(.subscription)
+                        }
+                    }
+
                     Button("Launch CustomCenter Sheet") { onDebugSheet(.purchaseSupport) }
                 }
 
