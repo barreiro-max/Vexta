@@ -14,23 +14,40 @@ import Presentation
 import FeaturePurchase
 import FeatureAuth
 
+@MainActor
 protocol RootSheetFactory {
-    func makeSubscriptionSheet() -> SubscriptionSheet
-    func makeCustomCenterSheet() -> CustomCenterSheet
+    func makeSubscriptionSheet(
+        onStoreSheetEvent: @escaping (SubscriptionSheetStore.SheetEvent) -> Void
+    ) -> SubscriptionSheet
+    func makeCustomerCenterSheet() -> CustomerCenterSheet
     func makeEmailVerificationSheet() -> EmailVerificationSheet
 
 }
 
-struct RootSheetFactoryImpl {}
+@MainActor
+struct RootSheetFactoryImpl {
+
+    private let checkUserPremiumStatusUseCase: CheckUserPremiumStatusUseCase
+
+    init(checkUserPremiumStatusUseCase: CheckUserPremiumStatusUseCase) {
+        self.checkUserPremiumStatusUseCase = checkUserPremiumStatusUseCase
+    }
+}
 
 extension RootSheetFactoryImpl: RootSheetFactory {
 
-    func makeSubscriptionSheet() -> SubscriptionSheet {
-        SubscriptionSheet()
+    func makeSubscriptionSheet(
+        onStoreSheetEvent: @escaping (SubscriptionSheetStore.SheetEvent) -> Void
+    ) -> SubscriptionSheet {
+        let sheetStore = SubscriptionSheetStore(
+            checkUserPremiumStatusUseCase: checkUserPremiumStatusUseCase,
+            onStoreSheetEvent: onStoreSheetEvent
+        )
+        return SubscriptionSheet(sheetStore: sheetStore)
     }
 
-    func makeCustomCenterSheet() -> CustomCenterSheet {
-        CustomCenterSheet()
+    func makeCustomerCenterSheet() -> CustomerCenterSheet {
+        CustomerCenterSheet()
     }
 
     func makeEmailVerificationSheet() -> EmailVerificationSheet {

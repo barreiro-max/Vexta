@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol PurchaseProvider: Sendable {
-    var hasPremium: Bool { get async throws }
+    var hasPremium: Bool { get async throws(PurchaseError) }
 }

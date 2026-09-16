@@ -15,6 +15,7 @@ import Notification
 // MARK: - Feature imports
 import FeatureSplash
 import FeatureMain
+import FeaturePurchase
 
 @MainActor
 protocol RootAlertFactory {
@@ -26,6 +27,8 @@ protocol RootAlertFactory {
     func makeAccountAlert(with error: AccountError) -> AppAlert
     func makeNotificationAlert(with error: NotificationError) -> AppAlert
     func makeNetworkAlert(with error: NetworkError) -> AppAlert
+
+    func makeSubscriptionSheetAlert(with error: PurchaseError) -> AppAlert
 }
 
 struct RootAlertFactoryImpl {}
@@ -54,6 +57,10 @@ extension RootAlertFactoryImpl: RootAlertFactory {
     }
 
     func makeNetworkAlert(with error: NetworkError) -> AppAlert {
+        AppAlert(error: error)
+    }
+
+    func makeSubscriptionSheetAlert(with error: PurchaseError) -> AppAlert {
         AppAlert(error: error)
     }
 }

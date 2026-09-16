@@ -22,6 +22,7 @@ final class TabFlowCoordinator {
     enum FlowEvent {
         case finishedMain
         case alertedMain(with: AccountError)
+        case showPaywallIfNeeded
     }
 
     enum Tab: Int, Equatable, Hashable {

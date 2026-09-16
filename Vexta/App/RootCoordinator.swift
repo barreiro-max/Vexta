@@ -60,17 +60,22 @@ final class RootCoordinator {
     // MARK: - Observer
     private let rootObserver: RootObserver
 
+    // MARK: - Session
+    private let rootSession: RootSession
+
     // MARK: - Init
     init(
         rootViewFactory:            any RootViewFactory,
         alertFactory:               any RootAlertFactory,
         rootSheetFactory:           any RootSheetFactory,
         rootObserver:               RootObserver,
+        rootSession:                RootSession,
     ) {
         self.rootViewFactory = rootViewFactory
         self.alertFactory = alertFactory
         self.rootSheetFactory = rootSheetFactory
         self.rootObserver = rootObserver
+        self.rootSession = rootSession
 
         // MARK: - Define Root Route
     #if DEBUG
@@ -138,10 +143,12 @@ final class RootCoordinator {
         switch sheet {
 
         case .subscription:
-            rootSheetFactory.makeSubscriptionSheet()
+            rootSheetFactory.makeSubscriptionSheet { [weak self] sheetEvent in
+                self?.matchSubscriptionSheetEvent(for: sheetEvent)
+            }
 
         case .purchaseSupport:
-            rootSheetFactory.makeCustomCenterSheet()
+            rootSheetFactory.makeCustomerCenterSheet()
 
         case .emailVerification:
             rootSheetFactory.makeEmailVerificationSheet()
@@ -158,6 +165,8 @@ extension RootCoordinator {
         case dismissedSheet
         case presentedAlert(_ alert: AppAlert)
         case dismissedAlert
+
+        case presentedPaywallIfNeeded
     }
 
     private func send(_ intent: RootCoordinator.Intent) {
@@ -183,6 +192,10 @@ extension RootCoordinator {
         case .dismissedAlert:
             self.alert = nil
 
+        case .presentedPaywallIfNeeded:
+            rootSession.validateUserPremiumStatus { [weak self] sessionEvent in
+                self?.matchUserPremiumStatusSessionEvent(for: sessionEvent)
+            }
         }
         
         Log.ui.debug("Send intent: \(intent)")
@@ -225,6 +238,7 @@ extension RootCoordinator {
 
         case .finished:
             send(.presentedRoute(.mainTab))
+            send(.presentedPaywallIfNeeded)
 
         case .alerted(let error):
             guard error != .emailNotVerified else {
@@ -246,6 +260,9 @@ extension RootCoordinator {
         case .alertedMain(let error):
             let alert = alertFactory.makeAccountAlert(with: error)
             send(.presentedAlert(alert))
+
+        case .showPaywallIfNeeded:
+            send(.presentedPaywallIfNeeded)
         }
     }
 }
@@ -254,9 +271,11 @@ extension RootCoordinator {
 extension RootCoordinator {
 
     private func startSessionObservation() {
+        #if DEBUG
         guard rootRoute != .debug else {
             return
         }
+        #endif
 
         rootObserver.observeSession() { [weak self] observerEvent in
             self?.matchObserverEvent(for: observerEvent)
@@ -320,6 +339,36 @@ extension RootCoordinator {
             break
         case .willPresent(let userInfo):
             break
+        }
+    }
+}
+
+// MARK: - Sheet Event Matching
+extension RootCoordinator {
+
+    private func matchSubscriptionSheetEvent(for sheetEvent: SubscriptionSheetStore.SheetEvent) {
+        switch sheetEvent {
+
+        case .checkUserPremiumSucceeded: break
+
+        case .checkUserPremiumFailed(let error):
+            let alert = alertFactory.makeSubscriptionSheetAlert(with: error)
+            send(.presentedAlert(alert))
+        }
+    }
+}
+
+// MARK: - Session Event Matching
+extension RootCoordinator {
+
+    private func matchUserPremiumStatusSessionEvent(for sessionEvent: RootSession.SessionEvent) {
+        switch sessionEvent {
+
+        case .userHasPremium:
+            Log.purchase.debug("User already has premium")
+
+        case .userHasNotPremium:
+            send(.presentedSheet(.subscription))
         }
     }
 }

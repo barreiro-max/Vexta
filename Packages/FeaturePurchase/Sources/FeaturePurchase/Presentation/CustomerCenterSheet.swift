@@ -1,5 +1,5 @@
 //
-//  SubscriptionSheet.swift
+//  CustomCenterSheet.swift
 //  Vexta
 //
 //  Created by MaxAdmin on 12.09.2026.
@@ -8,15 +8,15 @@
 import SwiftUI
 import RevenueCatUI
 
-public struct SubscriptionSheet: View {
+public struct CustomerCenterSheet: View {
 
     public init() {}
 
     public var body: some View {
-        PaywallView()
+        CustomerCenterView()
     }
 }
 
 #Preview {
-    SubscriptionSheet()
+    CustomerCenterSheet()
 }

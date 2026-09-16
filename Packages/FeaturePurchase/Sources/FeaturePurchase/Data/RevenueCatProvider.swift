@@ -17,10 +17,14 @@ struct RevenueCatProvider {
 
 extension RevenueCatProvider: PurchaseProvider {
     var hasPremium: Bool {
-        get async throws {
-            let customerInfo = try await revenueCat.customerInfo()
-            let key = "Vexta Premium"
-            return customerInfo.entitlements[key]?.isActive == true
+        get async throws(PurchaseError) {
+            do throws {
+                let customerInfo = try await revenueCat.customerInfo()
+                let key = "Vexta Premium"
+                return customerInfo.entitlements[key]?.isActive == true
+            } catch {
+                throw PurchaseError.customerInfoNotFound
+            }
         }
     }
 }

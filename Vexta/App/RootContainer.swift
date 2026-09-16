@@ -101,14 +101,20 @@ extension RootContainer: RootCoordinatorFactory {
     func makeRootCoordinator() -> RootCoordinator {
         let rootViewFactory = makeRootViewFactory()
         let alertFactory = RootAlertFactoryImpl()
-        let rootSheetFactory = RootSheetFactoryImpl()
+        let rootSheetFactory = RootSheetFactoryImpl(
+            checkUserPremiumStatusUseCase: purchaseContainer.checkUserPremiumStatusUseCase
+        )
         let rootObserver = makeRootObserver()
+        let rootSession = RootSession(
+            checkUserPremiumStatusUseCase: purchaseContainer.checkUserPremiumStatusUseCase
+        )
 
         return RootCoordinator(
             rootViewFactory: rootViewFactory,
             alertFactory: alertFactory,
             rootSheetFactory: rootSheetFactory,
             rootObserver: rootObserver,
+            rootSession: rootSession
         )
     }
 

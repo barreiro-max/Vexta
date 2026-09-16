@@ -11,5 +11,8 @@ public final class PurchaseContainer {
     public init() {}
 
     lazy var purchaseProvider = RevenueCatProvider()
+
+    public lazy var checkUserPremiumStatusUseCase = CheckUserPremiumStatusUseCaseImpl(
+        purchaseProvider: purchaseProvider
+    )
 }
-// TODO: - в рут координаторе дергать sheet paywall, и после создавать revenueCatSheet, у которого будет своя вьюмодель, вьюшки, и свои юз кейсы, которые должны будут проверять, когда именно показать paywall
