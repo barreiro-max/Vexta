@@ -58,13 +58,4 @@ extension View {
         )
     }
 }
-#else
-extension View {
-    @inline(__always)
-    public func debugButtonOverlay<Route, Sheet>(
-        rootRoute: Any,
-        rootSheet: Any,
-        debugRoute: Route
-    ) -> some View { self }
-}
 #endif

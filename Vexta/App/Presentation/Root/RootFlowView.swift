@@ -17,16 +17,24 @@ struct RootFlowView: View {
     }
 
     var body: some View {
-        coordinator.rootView
-            .animation(.default, value: coordinator.rootRoute)
-            .sheet(item: $coordinator.rootSheet) { rootSheet in
-                coordinator.featureFlowView(by: rootSheet)
-            }
+#if DEBUG
+        rootView
             .debugButtonOverlay(
                 rootRoute: $coordinator.rootRoute,
                 rootSheet: $coordinator.rootSheet,
                 debugRoute: .debug
             )
+#else
+        rootView
+#endif
+    }
+
+    private var rootView: some View {
+        coordinator.rootView
+            .animation(.default, value: coordinator.rootRoute)
+            .sheet(item: $coordinator.rootSheet) { rootSheet in
+                coordinator.featureFlowView(by: rootSheet)
+            }
             .handleAppAlert($coordinator.alert)
     }
 }
