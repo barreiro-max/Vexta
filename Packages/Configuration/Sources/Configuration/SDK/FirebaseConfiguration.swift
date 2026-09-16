@@ -44,24 +44,23 @@ public struct FirebaseConfiguration: FirebaseConfigurable {
     }
 
     public func configureFirebaseFeatures() async {
-        async let configuredRemoteConfig: Void = configureRemoteConfig()
-        async let configuredAuthEmulator: Void = configureAuthEmulator()
-
-        _ = await (
-            configuredRemoteConfig,
-            configuredAuthEmulator
-        )
+        let _ = await configureRemoteConfig()
+        configureAuthEmulator()
         Log.system.notice("🔥 Firebase Features configured")
     }
 
 #if DEBUG
-    private func configureAuthEmulator() async {
+    private func configureAuthEmulator() {
         if EnvironmentVariables.isUseFirebaseEmulator {
             Auth.auth().useEmulator(withHost: "localhost", port: 9099)
             Log.auth.notice("🔥 Firebase Auth Emulator configured")
         } else {
             Log.auth.notice("🔥 Firebase Auth Emulator is not used")
         }
+    }
+#else
+    private func configureAuthEmulator() {
+        Log.auth.notice("🔥 Firebase Auth Emulator is not used in release")
     }
 #endif
 
