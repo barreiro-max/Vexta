@@ -64,7 +64,6 @@ final class RegisterStore {
     // MARK: - Private Actions
     private func register(email: String, password: String) async {
         guard !state.isLoading else { return }
-        state = .idle
         state = .loading
 
         do throws(AuthError) {
@@ -72,12 +71,18 @@ final class RegisterStore {
                 email: email,
                 password: password
             )
-            if Task.isCancelled { return }
-            
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
+
             state = .completed(userUID: id)
             onStoreEvent(.registerSucceeded)
         } catch {
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
             state = .failure(error: error)
 
             onStoreEvent(.registerFailed(error: error))

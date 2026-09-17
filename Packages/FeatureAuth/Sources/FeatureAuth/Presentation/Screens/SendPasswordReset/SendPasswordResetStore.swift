@@ -18,6 +18,10 @@ final class SendPasswordResetStore {
         case loading
         case failure(error: AuthError)
         case completed
+
+        var isLoading: Bool {
+            if case .loading = self { true } else { false }
+        }
     }
 
     enum Intent {
@@ -59,17 +63,23 @@ final class SendPasswordResetStore {
 
     // MARK: - Private Actions
     private func sendPasswordReset(with email: String) async {
-        state = .idle
+        guard !state.isLoading else { return }
         state = .loading
 
         do throws(AuthError) {
             try await sendPasswordResetUseCase.execute(email: email)
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
 
             state = .completed
             onStoreEvent(.sendPasswordResetSucceeded)
         } catch {
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
             state = .failure(error: error)
 
             onStoreEvent(.sendPasswordResetFailed(error: error))

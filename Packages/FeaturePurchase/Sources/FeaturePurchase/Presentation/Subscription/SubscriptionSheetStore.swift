@@ -64,7 +64,6 @@ public final class SubscriptionSheetStore {
     // MARK: - Private Actions
     private func checkUserPremium() async {
         guard !state.isLoading else { return }
-        state = .idle
         state = .loading
 
         do throws(PurchaseError) {

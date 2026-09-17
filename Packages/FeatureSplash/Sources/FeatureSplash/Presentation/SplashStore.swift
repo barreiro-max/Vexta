@@ -13,10 +13,11 @@ import Domain
 public final class SplashStore {
 
     // MARK: - Nested Types
-    enum State {
+    enum State: Equatable {
         case idle
         case loading
         case failure(error: SplashError)
+        case completed
 
         var isLoading: Bool {
             if case .loading = self { true } else { false }
@@ -61,6 +62,7 @@ public final class SplashStore {
     // MARK: - Actions
     func bootstrap() async {
         guard !state.isLoading else { return }
+        state = .loading
 
         guard networkStatusObserver.isConnected else {
             handleError(.noInternetConnection)
@@ -78,9 +80,12 @@ public final class SplashStore {
         }
 
         if !checkOnboardingPassedUseCase.execute() {
+            state = .completed
             onStoreEvent(.neededOnboarding)
             return
         }
+
+        state = .completed
 
         let authState = authStateObserver.fetchAuthState()
         switch authState {

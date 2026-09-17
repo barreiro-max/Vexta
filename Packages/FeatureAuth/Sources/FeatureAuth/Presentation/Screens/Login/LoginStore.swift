@@ -79,12 +79,14 @@ final class LoginStore {
     // MARK: - Private Actions
     private func login(with provider: AuthProviderOption) async {
         guard !state.isLoading else { return }
-        state = .idle
         state = .loading(for: provider)
 
         do throws(AuthError) {
             let uid = try await loginUseCase.execute(with: provider)
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
 
             if case .anonymous = provider {
                 onStoreEvent(.loginAnonymouslySucceeded)
@@ -92,7 +94,10 @@ final class LoginStore {
             }
 
             let isVerified = try await completeEmailVerificationUseCase.execute()
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
 
             if isVerified {
                 state = .completed(for: provider, userUID: uid)
@@ -103,7 +108,10 @@ final class LoginStore {
             }
 
         } catch {
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
             state = .failure(for: provider, error: error)
             onStoreEvent(.loginFailed(error: error))
         }

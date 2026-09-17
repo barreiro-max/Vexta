@@ -15,13 +15,19 @@ final class MainStore {
     // MARK: - Nested Types
     enum State: Equatable {
         case idle
-        case loading
-        case completed
-        case failure(error: AccountError)
+        case loading(for: Operation)
+        case completed(for: Operation)
+        case failure(for: Operation, error: AccountError)
 
-        var isLoading: Bool {
-            if case .loading = self { true } else { false }
+        func isLoading(for operation: Operation) -> Bool {
+            if case .loading(operation) = self { true } else { false }
         }
+    }
+
+    enum Operation {
+        case logOut
+        case link
+        case unlink
     }
 
     enum Intent {
@@ -91,55 +97,70 @@ final class MainStore {
 
     // MARK: - Private Actions
     private func logOut() async {
-        guard !state.isLoading else { return }
-        state = .idle
-        state = .loading
+        guard !state.isLoading(for: .logOut) else { return }
+        state = .loading(for: .logOut)
 
         do throws(AccountError) {
             try await logOutUseCase.execute()
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
 
-            state = .completed
+            state = .completed(for: .logOut)
             onStoreEvent(.logOutSucceeded)
         } catch {
-            if Task.isCancelled { return }
-            state = .failure(error: error)
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
+            state = .failure(for: .logOut, error: error)
             onStoreEvent(.logOutFailed(error: error))
         }
     }
 
     private func link(with provider: LinkableAuthProviderOption) async {
-        guard !state.isLoading else { return }
-        state = .idle
-        state = .loading
+        guard !state.isLoading(for: .link) else { return }
+        state = .loading(for: .link)
 
         do throws(AccountError) {
             let uid = try await linkAccountUseCase.execute(with: provider)
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
 
-            state = .completed
+            state = .completed(for: .link)
             onStoreEvent(.linkSucceeded)
         } catch {
-            if Task.isCancelled { return }
-            state = .failure(error: error)
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
+            state = .failure(for: .link, error: error)
             onStoreEvent(.linkFailed(error: error))
         }
     }
 
     private func unlink(from provider: LinkableAuthProviderOption) async {
-        guard !state.isLoading else { return }
-        state = .idle
-        state = .loading
+        guard !state.isLoading(for: .unlink) else { return }
+        state = .loading(for: .unlink)
 
         do throws(AccountError) {
             let uid = try await unlinkAccountUseCase.execute(from: provider)
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
 
-            state = .completed
+            state = .completed(for: .unlink)
             onStoreEvent(.unlinkSucceeded)
         } catch {
-            if Task.isCancelled { return }
-            state = .failure(error: error)
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
+            state = .failure(for: .unlink, error: error)
             onStoreEvent(.unlinkFailed(error: error))
         }
     }

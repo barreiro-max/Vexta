@@ -19,8 +19,8 @@ final class SendEmailVerificationStore {
         case failure(for: Operation, error: AuthError)
         case completed(for: Operation)
 
-        var isLoading: Bool {
-            if case .loading = self { true } else { false }
+        func isLoading(for operation: Operation) -> Bool {
+            if case .loading(operation) = self { true } else { false }
         }
     }
 
@@ -91,18 +91,23 @@ final class SendEmailVerificationStore {
 
     // MARK: - Private Actions
     private func sendEmailVerification() async {
-
-        guard !state.isLoading else { return }
+        guard !state.isLoading(for: .sendEmailVerification) else { return }
         state = .loading(for: .sendEmailVerification)
 
         do throws(AuthError) {
             try await sendEmailVerificationUseCase.execute()
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
             state = .completed(for: .sendEmailVerification)
 
             await observeTimer(duration: 60)
         } catch {
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
             handleError(for: .sendEmailVerification, error: error)
         }
     }
@@ -110,6 +115,7 @@ final class SendEmailVerificationStore {
     // TODO: — upgrade timer logic from local to foreground (with User Defaults)
     private func observeTimer(duration: Int) async {
         precondition(duration > 0)
+        guard !state.isLoading(for: .observeTimer) else { return }
         isCooldownActive = true
         state = .loading(for: .observeTimer)
 
@@ -129,11 +135,15 @@ final class SendEmailVerificationStore {
     }
 
     private func checkEmailVerification() async {
+        guard !state.isLoading(for: .checkEmailVerification) else { return }
         state = .loading(for: .checkEmailVerification)
 
         do throws(AuthError) {
             let isVerified = try await completeEmailVerificationUseCase.execute()
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
 
             if isVerified {
                 state = .completed(for: .checkEmailVerification)
@@ -143,7 +153,10 @@ final class SendEmailVerificationStore {
             }
 
         } catch {
-            if Task.isCancelled { return }
+            if Task.isCancelled {
+                state = .idle
+                return
+            }
             handleError(for: .checkEmailVerification, error: error)
         }
     }
