@@ -79,7 +79,7 @@ final class RootCoordinator {
 
         // MARK: - Define Root Route
     #if DEBUG
-        rootRoute = EnvironmentVariables.isUseDebugView ? .debug : .splash
+        rootRoute = BuildConfiguration.isUseDebugView ? .debug : .splash
     #else
         rootRoute = .splash
     #endif

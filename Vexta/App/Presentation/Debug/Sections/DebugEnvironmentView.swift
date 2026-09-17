@@ -14,16 +14,16 @@ struct DebugEnvironmentView: View {
         NavigationStack {
             List {
                 Section("Environment Variables") {
-                    boolRow("Use Debug View", isOn: EnvironmentVariables.isUseDebugView)
-                    boolRow("Test Configuration", isOn: EnvironmentVariables.isTestConfiguration)
-                    boolRow("Use Firebase Emulator", isOn: EnvironmentVariables.isUseFirebaseEmulator)
-                    boolRow("User is Premium", isOn: EnvironmentVariables.isUserPremium)
+                    boolRow("Use Debug View", isOn: BuildConfiguration.isUseDebugView)
+                    boolRow("Test Configuration", isOn: BuildConfiguration.isTestConfiguration)
+                    boolRow("Use Firebase Emulator", isOn: BuildConfiguration.isUseFirebaseEmulator)
+                    boolRow("User is Premium", isOn: BuildConfiguration.isUserPremium)
                 }
 
                 Section("Info Plist") {
-                    LabeledContent("RevenueCat API Key", value: InfoPlistConfiguration.revenueCatAPIKey)
-                    LabeledContent("FakeStore API URL", value: InfoPlistConfiguration.fakeStoreAPIURL.absoluteString)
-                    boolRow("Analytics Collection", isOn: InfoPlistConfiguration.isAnalyticsCollectionEnabled)
+                    LabeledContent("RevenueCat API Key", value: BuildConfiguration.revenueCatAPIKey)
+                    LabeledContent("FakeStore API URL", value: BuildConfiguration.fakeStoreAPIURL.absoluteString)
+                    boolRow("Analytics Collection", isOn: BuildConfiguration.isAnalyticsCollectionEnabled)
                 }
             }
             .navigationTitle("Environment")

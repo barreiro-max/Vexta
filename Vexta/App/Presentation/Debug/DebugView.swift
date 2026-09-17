@@ -48,7 +48,7 @@ struct DebugView: View {
 
         case .system:
             DebugSystemInfoView(
-                environment: InfoPlistConfiguration.currentAppEnvironment
+                environment: BuildConfiguration.environment.configTitle
             )
 
         case .environment:

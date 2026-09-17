@@ -27,7 +27,7 @@ struct VextaApp: App {
 
         Log.system.notice(
             "Composition Root initialized " +
-            "with environment: [\(AppEnvironment.current)]"
+            "with environment: [\(BuildConfiguration.environment)]"
         )
     }
 

@@ -30,7 +30,7 @@ struct DebugActionsView: View {
                     Button("Launch EmailVerification Sheet") { onDebugSheet(.emailVerification) }
 
                     Button("Launch Subscription Sheet") {
-                        if !EnvironmentVariables.isUserPremium {
+                        if !BuildConfiguration.isUserPremium {
                             onDebugSheet(.subscription)
                         }
                     }

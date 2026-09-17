@@ -7,11 +7,11 @@
 
 import Foundation
 
-public enum LaunchArguments {
-    public static var firebaseDebugEnabled:      Bool { ArgumentKey.firDebugEnabled.isActive }
-    public static var firebaseDebugDisabled:     Bool { ArgumentKey.firDebugDisabled.isActive }
-    public static var firebaseAnalyticsEnabled:  Bool { ArgumentKey.firAnalyticsEnabled.isActive }
-    public static var firebaseAnalyticsDisabled: Bool { ArgumentKey.firAnalyticsDisabled.isActive }
+enum LaunchArguments {
+    static var firebaseDebugEnabled:      Bool { ArgumentKey.firDebugEnabled.isActive }
+    static var firebaseDebugDisabled:     Bool { ArgumentKey.firDebugDisabled.isActive }
+    static var firebaseAnalyticsEnabled:  Bool { ArgumentKey.firAnalyticsEnabled.isActive }
+    static var firebaseAnalyticsDisabled: Bool { ArgumentKey.firAnalyticsDisabled.isActive }
 }
 
 fileprivate enum ArgumentKey: String {

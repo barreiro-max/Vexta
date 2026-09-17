@@ -26,7 +26,7 @@ public struct RevenueCatConfiguration: RevenueCatConfigurable {
         Purchases.logLevel = .debug
 
         Purchases.configure(
-            withAPIKey: InfoPlistConfiguration.revenueCatAPIKey
+            withAPIKey: BuildConfiguration.revenueCatAPIKey
         )
 
         Log.purchase.debug("💰 RevenueCat in sandbox: \(Purchases.shared.isSandbox)")

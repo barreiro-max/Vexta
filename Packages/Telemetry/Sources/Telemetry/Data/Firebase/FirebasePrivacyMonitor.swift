@@ -26,7 +26,7 @@ extension FirebasePrivacyMonitor: PrivacyMonitor {
     public var isTelemetryEnabled: Bool {
         defaults.bool(forKey: privacyTelemetryKey) &&
         Crashlytics.crashlytics().isCrashlyticsCollectionEnabled() &&
-        InfoPlistConfiguration.isAnalyticsCollectionEnabled
+        BuildConfiguration.isAnalyticsCollectionEnabled 
     }
 
     public func telemetryCollection(isEnabled: Bool) {

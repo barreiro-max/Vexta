@@ -51,7 +51,7 @@ public struct FirebaseConfiguration: FirebaseConfigurable {
 
 #if DEBUG
     private func configureAuthEmulator() {
-        if EnvironmentVariables.isUseFirebaseEmulator {
+        if BuildConfiguration.isUseFirebaseEmulator {
             Auth.auth().useEmulator(withHost: "localhost", port: 9099)
             Log.auth.notice("🔥 Firebase Auth Emulator configured")
         } else {

@@ -28,7 +28,7 @@ public struct DebugButtonOverlayModifier<Route: Equatable, Sheet>: ViewModifier 
         ZStack(alignment: .topTrailing) {
             content
 
-            if EnvironmentVariables.isUseDebugView && rootRoute != debugRoute {
+            if BuildConfiguration.isUseDebugView && rootRoute != debugRoute {
                 Button("Debug") {
                     rootSheet = nil
                     rootRoute = debugRoute
