@@ -17,7 +17,7 @@ public final class SplashStore {
         case idle
         case loading
         case failure(error: SplashError)
-        case completed
+        case finished
 
         var isLoading: Bool {
             if case .loading = self { true } else { false }
@@ -25,6 +25,7 @@ public final class SplashStore {
     }
 
     public enum Event {
+        case locked
         case neededOnboarding
         case neededEmailVerification(userId: String)
         case authenticated(userId: String)
@@ -69,23 +70,19 @@ public final class SplashStore {
             return
         }
 
-        if let message = await fetchRemoteConfigUseCase.fetchMaintenanceMessage() {
-            handleError(.maintenanceMode(message: message))
-            return
-        }
-
-        if let updateURL = await fetchRemoteConfigUseCase.fetchForceUpdateURL() {
-            handleError(.forceUpdateRequired(storeURL: updateURL))
+        if fetchRemoteConfigUseCase.isForceUpdate {
+            state = .finished
+            onStoreEvent(.locked)
             return
         }
 
         if !checkOnboardingPassedUseCase.execute() {
-            state = .completed
+            state = .finished
             onStoreEvent(.neededOnboarding)
             return
         }
 
-        state = .completed
+        state = .finished
 
         let authState = authStateObserver.fetchAuthState()
         switch authState {
