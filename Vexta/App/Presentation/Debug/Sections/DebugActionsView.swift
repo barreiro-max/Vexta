@@ -21,6 +21,7 @@ struct DebugActionsView: View {
         NavigationStack {
             List {
                 Section("Routes") {
+                    Button("Launch Lock Flow") { onDebugRoute(.lock(reason: "Debug reason")) }
                     Button("Launch Onboarding Flow") { onDebugRoute(.onboarding) }
                     Button("Launch Auth Flow") { onDebugRoute(.auth) }
                     Button("Launch Tab Flow") { onDebugRoute(.mainTab) }

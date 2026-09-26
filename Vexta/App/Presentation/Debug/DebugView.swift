@@ -20,23 +20,28 @@ struct DebugView: View {
     let onDebugRoute: (RootCoordinator.Route) -> Void
     let onDebugSheet: (RootCoordinator.Sheet?) -> Void
     let onDebugAlert: (AppAlert?) -> Void
+    let onForceRefresh: () -> Void
 
     public var body: some View {
         TabView(selection: $selectedTab) {
             ForEach(DebugTab.allCases) { tab in
                 Tab(tab.rawValue, systemImage: tab.systemImage, value: tab) {
+                    refreshViewButton
                     tabContent(for: tab)
+                        .onAppear {
+                            Log.ui.debug("DebugTab appeared: \(tab)")
+                        }
                 }
             }
         }
     }
 
+    private var refreshViewButton: some View {
+        Button("Refresh debug view", action: onForceRefresh)
+    }
+
     @ViewBuilder
     private func tabContent(for tab: DebugTab) -> some View {
-        if selectedTab != tab {
-            let _ = Log.ui.debug("Will build by debug tab: \(tab)")
-        }
-        
         switch tab {
 
         case .actions:
