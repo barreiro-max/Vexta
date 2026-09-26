@@ -18,49 +18,29 @@ import FeatureMain
 import FeaturePurchase
 
 @MainActor
-protocol RootAlertFactory {
-    func makeSplashAlert(
-        with error: SplashError,
+protocol RootAlertFactory: Sendable {
+    func makeAlert(for error: LocalizedError) -> AppAlert
+
+    func makeRetryAlert(
+        for error: LocalizedError,
         onRetry: @escaping @MainActor () async -> Void
     ) -> AppAlert
-    func makeAuthAlert(with error: AuthError) -> AppAlert
-    func makeAccountAlert(with error: AccountError) -> AppAlert
-    func makeNotificationAlert(with error: NotificationError) -> AppAlert
-    func makeNetworkAlert(with error: NetworkError) -> AppAlert
-
-    func makeSubscriptionSheetAlert(with error: PurchaseError) -> AppAlert
 }
 
 struct RootAlertFactoryImpl {}
 
-extension RootAlertFactoryImpl: RootAlertFactory {
-    func makeSplashAlert(
-        with error: SplashError,
+extension RootAlertFactoryImpl: RootAlertFactory  {
+    func makeAlert(for error: LocalizedError) -> AppAlert {
+        AppAlert(error: error)
+    }
+
+    func makeRetryAlert(
+        for error: LocalizedError,
         onRetry: @escaping @MainActor () async -> Void
     ) -> AppAlert {
         AppAlert(
             error: error,
             buttonActions: [.retry(onAction: onRetry)]
         )
-    }
-
-    func makeAuthAlert(with error: AuthError) -> AppAlert {
-        AppAlert(error: error)
-    }
-
-    func makeAccountAlert(with error: AccountError) -> AppAlert {
-        AppAlert(error: error)
-    }
-
-    func makeNotificationAlert(with error: NotificationError) -> AppAlert {
-        AppAlert(error: error)
-    }
-
-    func makeNetworkAlert(with error: NetworkError) -> AppAlert {
-        AppAlert(error: error)
-    }
-
-    func makeSubscriptionSheetAlert(with error: PurchaseError) -> AppAlert {
-        AppAlert(error: error)
     }
 }
