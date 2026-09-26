@@ -154,6 +154,8 @@ extension RootContainer: RootCoordinatorFactory {
             networkStatusObserver: dataContainer.networkStatusObserver,
             authStateObserver: dataContainer.authStateObserver,
             notificationEventObserver: notificationContainer.notificationEventObserver,
+            remoteConfigValueObserver: dataContainer.remoteConfigValueObserver,
+            subscriptionStatusObserver: dataContainer.subscriptionStatusObserver,
         )
     }
 
