@@ -9,17 +9,20 @@ import Foundation
 
 public enum SplashError: Error, LocalizedError, Equatable {
     case noInternetConnection
-    case maintenanceMode(message: String)
-    case forceUpdateRequired(storeURL: URL)
+    case maintenanceMode
+    case forceUpdateRequired
+    case unknown(underlying: NSError)
 
     public var errorDescription: String? {
         switch self {
         case .noInternetConnection:
             String(localized: "No internet connection.")
-        case .maintenanceMode(let message):
-            String(localized: "App is under maintenance, message: \(message)")
-        case .forceUpdateRequired(let url):
-            String(localized: "Update required, url: \(url.absoluteString)")
+        case .maintenanceMode:
+            String(localized: "App is under maintenance")
+        case .forceUpdateRequired:
+            String(localized: "Update the app to the latest version.")
+        case .unknown(let underlying):
+            underlying.localizedDescription
         }
     }
 }
@@ -32,8 +35,9 @@ extension SplashError: CustomNSError {
     public var errorCode: Int {
         switch self {
         case .noInternetConnection: 401
-        case .maintenanceMode:      402
-        case .forceUpdateRequired:  403
+        case .maintenanceMode:      503
+        case .forceUpdateRequired:  426
+        case .unknown(let underlying): underlying.code
         }
     }
 }

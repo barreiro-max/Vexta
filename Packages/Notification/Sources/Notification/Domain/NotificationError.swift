@@ -12,6 +12,7 @@ public enum NotificationError: Error, LocalizedError, Equatable {
     case accessDenied
     case invalidTrigger
     case invalidContent
+    case unknown(underlying: NSError)
 
     public var errorDescription: String? {
         switch self {
@@ -23,6 +24,8 @@ public enum NotificationError: Error, LocalizedError, Equatable {
             String(localized: "Invalid notification trigger.")
         case .invalidContent:
             String(localized: "Invalid notification content.")
+        case .unknown(let underlying):
+            underlying.localizedDescription
         }
     }
 }

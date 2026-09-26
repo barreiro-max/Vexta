@@ -10,6 +10,7 @@ import Foundation
 public enum NetworkError: Error, LocalizedError, Equatable {
     case requiresConnection
     case noInternet
+    case unknown(underlying: NSError)
 
     public var errorDescription: String? {
         switch self {
@@ -17,6 +18,8 @@ public enum NetworkError: Error, LocalizedError, Equatable {
             String(localized: "Connection required.")
         case .noInternet:
             String(localized: "No internet connection.")
+        case .unknown(let underlying):
+            underlying.localizedDescription
         }
     }
 }
