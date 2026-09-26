@@ -97,7 +97,7 @@ extension FirebaseAccountDataSource: AccountDataSource {
     public var isAnonymous: Bool {
         get async throws {
             do {
-                guard !EnvironmentVariables.isUseFirebaseEmulator else {
+                guard !BuildConfiguration.isUseFirebaseEmulator else {
                     preconditionFailure("Don't use `User.reload` with firebase auth emulator")
                 }
                 try await firebaseUser.reload()

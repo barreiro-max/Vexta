@@ -101,7 +101,7 @@ extension FirebaseAuthDataSource: AuthDataSource {
     public var isEmailVerified: Bool {
         get async throws {
             do {
-                guard !EnvironmentVariables.isUseFirebaseEmulator else {
+                guard !BuildConfiguration.isUseFirebaseEmulator else {
                     preconditionFailure("Don't use `User.reload` with firebase auth emulator")
                 }
                 try await firebaseUser.reload()
