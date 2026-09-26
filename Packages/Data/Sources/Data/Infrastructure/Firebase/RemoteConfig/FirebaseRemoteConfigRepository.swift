@@ -86,7 +86,6 @@ extension FirebaseRemoteConfigRepository: RemoteConfigRepository {
     public func configValue<T: Decodable>(forKey key: RemoteConfigKey) -> T? {
         let stringKey = key.toString
         let value = rc.configValue(forKey: stringKey)
-        Log.remoteConfig.debug("Key [\(stringKey)] resolved from: \(value.source)")
 
         guard !value
             .stringValue
@@ -95,7 +94,9 @@ extension FirebaseRemoteConfigRepository: RemoteConfigRepository {
         else { return nil }
 
         do {
-            return try value.decoded(asType: T?.self)
+            let decoded = try value.decoded(asType: T?.self)
+            Log.remoteConfig.debug("RemoteConfigValue: \(decoded), key: \(stringKey), resolved from: \(value.source)")
+            return decoded
         } catch {
             Log.remoteConfig.error("Failed to decode key [\(stringKey)] into \(T.self), error: \(error.localizedDescription)")
             return nil
