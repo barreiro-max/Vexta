@@ -50,11 +50,40 @@ final class TabFlowCoordinator {
         self.onFlowEvent = onFlowEvent
     }
 
+    @ViewBuilder
+    func featureFlowView(for tab: Tab) -> some View {
+        Group {
+            switch tab {
+            case .main:
+                mainFlowView
+            case .search:
+                searchFlowView
+            case .cart:
+                cartFlowView
+            case .profile:
+                profileFlowView
+            }
+        }
+        .onAppear { Log.ui.debug("Flow View appeared: \(tab)") }
+    }
+
     // MARK: - flow views
-    var mainFlowView: MainFlowView {
+    private var mainFlowView: some View {
         tabFlowViewFactory.makeMainFlowView { [weak self] flowEvent in
             self?.matchMainFlowEvent(for: flowEvent)
         }
+    }
+
+    private var searchFlowView: some View {
+        tabFlowViewFactory.makeSearchFlowView()
+    }
+
+    private var cartFlowView: some View {
+        tabFlowViewFactory.makeCartFlowView()
+    }
+
+    private var profileFlowView: some View {
+        tabFlowViewFactory.makeProfileFlowView()
     }
 }
 

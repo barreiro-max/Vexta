@@ -18,11 +18,11 @@ protocol TabFlowViewFactory {
         onFlowEvent: @escaping (MainFlowCoordinator.FlowEvent) -> Void
     ) -> MainFlowView
 
-    func makeCartFlowView() -> EmptyView
+    func makeCartFlowView() -> Text
 
-    func makeSearchFlowView() -> EmptyView
+    func makeSearchFlowView() -> Text
 
-    func makeProfileFlowView() -> EmptyView
+    func makeProfileFlowView() -> Text
 }
 
 struct TabFlowViewFactoryImpl {
@@ -43,16 +43,16 @@ extension TabFlowViewFactoryImpl: TabFlowViewFactory {
         )
     }
 
-    func makeCartFlowView() -> EmptyView {
-        EmptyView()
+    func makeCartFlowView() -> Text {
+        Text("Cart")
     }
 
-    func makeSearchFlowView() -> EmptyView {
-        EmptyView()
+    func makeSearchFlowView() -> Text {
+        Text("Search")
     }
 
-    func makeProfileFlowView() -> EmptyView {
-        EmptyView()
+    func makeProfileFlowView() -> Text {
+        Text("Profile")
     }
 }
 

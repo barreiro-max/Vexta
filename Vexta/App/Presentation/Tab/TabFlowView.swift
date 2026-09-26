@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Shared imports
-import Notification
-
 struct TabFlowView: View {
 
     @State private var coordinator: TabFlowCoordinator
@@ -29,19 +26,19 @@ struct TabFlowView: View {
         TabView(selection: $coordinator.selectedTab) {
 
             Tab("Main", systemImage: "house", value: .main) {
-                coordinator.mainFlowView
+                coordinator.featureFlowView(for: .main)
             }
-            // make other featureFlowViews by main example
+
             Tab("Search", systemImage: "magnifyingglass", value: .search) {
-                Text("Search")
+                coordinator.featureFlowView(for: .search)
             }
 
             Tab("Cart", systemImage: "cart", value: .cart) {
-                Text("Cart")
+                coordinator.featureFlowView(for: .cart)
             }
 
             Tab("Profile", systemImage: "person.fill", value: .profile) {
-                Text("Profile")
+                coordinator.featureFlowView(for: .profile)
             }
         }
     }
