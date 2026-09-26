@@ -8,8 +8,7 @@
 import Foundation
 
 public enum RemoteConfigKey: String {
-    case maintenanceMessage = "maintenance_message"
-    case forceUpdateURL = "force_update_url"
+    case isForceUpdate = "is_force_update"
 
     public var toString: String { rawValue }
 }
