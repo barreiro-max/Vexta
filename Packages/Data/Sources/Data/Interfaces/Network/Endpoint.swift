@@ -19,7 +19,7 @@ protocol Endpoint {
 
 extension Endpoint {
     public var baseURL: URL {
-        InfoPlistConfiguration.fakeStoreAPIURL
+        BuildConfiguration.fakeStoreAPIURL
     }
 
     var method: HTTPMethod { .get }
