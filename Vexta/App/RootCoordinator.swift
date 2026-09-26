@@ -27,6 +27,7 @@ final class RootCoordinator {
 
     // MARK: - Nested Types
     enum Route: Hashable, Codable, Identifiable, Sendable {
+        case lock(reason: String)
         case splash
         case onboarding
         case auth
@@ -35,6 +36,10 @@ final class RootCoordinator {
     #if DEBUG
         case debug
     #endif
+
+        var isLock: Bool {
+            if case .lock = self { true } else { false }
+        }
 
         var id: String { "\(self)" }
     }
@@ -51,6 +56,10 @@ final class RootCoordinator {
     var rootRoute: Route
     var rootSheet: Sheet?
     var alert: AppAlert?
+
+#if DEBUG
+    var debugViewId = UUID()
+#endif
 
     // MARK: - Factory
     private let rootViewFactory: any RootViewFactory
@@ -95,64 +104,73 @@ final class RootCoordinator {
 
     @ViewBuilder
     private func featureFlowView(by route: Route) -> some View {
-        if self.rootRoute != route {
-            let _ = Log.ui.debug("Will build by route: \(route)")
+        Group {
+            switch route {
+
+            case .lock(let reason):
+                LockView(reason: reason) // TODO: Lock screen
+
+            case .splash:
+                rootViewFactory.makeSplashView { [weak self] storeEvent in
+                    self?.matchSplashEvent(for: storeEvent)
+                }
+
+            case .onboarding:
+                rootViewFactory.makeOnboardingFlowView { [weak self] flowEvent in
+                    self?.matchOnboardingFlowEvent(for: flowEvent)
+                }
+
+            case .auth:
+                rootViewFactory.makeAuthFlowView { [weak self] flowEvent in
+                    self?.matchAuthFlowEvent(for: flowEvent)
+                }
+
+            case .mainTab:
+                rootViewFactory.makeTabFlowView { [weak self] flowEvent in
+                    self?.matchTabFlowEvent(for: flowEvent)
+                }
+
+#if DEBUG
+            case .debug:
+                debugView.id(debugViewId)
+#endif
+            }
         }
+        .onAppear { Log.ui.debug("Route appeared: \(route)") }
+    }
 
-        switch route {
-
-        case .splash:
-            rootViewFactory.makeSplashView { [weak self] storeEvent in
-                self?.matchSplashEvent(for: storeEvent)
-            }
-
-        case .onboarding:
-            rootViewFactory.makeOnboardingFlowView { [weak self] flowEvent in
-                self?.matchOnboardingFlowEvent(for: flowEvent)
-            }
-
-        case .auth:
-            rootViewFactory.makeAuthFlowView { [weak self] flowEvent in
-                self?.matchAuthFlowEvent(for: flowEvent)
-            }
-
-        case .mainTab:
-            rootViewFactory.makeTabFlowView { [weak self] flowEvent in
-                self?.matchTabFlowEvent(for: flowEvent)
-            }
-
-        #if DEBUG
-        case .debug:
-            DebugView { [weak self] debugRoute in
-                self?.rootRoute = debugRoute
-            } onDebugSheet: { [weak self] debugSheet in
-                self?.rootSheet = debugSheet
-            } onDebugAlert: { [weak self] debugAlert in
-                self?.alert = debugAlert
-            }
-        #endif
+    #if DEBUG
+    private var debugView: some View {
+        DebugView { [weak self] debugRoute in
+            self?.rootRoute = debugRoute
+        } onDebugSheet: { [weak self] debugSheet in
+            self?.rootSheet = debugSheet
+        } onDebugAlert: { [weak self] debugAlert in
+            self?.alert = debugAlert
+        } onForceRefresh: {
+            self.debugViewId = UUID()
         }
     }
+    #endif
 
     @ViewBuilder
     func featureFlowView(by sheet: Sheet) -> some View {
-        if self.rootSheet != sheet {
-            let _ = Log.ui.debug("Will build by sheet: \(sheet)")
-        }
+        Group {
+            switch sheet {
 
-        switch sheet {
+            case .subscription:
+                rootSheetFactory.makeSubscriptionSheet { [weak self] sheetEvent in
+                    self?.matchSubscriptionSheetEvent(for: sheetEvent)
+                }
 
-        case .subscription:
-            rootSheetFactory.makeSubscriptionSheet { [weak self] sheetEvent in
-                self?.matchSubscriptionSheetEvent(for: sheetEvent)
+            case .purchaseSupport:
+                rootSheetFactory.makeCustomerCenterSheet()
+
+            case .emailVerification:
+                rootSheetFactory.makeEmailVerificationSheet()
             }
-
-        case .purchaseSupport:
-            rootSheetFactory.makeCustomerCenterSheet()
-
-        case .emailVerification:
-            rootSheetFactory.makeEmailVerificationSheet()
         }
+        .onAppear { Log.ui.debug("Sheet appeared: \(sheet)") }
     }
 }
 
@@ -170,6 +188,11 @@ extension RootCoordinator {
     }
 
     private func send(_ intent: RootCoordinator.Intent) {
+        if rootRoute.isLock {
+            Log.ui.debug("App in lock, intent dropped: \(intent)")
+            return
+        }
+
         switch intent {
         case .presentedRoute(let rootRoute):
             if self.rootRoute != rootRoute {
@@ -202,6 +225,31 @@ extension RootCoordinator {
     }
 }
 
+// MARK: - Command Handler
+extension RootCoordinator {
+
+    enum Command {
+        case lock(reason: String)
+        case unlock(with: Route)
+    }
+
+    private func execute(_ command: RootCoordinator.Command) {
+        self.rootSheet = nil
+
+        switch command {
+        case .unlock(let route):
+            if rootRoute.isLock {
+                self.rootRoute = route
+            }
+
+        case .lock(let reason):
+            self.rootRoute = .lock(reason: reason)
+        }
+
+        Log.ui.warning("Send command: \(command)")
+    }
+}
+
 // MARK: - Flow Event Matching
 extension RootCoordinator {
 
@@ -215,6 +263,9 @@ extension RootCoordinator {
     private func matchSplashEvent(for storeEvent: SplashStore.Event) {
         switch storeEvent {
 
+        case .locked:
+            execute(.lock(reason: "Force update required"))
+
         case .neededOnboarding:
             send(.presentedRoute(.onboarding))
 
@@ -227,9 +278,9 @@ extension RootCoordinator {
         case .unauthenticated:
             send(.presentedRoute(.auth))
 
-        case .alerted(let error, let onRetry):
-            let alert = alertFactory.makeSplashAlert(with: error, onRetry: onRetry)
-            send(.presentedAlert(alert))
+        case .alerted(let splashError, let onRetry):
+            let splashAlert = alertFactory.makeRetryAlert(for: splashError, onRetry: onRetry)
+            send(.presentedAlert(splashAlert))
         }
     }
 
@@ -240,13 +291,13 @@ extension RootCoordinator {
             send(.presentedRoute(.mainTab))
             send(.presentedPaywallIfNeeded)
 
-        case .alerted(let error):
-            guard error != .emailNotVerified else {
+        case .alerted(let authError):
+            guard authError != .emailNotVerified else {
                 send(.presentedSheet(.emailVerification))
                 return
             }
 
-            let authAlert = alertFactory.makeAuthAlert(with: error)
+            let authAlert = alertFactory.makeAlert(for: authError)
             send(.presentedAlert(authAlert))
         }
     }
@@ -258,7 +309,7 @@ extension RootCoordinator {
             send(.presentedRoute(.auth))
 
         case .alertedMain(let error):
-            let alert = alertFactory.makeAccountAlert(with: error)
+            let alert = alertFactory.makeAlert(for: error)
             send(.presentedAlert(alert))
 
         case .showPaywallIfNeeded:
@@ -295,6 +346,12 @@ extension RootCoordinator {
 
         case .notificationEvent(let event):
             matchNotificationEvent(for: event)
+
+        case .remoteConfigValue(let remoteValue):
+            matchRemoteConfigValue(for: remoteValue)
+
+        case .subscriptionStatus(let status):
+            matchSubscriptionStatus(for: status)
         }
     }
 }
@@ -309,12 +366,12 @@ extension RootCoordinator {
             break
 
         case .requiresConnection:
-            let alert = alertFactory.makeNetworkAlert(with: .requiresConnection)
-            send(.presentedAlert(alert))
+            let networkAlert = alertFactory.makeAlert(for: NetworkError.requiresConnection)
+            send(.presentedAlert(networkAlert))
 
         case .notConnected:
-            let alert = alertFactory.makeNetworkAlert(with: .noInternet)
-            send(.presentedAlert(alert))
+            let networkAlert = alertFactory.makeAlert(for: NetworkError.noInternet)
+            send(.presentedAlert(networkAlert))
         }
     }
 
@@ -341,6 +398,34 @@ extension RootCoordinator {
             break
         }
     }
+
+    private func matchRemoteConfigValue(for remoteValue: RemoteConfigValue) {
+        switch remoteValue {
+
+        case .boolValue(let key, let isForceUpdate) where key == RemoteConfigKey.isForceUpdate.toString:
+            if isForceUpdate {
+                let splashAlert = alertFactory.makeAlert(for: SplashError.forceUpdateRequired)
+                send(.presentedAlert(splashAlert))
+                execute(.lock(reason: "Force update required"))
+            } else {
+                execute(.unlock(with: .auth))
+            }
+
+        default:
+            Log.ui.debug("Unhandled remote config key for value: \(remoteValue)")
+        }
+    }
+
+    private func matchSubscriptionStatus(for status: SubscriptionStatus) {
+        switch status {
+
+        case .active:
+            Log.purchase.debug("Active subscription status")
+
+        case .inactive:
+            Log.purchase.debug("Inactive subscription status")
+        }
+    }
 }
 
 // MARK: - Sheet Event Matching
@@ -352,8 +437,8 @@ extension RootCoordinator {
         case .checkUserPremiumSucceeded: break
 
         case .checkUserPremiumFailed(let error):
-            let alert = alertFactory.makeSubscriptionSheetAlert(with: error)
-            send(.presentedAlert(alert))
+            let purchaseAlert = alertFactory.makeAlert(for: error)
+            send(.presentedAlert(purchaseAlert))
         }
     }
 }
