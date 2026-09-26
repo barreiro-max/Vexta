@@ -17,11 +17,11 @@ public struct PreviewFetchRemoteConfigUseCase: FetchRemoteConfigUseCase {
         self.isPreviewForceUpdate = isPreviewForceUpdate
     }
 
-    public func fetchMaintenanceMessage() async -> String? {
-        isPreviewMaintenance ? "Preview maintenance message" : nil
+    public var isMaintenance: Bool {
+        isPreviewMaintenance
     }
 
-    public func fetchForceUpdateURL() async -> URL? {
-        isPreviewForceUpdate ? URL(string: "https://preview.url.com") : nil
+    public var isForceUpdate: Bool {
+        isPreviewForceUpdate
     }
 }

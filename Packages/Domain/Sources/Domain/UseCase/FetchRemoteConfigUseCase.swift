@@ -8,8 +8,7 @@
 import Foundation
 
 public protocol FetchRemoteConfigUseCase: Sendable {
-    func fetchMaintenanceMessage() async -> String?
-    func fetchForceUpdateURL() async -> URL?
+    var isForceUpdate: Bool { get }
 }
 
 public struct FetchRemoteConfigUseCaseImpl {
@@ -23,11 +22,14 @@ public struct FetchRemoteConfigUseCaseImpl {
 
 extension FetchRemoteConfigUseCaseImpl: FetchRemoteConfigUseCase {
 
-    public func fetchMaintenanceMessage() async -> String? {
-        remoteConfigRepository[.maintenanceMessage]
+    public var isForceUpdate: Bool {
+        boolValue(for: .isForceUpdate)
     }
-    
-    public func fetchForceUpdateURL() async -> URL? {
-        remoteConfigRepository[.forceUpdateURL]
+
+    private func boolValue(for key: RemoteConfigKey) -> Bool {
+        if let value: Bool = remoteConfigRepository[key] {
+            return value
+        }
+        return false
     }
 }
