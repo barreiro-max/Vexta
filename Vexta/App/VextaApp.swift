@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// MARK: - ROOT IMPORT
+import Root
+
 // MARK: - Shared imports
 import Telemetry
 import Environment

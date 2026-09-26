@@ -23,9 +23,11 @@ import FeatureAuth
 import FeatureMain
 import FeaturePurchase
 
-final class RootContainer {
-    private(set) lazy var configContainer = ConfigContainer()
-    private(set) lazy var notificationContainer = NotificationContainer()
+public final class RootContainer {
+    public init() {}
+
+    public lazy var configContainer = ConfigContainer()
+    public lazy var notificationContainer = NotificationContainer()
 
     // MARK: - shared dependency
     private let remoteConfigRepository = FirebaseRemoteConfigRepository()
@@ -91,6 +93,7 @@ final class RootContainer {
     private lazy var purchaseContainer     = PurchaseContainer()
 }
 
+@MainActor
 protocol RootCoordinatorFactory {
     func makeRootCoordinator() -> RootCoordinator
 }
@@ -98,7 +101,7 @@ protocol RootCoordinatorFactory {
 @MainActor
 extension RootContainer: RootCoordinatorFactory {
 
-    func makeRootCoordinator() -> RootCoordinator {
+    public func makeRootCoordinator() -> RootCoordinator {
         let rootViewFactory = makeRootViewFactory()
         let alertFactory = RootAlertFactoryImpl()
         let rootSheetFactory = RootSheetFactoryImpl(

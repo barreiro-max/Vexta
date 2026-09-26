@@ -13,6 +13,7 @@ import FeatureMain
 //import FeatureCart
 //import FeatureProfile
 
+@MainActor
 protocol TabFlowViewFactory {
     func makeMainFlowView(
         onFlowEvent: @escaping (MainFlowCoordinator.FlowEvent) -> Void
@@ -25,6 +26,7 @@ protocol TabFlowViewFactory {
     func makeProfileFlowView() -> Text
 }
 
+@MainActor
 struct TabFlowViewFactoryImpl {
     private let mainViewFactory: MainViewFactory
 

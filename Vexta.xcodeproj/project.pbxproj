@@ -19,6 +19,7 @@
 		848397FA304B218A00D8C377 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8471689D3044290300613663 /* FeatureAuth */; };
 		848397FB304B218A00D8C377 /* FeatureMain in Frameworks */ = {isa = PBXBuildFile; productRef = 847168A03044291500613663 /* FeatureMain */; };
 		848397FC304B218A00D8C377 /* Notification in Frameworks */ = {isa = PBXBuildFile; productRef = 84F478F5304B09CF006BE616 /* Notification */; };
+		849AD0143067F96300E38B97 /* Root in Frameworks */ = {isa = PBXBuildFile; productRef = 849AD0133067F96300E38B97 /* Root */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849AD0143067F96300E38B97 /* Root in Frameworks */,
 				848397F3304B218A00D8C377 /* Domain in Frameworks */,
 				848397F4304B218A00D8C377 /* Data in Frameworks */,
 				848397F5304B218A00D8C377 /* Presentation in Frameworks */,
@@ -146,6 +148,7 @@
 				8471689D3044290300613663 /* FeatureAuth */,
 				847168A03044291500613663 /* FeatureMain */,
 				847168A63044294000613663 /* FeaturePurchase */,
+				849AD0133067F96300E38B97 /* Root */,
 			);
 			productName = Vexta;
 			productReference = 846589462FDEE2B700F13BE4 /* Vexta.app */;
@@ -188,6 +191,7 @@
 				8471689C3044290300613663 /* XCLocalSwiftPackageReference "Packages/FeatureAuth" */,
 				8471689F3044291500613663 /* XCLocalSwiftPackageReference "Packages/FeatureMain" */,
 				847168A53044294000613663 /* XCLocalSwiftPackageReference "Packages/FeaturePurchase" */,
+				849AD0123067F73E00E38B97 /* XCLocalSwiftPackageReference "Packages/Root" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 846589472FDEE2B700F13BE4 /* Products */;
@@ -638,6 +642,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/FeaturePurchase;
 		};
+		849AD0123067F73E00E38B97 /* XCLocalSwiftPackageReference "Packages/Root" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Root;
+		};
 		84F478F4304B09CF006BE616 /* XCLocalSwiftPackageReference "Packages/Notification" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/Notification;
@@ -688,6 +696,11 @@
 		847168A63044294000613663 /* FeaturePurchase */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeaturePurchase;
+		};
+		849AD0133067F96300E38B97 /* Root */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 849AD0123067F73E00E38B97 /* XCLocalSwiftPackageReference "Packages/Root" */;
+			productName = Root;
 		};
 		84F478F5304B09CF006BE616 /* Notification */ = {
 			isa = XCSwiftPackageProductDependency;

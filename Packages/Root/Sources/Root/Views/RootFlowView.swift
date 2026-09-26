@@ -8,15 +8,15 @@
 import SwiftUI
 import Presentation
 
-struct RootFlowView: View {
+public struct RootFlowView: View {
 
     @State private var coordinator: RootCoordinator
 
-    init(coordinator: RootCoordinator) {
+    public init(coordinator: RootCoordinator) {
         _coordinator = State(wrappedValue: coordinator)
     }
 
-    var body: some View {
+    public var body: some View {
 #if DEBUG
         rootView
             .debugButtonOverlay(
