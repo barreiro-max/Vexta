@@ -48,12 +48,15 @@ public final class MainFlowCoordinator {
 
     @ViewBuilder
     func chlidView(by route: Route) -> some View {
-        switch route {
-        case .main:
-            viewFactory.makeMainView { [weak self] storeEvent in
-                self?.matchMainEvent(for: storeEvent)
+        Group {
+            switch route {
+            case .main:
+                viewFactory.makeMainView { [weak self] storeEvent in
+                    self?.matchMainEvent(for: storeEvent)
+                }
             }
         }
+        .onAppear { Log.ui.debug("Route appeared: \(route)") }
     }
 }
 

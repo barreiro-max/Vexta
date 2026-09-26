@@ -51,26 +51,29 @@ public final class AuthFlowCoordinator {
 
     @ViewBuilder
     func chlidView(by route: Route) -> some View {
-        switch route {
+        Group {
+            switch route {
 
-        case .login:
-            viewFactory.makeLoginView() { [weak self] storeEvent in
-                self?.matchLoginEvent(for: storeEvent)
-            }
-        case .register:
-            viewFactory.makeRegisterView() { [weak self] storeEvent in
-                self?.matchRegisterEvent(for: storeEvent)
-            }
-        case .sendResetPassword:
-            viewFactory.makeSendResetPasswordView() { [weak self] storeEvent in
-                self?.matchSendPasswordResetEvent(for: storeEvent)
-            }
+            case .login:
+                viewFactory.makeLoginView() { [weak self] storeEvent in
+                    self?.matchLoginEvent(for: storeEvent)
+                }
+            case .register:
+                viewFactory.makeRegisterView() { [weak self] storeEvent in
+                    self?.matchRegisterEvent(for: storeEvent)
+                }
+            case .sendResetPassword:
+                viewFactory.makeSendResetPasswordView() { [weak self] storeEvent in
+                    self?.matchSendPasswordResetEvent(for: storeEvent)
+                }
 
-        case .sendEmailVerification:
-            viewFactory.makeSendEmailVerificationView() { [weak self] storeEvent in
-                self?.matchSendEmailVerificationEvent(for: storeEvent)
+            case .sendEmailVerification:
+                viewFactory.makeSendEmailVerificationView() { [weak self] storeEvent in
+                    self?.matchSendEmailVerificationEvent(for: storeEvent)
+                }
             }
         }
+        .onAppear { Log.ui.debug("Route appeared: \(route)") }
     }
 }
 

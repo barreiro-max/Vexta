@@ -48,20 +48,22 @@ public final class OnboardingFlowCoordinator {
 
     @ViewBuilder
     func childView(by route: Route) -> some View {
-        let _ = Log.ui.debug("Will build by route: \(route)")
+        Group {
 
-        switch route {
+            switch route {
 
-        case .start:
-            viewFactory.makeStartOnboardingView { [weak self] storeEvent in
-                self?.matchStartOnboardingEvent(for: storeEvent)
-            }
+            case .start:
+                viewFactory.makeStartOnboardingView { [weak self] storeEvent in
+                    self?.matchStartOnboardingEvent(for: storeEvent)
+                }
 
-        case .finish:
-            viewFactory.makeFinishOnboardingView { [weak self] storeEvent in
-                self?.matchFinishOnboardingEvent(for: storeEvent)
+            case .finish:
+                viewFactory.makeFinishOnboardingView { [weak self] storeEvent in
+                    self?.matchFinishOnboardingEvent(for: storeEvent)
+                }
             }
         }
+        .onAppear { Log.ui.debug("Route appeared: \(route)") }
     }
 }
 
