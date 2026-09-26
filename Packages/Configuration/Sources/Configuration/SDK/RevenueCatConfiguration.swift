@@ -15,14 +15,14 @@ import Telemetry
 import RevenueCat
 
 public protocol RevenueCatConfigurable: Sendable {
-    func configure() async
+    func configure()
 }
 
 public struct RevenueCatConfiguration: RevenueCatConfigurable {
 
     public init() {}
     
-    public func configure() async {
+    public func configure() {
         Purchases.logLevel = .debug
 
         Purchases.configure(
