@@ -19,37 +19,7 @@ public final class FirebaseRemoteConfigRepository {
 }
 
 extension FirebaseRemoteConfigRepository: RemoteConfigRepository {
-
-    public func observeConfigUpdates() async {
-        for await _ in configUpdates {
-            do {
-                let activated = try await rc.activate()
-                Log.remoteConfig.notice("Real-time changes activated: \(activated)")
-            } catch {
-                Log.remoteConfig.error("Failed to activate real-time update: \(error.localizedDescription)")
-            }
-        }
-    }
-
-    // implement this instead of using the SDK's because the SDK stops the stream when the listener returns (nil, nil) or errors because want to keep the stream alive in this case
-    public var configUpdates: AsyncStream<Set<String>> {
-        AsyncStream { continuation in
-            let listener = rc.addOnConfigUpdateListener { update, error in
-                if let error {
-                    Log.remoteConfig.error("Real-time update error: \(error.localizedDescription)")
-                    continuation.finish()
-                    return
-                }
-                guard let keys = update?.updatedKeys else { return }
-                Log.remoteConfig.debug("Real-time update detected. Changed keys: \(keys)")
-                continuation.yield(keys)
-            }
-            continuation.onTermination = { @Sendable _ in
-                listener.remove()
-            }
-        }
-    }
-
+    
     public func fetchAndActivate() async -> Bool {
         do {
             let status = try await rc.fetchAndActivate()
