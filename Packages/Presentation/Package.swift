@@ -12,6 +12,7 @@ let package = Package(
     dependencies: [
         // Local Packages
         .package(path: "../Domain"),
+        .package(path: "../Environment"),
     ],
     targets: [
         .target(
@@ -19,6 +20,7 @@ let package = Package(
             dependencies: [
                 // Local Dependencies
                 .product(name: "Domain", package: "Domain"),
+                .product(name: "Environment", package: "Environment"),
             ]
         ),
         .testTarget(
