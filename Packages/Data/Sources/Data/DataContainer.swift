@@ -45,6 +45,11 @@ public final class DataContainer {
 
     public lazy var networkStatusObserver = NWPathNetworkStatusObserver(monitor: .init())
     public lazy var authStateObserver = FirebaseAuthStateObserver()
+
+    public lazy var remoteConfigValueObserver = FirebaseRemoteConfigValueObserver()
+
+    public lazy var subscriptionStatusObserver = RevenueCatSubscriptionStatusObserver()
+
 }
 
 // MARK: - DataFactory
