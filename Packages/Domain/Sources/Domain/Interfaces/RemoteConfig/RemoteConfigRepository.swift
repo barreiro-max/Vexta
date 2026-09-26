@@ -8,9 +8,6 @@
 import Foundation
 
 public protocol RemoteConfigRepository: Sendable {
-    func observeConfigUpdates() async
-    var configUpdates: AsyncStream<Set<String>> { get }
-
     func fetchAndActivate() async -> Bool
     func activate() async throws -> Bool
     func fetch() async throws -> Bool
