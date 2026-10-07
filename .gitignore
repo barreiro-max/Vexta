@@ -3,7 +3,11 @@
 # =========================
 
 ## User settings
-xcuserdata/
+**/xcuserdata/
+*.xcuserdata
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+xcschememanagement.plist
 
 ## Build artifacts
 build/
